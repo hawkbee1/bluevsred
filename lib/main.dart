@@ -45,17 +45,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  List<List<String>> gridState = [
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  ['', 'T', '', '', '', '', '', 'P2','', 'T', '', '', '', '', '', 'P2'],
+  ['', '', '', 'T', '', '', '', '','', 'T', '', '', '', '', '', 'P2'],
+  ['B', 'T', '', '', '', 'B', '', '','', 'T', '', '', '', '', '', 'P2'],
+  ['', '', '', 'B', '', '', '', 'T','', 'T', '', '', '', '', '', 'P2'],
+  ['', '', 'T', '', '', 'T', '', '','', 'T', '', '', '', '', '', 'P2'],
+  ['', '', '', '', '', '', '', 'B','', 'T', '', '', '', '', '', 'P2'],
+  ['', '', '', '', 'T', '', '', '','', 'T', '', '', '', '', '', 'P2'],
+  ['P1', '', '', '', '', '', 'T', '','', 'T', '', '', '', '', '', 'P2'],
+  ['P1', '', '', '', '', '', 'T', '','', 'T', '', '', '', '', '', 'P2'],
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -71,41 +73,149 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          DraggableWidget(offset: Offset(50.0,100.0),),
+          Container(
+            decoration: BoxDecoration(color: Colors.lightGreenAccent),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('HRER'),
+          ),),
+          _buildGameBody(),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  Widget _buildGameBody() {
+    int gridStateLength = gridState.length;
+    return Column(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 1.0,
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.green, width: 2.0)
+              ),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 8,
+
+                ),
+                itemBuilder: _buildGridItems,
+                itemCount: gridStateLength * gridStateLength,
+              ),
+            ),
+          ),
+        ]);
+  }
+  Widget _buildGridItems(BuildContext context, int index) {
+    int gridStateLength = gridState.length;
+    int x, y = 0;
+    x = (index / gridStateLength).floor();
+    y = (index % gridStateLength);
+    return GestureDetector(
+      onTap: () => _gridItemTapped(x, y),
+      child: GridTile(
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 0.5)
+          ),
+          child: Center(
+            child: _buildGridItem(x, y),
+          ),
+        ),
+      ),
+    );
+  }
+  Widget _buildGridItem(int x, int y) {
+    switch (gridState[x][y]) {
+      case '':
+        return Text('');
+        break;
+
+      case 'P1':
+        return Container(
+          color: Colors.blue,
+        );
+        break;
+
+      case 'P2':
+        return Container(
+          color: Colors.yellow,
+        );
+        break;
+
+      case 'T':
+        return Icon(
+          Icons.terrain,
+          size: 40.0,
+          color: Colors.red,
+        );
+        break;
+
+      case 'B':
+        return Icon(Icons.remove_red_eye, size: 40.0);
+        break;
+
+      default:
+        return Text(gridState[x][y].toString());
+    }
+  }
+
 }
+
+_gridItemTapped(int x, int y) {
+  print('OK');
+}
+
+class DraggableWidget extends StatefulWidget {
+  Offset offset;
+
+  DraggableWidget({Key key, this.offset}) : super(key: key);
+  @override
+  _StateDraggableWidget createState() => _StateDraggableWidget();
+}
+
+class _StateDraggableWidget extends State<DraggableWidget> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    widget.offset = Offset(0.0,0.0);
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Positioned(
+        top: widget.offset.dy,
+        left: widget.offset.dx,
+        child: Draggable(
+          feedback: Container(
+            child: Center(child:Text('good')),
+            height: 20.0,
+            width: 20.0,
+            decoration: BoxDecoration(color: Colors.red),
+          ),
+          child: Container(
+            child: Center(child:Text('good')),
+            height: 20.0,
+              width: 20.0,
+            decoration: BoxDecoration(color: Colors.green),
+          ),
+        ),
+      ),
+      ],
+    );
+  }
+}
+
