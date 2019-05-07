@@ -19,14 +19,17 @@ void main() {
     expect(find.byType(Draggable), findsOneWidget);
 
     final Offset firstLocation = tester.getCenter(find.byType(Draggable));
-    final TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
+    final Offset firstDraggableLocation = tester.getTopLeft(find.text('draggable'));
+    print('first draggable location');
+    print(firstDraggableLocation.dx);
+    print(firstDraggableLocation.dy);
+final TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
     await tester.pump();
 
     expect(find.text('feedback'), findsOneWidget);
     expect(find.text('draggable'), findsOneWidget);
-
-    final Offset secondLocation = tester.getCenter(find.byType(Scaffold));
-    await gesture.moveTo(secondLocation);
+final Offset moveOffset = Offset(50.0,50.0);
+    await gesture.moveBy(moveOffset);
     await tester.pump();
 
     expect(find.text('feedback'), findsOneWidget);
@@ -34,9 +37,16 @@ void main() {
 
     await gesture.up();
     await tester.pump();
+    final Offset finalLocation = tester.getTopLeft(find.text('draggable'));
+    print('finallocation');
+    print(finalLocation.dx);
+    print(finalLocation.dy);
 
     expect(find.text('feedback'), findsNothing);
     expect(find.text('draggable'), findsOneWidget);
+
+    final Offset movedOffest = Offset(finalLocation.dx-firstDraggableLocation.dx, finalLocation.dy-firstDraggableLocation.dy);
+    expect(movedOffest, moveOffset);
 
   });
 }

@@ -122,6 +122,7 @@ class _StateDraggableWidget extends State<DraggableWidget> {
           ),
           onDraggableCanceled: (v,o) {
             setState(() {
+              print(v);
               widget.offset = o;
             });
           },
