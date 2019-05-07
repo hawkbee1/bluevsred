@@ -60,9 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: DraggableWidget(offset: Offset(50.0,100.0),),
+      body: DraggableWidget(offset: Offset(100.0,100.0),),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () {
+          print('floating action button');
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -107,13 +109,13 @@ class _StateDraggableWidget extends State<DraggableWidget> {
         left: widget.offset.dx,
         child: Draggable(
           feedback: Container(
-            child: Center(child:Text('good')),
-            height: 82.0,
+            child: Center(child:Text('feedback')),
+            height: 80.0,
             width: 120.0,
             decoration: BoxDecoration(color: Colors.red),
           ),
           child: Container(
-            child: Center(child:Text('good')),
+            child: Center(child:Text('draggable')),
             height: 150.0,
               width: 120.0,
             decoration: BoxDecoration(color: Colors.green),

@@ -18,14 +18,25 @@ void main() {
 //    verify a draggable widget exist
     expect(find.byType(Draggable), findsOneWidget);
 
+    final Offset firstLocation = tester.getCenter(find.byType(Draggable));
+    final TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
+    await tester.pump();
 
+    expect(find.text('feedback'), findsOneWidget);
+    expect(find.text('draggable'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-//    await tester.tap(find.byIcon(Icons.add));
-//    await tester.pump();
+    final Offset secondLocation = tester.getCenter(find.byType(Scaffold));
+    await gesture.moveTo(secondLocation);
+    await tester.pump();
 
-    // Verify that our counter has incremented.
-//    expect(find.text('0'), findsNothing);
-//    expect(find.text('1'), findsOneWidget);
+    expect(find.text('feedback'), findsOneWidget);
+    expect(find.text('draggable'), findsOneWidget);
+
+    await gesture.up();
+    await tester.pump();
+
+    expect(find.text('feedback'), findsNothing);
+    expect(find.text('draggable'), findsOneWidget);
+
   });
 }
