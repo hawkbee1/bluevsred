@@ -83,6 +83,9 @@ class DraggableWidget extends StatefulWidget {
 }
 
 class _StateDraggableWidget extends State<DraggableWidget> {
+  double height = 100.0;
+  double width = 100.0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -122,8 +125,8 @@ class _StateDraggableWidget extends State<DraggableWidget> {
           ),
           onDraggableCanceled: (v,o) {
             setState(() {
-              print(v);
-              widget.offset = o;
+              RenderBox renderBox = context.findRenderObject();
+              widget.offset = renderBox.globalToLocal(o);
             });
           },
         ),
