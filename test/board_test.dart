@@ -49,4 +49,14 @@ final Offset moveOffset = Offset(50.0,50.0);
     expect(movedOffest, moveOffset);
 
   });
-}
+
+  testWidgets('zoom widget is working fine', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(MyApp());
+
+//    verify a gestureDetector widget exist
+    expect(find.byKey(Key('zoom')), findsOneWidget);
+
+  });
+
+  }
