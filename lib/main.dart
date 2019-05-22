@@ -1,8 +1,13 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  debugPrintGestureArenaDiagnostics = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -93,7 +98,7 @@ class _StateDraggableWidget extends State<DraggableWidget> {
     // TODO: implement initState
     super.initState();
     widget.offset = Offset(0.0,0.0);
-    zoom = 1.0;
+    zoom = 0.5;
     previousZoom = null;
   }
   @override
@@ -119,44 +124,48 @@ class _StateDraggableWidget extends State<DraggableWidget> {
           print('je suis ici');
         });
       },
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            bottom: 100.0,
-            right: 100.0,
-            child: Container(
-              child: Center(child:Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()} nbColumns: $zoom'),
-              )),
-              decoration: BoxDecoration(color: Colors.red),
+      child: Transform.scale(
+        scale: zoom,
+        child: Stack(
+
+          children: <Widget>[
+            Positioned(
+              bottom: 100.0,
+              right: 100.0,
+              child: Container(
+                child: Center(child:Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()} nbColumns: $zoom'),
+                )),
+                decoration: BoxDecoration(color: Colors.red),
+              ),
             ),
-          ),
-          Positioned(
-          top: widget.offset.dy,
-          left: widget.offset.dx,
-          child: Draggable(
-            feedback: Container(
-              child: Center(child:Text('feedback')),
-              height: 80.0,
-              width: 120.0,
-              decoration: BoxDecoration(color: Colors.red),
-            ),
-            child: Container(
-              child: Center(child:Text('draggable')),
-              height: 150.0,
+            Positioned(
+            top: widget.offset.dy,
+            left: widget.offset.dx,
+            child: Draggable(
+              feedback: Container(
+                child: Center(child:Text('feedback')),
+                height: 80.0,
                 width: 120.0,
-              decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Colors.red),
+              ),
+              child: Container(
+                child: Center(child:Text('draggable')),
+                height: 150.0,
+                  width: 120.0,
+                decoration: BoxDecoration(color: Colors.green),
+              ),
+              onDraggableCanceled: (v,o) {
+                setState(() {
+                  RenderBox renderBox = context.findRenderObject();
+                  widget.offset = renderBox.globalToLocal(o);
+                });
+              },
             ),
-            onDraggableCanceled: (v,o) {
-              setState(() {
-                RenderBox renderBox = context.findRenderObject();
-                widget.offset = renderBox.globalToLocal(o);
-              });
-            },
           ),
+          ],
         ),
-        ],
       ),
     );
   }
