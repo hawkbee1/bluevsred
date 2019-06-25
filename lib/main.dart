@@ -98,74 +98,99 @@ class _StateDraggableWidget extends State<DraggableWidget> {
     // TODO: implement initState
     super.initState();
     widget.offset = Offset(0.0,0.0);
-    zoom = 0.5;
+    zoom = 1.0;
     previousZoom = null;
   }
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      key: Key('zoom'),
-      onScaleStart: (scaleDetails) {
-    print('icicicicicicicicici');
-    setState(() {
-      previousZoom = zoom;
+    return Container(
+padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
 
-    });
-    },
-      onScaleUpdate: (ScaleUpdateDetails scaleDetails) {
-        setState(() {
-          zoom = previousZoom * scaleDetails.scale;
-//          if (newNumberOfColumns > 20) {
-//            zoom = 20;
-//          }
-//          if (newNumberOfColumns < 3) {
-//            zoom = 3;
-//          }
-          print('je suis ici');
-        });
-      },
-      child: Transform.scale(
-        scale: zoom,
-        child: Stack(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              RaisedButton(
+                child: Icon(Icons.zoom_in),
+                onPressed: () {
+                  setState(() {
+                    if(zoom < 1.8) zoom = zoom+0.1;
+                  });
+                },
+              ),
+              RaisedButton(
+                child: Icon(Icons.zoom_out),
+                onPressed: () {
+                  setState(() {
+                    if(zoom>0.2) zoom = zoom-0.1;
+                  });
+                },
+              )
+            ],
+          ),
+          Container(
+            decoration: BoxDecoration(border: Border.all()),
+            height: 400.0,
+            child: GestureDetector(
+              key: Key('zoom'),
+              onScaleStart: (scaleDetails) {
+            setState(() {
+              previousZoom = zoom;
 
-          children: <Widget>[
-            Positioned(
-              bottom: 100.0,
-              right: 100.0,
-              child: Container(
-                child: Center(child:Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()} nbColumns: $zoom'),
-                )),
-                decoration: BoxDecoration(color: Colors.red),
-              ),
-            ),
-            Positioned(
-            top: widget.offset.dy,
-            left: widget.offset.dx,
-            child: Draggable(
-              feedback: Container(
-                child: Center(child:Text('feedback')),
-                height: 80.0,
-                width: 120.0,
-                decoration: BoxDecoration(color: Colors.red),
-              ),
-              child: Container(
-                child: Center(child:Text('draggable')),
-                height: 150.0,
-                  width: 120.0,
-                decoration: BoxDecoration(color: Colors.green),
-              ),
-              onDraggableCanceled: (v,o) {
+            });
+            },
+              onScaleUpdate: (ScaleUpdateDetails scaleDetails) {
                 setState(() {
-                  RenderBox renderBox = context.findRenderObject();
-                  widget.offset = renderBox.globalToLocal(o);
+                  zoom = previousZoom * scaleDetails.scale;
                 });
               },
+              child: Transform.scale(
+                scale: zoom,
+                child: Stack(
+
+                  children: <Widget>[
+                    Positioned(
+                      bottom: 100.0,
+                      right: 100.0,
+                      child: Container(
+                        child: Center(child:Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()} nbColumns: $zoom'),
+                        )),
+                        decoration: BoxDecoration(color: Colors.red),
+                      ),
+                    ),
+                    Positioned(
+                    top: widget.offset.dy,
+                    left: widget.offset.dx,
+                    child: Draggable(
+                      feedback: Container(
+                        child: Center(child:Text('feedback')),
+                        height: 80.0,
+                        width: 120.0,
+                        decoration: BoxDecoration(color: Colors.red),
+                      ),
+                      child: Container(
+                        child: Center(child:Text('draggable')),
+                        height: 150.0,
+                          width: 120.0,
+                        decoration: BoxDecoration(color: Colors.green),
+                      ),
+                      onDraggableCanceled: (v,o) {
+                        setState(() {
+                          RenderBox renderBox = context.findRenderObject();
+                          widget.offset = renderBox.globalToLocal(o);
+                        });
+                      },
+                    ),
+                  ),
+                  ],
+                ),
+              ),
             ),
           ),
-          ],
-        ),
+        ],
       ),
     );
   }

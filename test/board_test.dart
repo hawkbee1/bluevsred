@@ -26,7 +26,7 @@ void main() {
 final TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
     await tester.pump();
 
-    expect(find.text('feedback'), findsOneWidget);
+    expect(find.text('feedback'), findsNothing);
     expect(find.text('draggable'), findsOneWidget);
 final Offset moveOffset = Offset(50.0,50.0);
     await gesture.moveBy(moveOffset);
