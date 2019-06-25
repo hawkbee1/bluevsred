@@ -67,9 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: DraggableWidget(offset: Offset(100.0,100.0),),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('floating action button');
-        },
+        onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
