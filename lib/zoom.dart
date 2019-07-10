@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
 
-class DraggableWidget extends StatefulWidget {
-  Offset offset;
+// this zoom object is based on the madium article of Bárbara Watanabe :
+// https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
 
-  DraggableWidget({Key key, this.offset}) : super(key: key);
+class Zoom extends StatefulWidget {
+  final Offset position;
+
+  Zoom({Key key, this.position}) : super(key: key);
   @override
   _StateDraggableWidget createState() => _StateDraggableWidget();
 }
 
-class _StateDraggableWidget extends State<DraggableWidget> {
+class _StateDraggableWidget extends State<Zoom> {
+  double _zoom;
+  double _previousZoom;
+  Offset _previousOffset;
+  Offset _offset;
+  Offset _position;
   double height = 100.0;
   double width = 100.0;
-  double zoom = 1.0;
-  double previousZoom;
 
   @override
   void initState() {
-    // TODO: implement initState
+    _zoom = 1.0;
+    _previousZoom = null;
+    _offset = Offset.zero;
+    _position = widget.position;
     super.initState();
-    widget.offset = Offset(0.0,0.0);
-    zoom = 1.0;
-    previousZoom = null;
   }
   @override
   Widget build(BuildContext context) {
@@ -28,33 +34,11 @@ class _StateDraggableWidget extends State<DraggableWidget> {
       padding: EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              RaisedButton(
-                child: Icon(Icons.zoom_in),
-                onPressed: () {
-                  setState(() {
-                    if(zoom < 1.8) zoom = zoom+0.1;
-                  });
-                },
-              ),
-              RaisedButton(
-                child: Icon(Icons.zoom_out),
-                onPressed: () {
-                  setState(() {
-                    if(zoom>0.2) zoom = zoom-0.1;
-                  });
-                },
-              )
-            ],
-          ),
           Container(
             decoration: BoxDecoration(border: Border.all()),
             height: 400.0,
             child: Transform.scale(
-              scale: zoom,
+              scale: _zoom,
               child: Draggable(
                 feedback: Container(
                   child: Center(child:Text('feedback')),
@@ -65,7 +49,7 @@ class _StateDraggableWidget extends State<DraggableWidget> {
                 onDraggableCanceled: (v,o) {
                   setState(() {
                     RenderBox renderBox = context.findRenderObject();
-                    widget.offset = renderBox.globalToLocal(o);
+                    _position = renderBox.globalToLocal(o);
                   });
                 },
                 child: Stack(
@@ -77,14 +61,14 @@ class _StateDraggableWidget extends State<DraggableWidget> {
                       child: Container(
                         child: Center(child:Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()} nbColumns: $zoom'),
+                          child: Text('x: ${_position.dx.floor()} y: ${_position.dy.floor()} nbColumns: $_zoom'),
                         )),
                         decoration: BoxDecoration(color: Colors.red),
                       ),
                     ),
                     Positioned(
-                      top: widget.offset.dy,
-                      left: widget.offset.dx,
+                      top: _position.dy,
+                      left: _position.dx,
                       child: Container(
                         child: Center(child:Text('draggable')),
                         height: 120.0,
@@ -93,8 +77,8 @@ class _StateDraggableWidget extends State<DraggableWidget> {
                       ),
                     ),
                     Positioned(
-                      top: widget.offset.dy+100.0,
-                      left: widget.offset.dx+100.0,
+                      top: _position.dy+100.0,
+                      left: _position.dx+100.0,
                       child: Container(
                         child: Center(child:Text('Tile2')),
                         height: 120.0,
