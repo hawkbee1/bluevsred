@@ -1,4 +1,4 @@
-import 'package:bluevsred/zoom.dart';
+import 'package:bluevsred/zoomMap.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: Zoom(position: Offset(0.0,0.0),),
+      body: ZoomMap(position: Offset(0.0,0.0),),
     );
   }
 }

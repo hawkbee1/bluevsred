@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 // this zoom object is based on the madium article of Bárbara Watanabe :
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
 
-class Zoom extends StatefulWidget {
+class ZoomMap extends StatefulWidget {
   final Offset position;
 
-  Zoom({Key key, this.position}) : super(key: key);
+  ZoomMap({Key key, this.position}) : super(key: key);
   @override
-  _StateDraggableWidget createState() => _StateDraggableWidget();
+  _ZoomMapState createState() => _ZoomMapState();
 }
 
-class _StateDraggableWidget extends State<Zoom> {
+class _ZoomMapState extends State<ZoomMap> {
   double _zoom;
   double _previousZoom;
   Offset _previousOffset;
