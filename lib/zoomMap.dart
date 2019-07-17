@@ -39,13 +39,13 @@ class _ZoomMapState extends State<ZoomMap> {
         Positioned(
         left: _position.dx,
         top: _position.dy,
-        child: GestureDetector(
-          onScaleStart: _handleScaleStart,
-          onScaleEnd: _handleScaleEnd,
-          onScaleUpdate: _handleScaleUpdate,
-          onDoubleTap: _handleScaleReset,
-          child: Transform.scale(
-            scale: _zoom,
+        child: Transform.scale(
+          scale: _zoom,
+          child: GestureDetector(
+            onScaleStart: _handleScaleStart,
+            onScaleEnd: _handleScaleEnd,
+            onScaleUpdate: _handleScaleUpdate,
+            onDoubleTap: _handleScaleReset,
             child: _child,
           ),
         ),
