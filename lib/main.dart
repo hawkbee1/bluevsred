@@ -43,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: ZoomMap(position: Offset(0.0,0.0),),
+      body: ZoomMap(position: Offset(0.0,0.0), child: Text('HELLO world'),),
     );
   }
 }
