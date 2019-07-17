@@ -43,21 +43,57 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: ZoomMap(position: Offset(0.0,0.0), child: Map(),),
+      body: ZoomMap(position: Offset(0.0,0.0), child: Map(Offset(0.0,0.0)),),
     );
   }
 
 }
 
 class Map extends StatelessWidget {
+  Map(this._position);
+  final Offset _position;
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        color: Colors.lightGreenAccent,
-        child: Padding(
-          padding: EdgeInsets.all(32.0),
-          child: Text('we gonna make it'),
+        color: Colors.amberAccent,
+        child: Stack(
+
+          children: <Widget>[
+            Positioned(
+              bottom: 100.0,
+              right: 100.0,
+              child: Container(
+                child: Center(child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('x: ${_position.dx.floor()} y: ${_position.dy
+                      .floor()}'),
+                )),
+                decoration: BoxDecoration(color: Colors.red),
+              ),
+            ),
+            Positioned(
+              top: _position.dy,
+              left: _position.dx,
+              child: Container(
+                child: Center(child: Text('draggable')),
+                height: 120.0,
+                width: 120.0,
+                decoration: BoxDecoration(color: Colors.green),
+              ),
+            ),
+            Positioned(
+              top: _position.dy + 100.0,
+              left: _position.dx + 100.0,
+              child: Container(
+                child: Center(child: Text('Tile2')),
+                height: 120.0,
+                width: 120.0,
+                decoration: BoxDecoration(color: Colors.green),
+              ),
+            )
+          ],
         ),
       ),
     );
