@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 // this zoom object is based on the madium article of Bárbara Watanabe :
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
@@ -17,6 +18,7 @@ class _ZoomMapState extends State<ZoomMap> {
   double _previousZoom;
   Offset _previousOffset;
   Offset _offset;
+  Offset _previousPosition;
   Offset _position;
   Widget _child;
 //  double height = 100.0;
@@ -28,6 +30,7 @@ class _ZoomMapState extends State<ZoomMap> {
     _previousZoom = null;
     _offset = Offset.zero;
     _position = widget.position;
+
     _child = widget.child;
     super.initState();
   }
@@ -42,10 +45,11 @@ class _ZoomMapState extends State<ZoomMap> {
         child: Transform.scale(
           scale: _zoom,
           child: GestureDetector(
-            onScaleStart: _handleScaleStart,
-            onScaleEnd: _handleScaleEnd,
-            onScaleUpdate: _handleScaleUpdate,
+//            onScaleStart: _handleScaleStart,
+//            onScaleUpdate: _handleScaleUpdate,
             onDoubleTap: _handleScaleReset,
+            onPanStart: _handlePanStart,
+            onPanUpdate: _handlePanUpdate,
             child: _child,
           ),
         ),
@@ -60,13 +64,7 @@ class _ZoomMapState extends State<ZoomMap> {
       _previousZoom = _zoom;
     });
   }
-
-  void _handleScaleEnd(ScaleEndDetails end) {
-    print('_handleScaleEnd');
-    setState(() {
-    });
-  }
-
+  
   void _handleScaleUpdate(ScaleUpdateDetails update) {
     print('_handleScaleUpdate : ${update.scale}');
 
@@ -81,6 +79,19 @@ class _ZoomMapState extends State<ZoomMap> {
       _zoom = 1.0;
       _offset = Offset.zero;
       _position = Offset.zero;
+    });
+  }
+
+  void _handlePanStart(DragStartDetails details) {
+    setState(() {
+      _previousPosition = _position;
+    });
+  }
+
+  void _handlePanUpdate(DragUpdateDetails details) {
+    setState(() {
+      _position = Offset(_previousPosition.dx + details.delta.dx, _previousPosition.dy + details.delta.dy);
+      _previousPosition = _position;
     });
   }
 }
