@@ -43,7 +43,23 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: ZoomMap(position: Offset(0.0,0.0), child: Text('HELLO world'),),
+      body: ZoomMap(position: Offset(0.0,0.0), child: Map(),),
+    );
+  }
+
+}
+
+class Map extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        color: Colors.lightGreenAccent,
+        child: Padding(
+          padding: EdgeInsets.all(32.0),
+          child: Text('we gonna make it'),
+        ),
+      ),
     );
   }
 }
