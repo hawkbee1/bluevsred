@@ -19,8 +19,8 @@ class _ZoomMapState extends State<ZoomMap> {
   Offset _offset;
   Offset _position;
   Widget _child;
-  double height = 100.0;
-  double width = 100.0;
+//  double height = 100.0;
+//  double width = 100.0;
 
   @override
   void initState() {
@@ -39,24 +39,13 @@ class _ZoomMapState extends State<ZoomMap> {
         Positioned(
         left: _position.dx,
         top: _position.dy,
-        child: Draggable(
-          child: GestureDetector(
-            onScaleStart: _handleScaleStart,
-            onScaleUpdate: _handleScaleUpdate,
-            onDoubleTap: _handleScaleReset,
-            child: Transform.scale(
-              scale: _zoom,
-              child: _child,
-            ),
-          ),
-          onDraggableCanceled: (velocity, offset) { //When you stop moving the image, it is necessary to setState the new coordinates
-            setState(() {
-              _position = offset;
-            });
-          },
-          feedback: Container( //Response when moving the image. Increase the width and height to 100.0 to see the difference
-            width: 100.0,
-            height: 100.0,
+        child: GestureDetector(
+          onScaleStart: _handleScaleStart,
+          onScaleEnd: _handleScaleEnd,
+          onScaleUpdate: _handleScaleUpdate,
+          onDoubleTap: _handleScaleReset,
+          child: Transform.scale(
+            scale: _zoom,
             child: _child,
           ),
         ),
@@ -72,8 +61,14 @@ class _ZoomMapState extends State<ZoomMap> {
     });
   }
 
+  void _handleScaleEnd(ScaleEndDetails end) {
+    print('_handleScaleEnd');
+    setState(() {
+    });
+  }
+
   void _handleScaleUpdate(ScaleUpdateDetails update) {
-    print('_handleScaleUpdate');
+    print('_handleScaleUpdate : ${update.scale}');
 
     setState(() {
       _zoom = _previousZoom * update.scale;

@@ -1,9 +1,11 @@
 import 'package:bluevsred/zoomMap.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
-  debugPrintGestureArenaDiagnostics = true;
+//  debugPrintGestureArenaDiagnostics = true;
+//  debugPaintPointersEnabled = true;
   runApp(MyApp());
 }
 
@@ -42,17 +44,39 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: Center(
+      body: Container(
+        color: Colors.greenAccent,
         child: ZoomMap(
           position: Offset(0.0, 0.0),
-          child: tempMap(),
+          child: StFulTempMap(),
         ),
       ),
     );
   }
 }
 
-class tempMap extends StatelessWidget {
+class StFulTempMap extends StatefulWidget {
+  @override
+  _StFulTempMapState createState() => _StFulTempMapState();
+}
+
+class _StFulTempMapState extends State<StFulTempMap> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        color: Colors.pinkAccent,
+        child: Padding(
+          padding: EdgeInsets.all(40.0),
+          child: Text('In Flutter we believe !'),
+        ),
+      ),
+    );
+  }
+}
+
+
+class TempMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
