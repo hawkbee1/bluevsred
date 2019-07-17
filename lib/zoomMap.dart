@@ -34,14 +34,33 @@ class _ZoomMapState extends State<ZoomMap> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onScaleStart: _handleScaleStart,
-      onScaleUpdate: _handleScaleUpdate,
-      onDoubleTap: _handleScaleReset,
-      child: Transform.scale(
-        scale: _zoom,
-        child: _child,
-      ),
+    return Stack(
+      children: <Widget>[
+        Positioned(
+        left: _position.dx,
+        top: _position.dy,
+        child: Draggable(
+          child: GestureDetector(
+            onScaleStart: _handleScaleStart,
+            onScaleUpdate: _handleScaleUpdate,
+            onDoubleTap: _handleScaleReset,
+            child: Transform.scale(
+              scale: _zoom,
+              child: _child,
+            ),
+          ),
+          onDraggableCanceled: (velocity, offset) { //When you stop moving the image, it is necessary to setState the new coordinates
+            setState(() {
+              _position = offset;
+            });
+          },
+          feedback: Container( //Response when moving the image. Increase the width and height to 100.0 to see the difference
+            width: 100.0,
+            height: 100.0,
+            child: _child,
+          ),
+        ),
+      )],
     );
   }
 

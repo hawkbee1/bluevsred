@@ -8,7 +8,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -43,10 +42,30 @@ class MyHomePage extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: ZoomMap(position: Offset(0.0,0.0), child: Map(Offset(0.0,0.0)),),
+      body: Center(
+        child: ZoomMap(
+          position: Offset(0.0, 0.0),
+          child: tempMap(),
+        ),
+      ),
     );
   }
+}
 
+class tempMap extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        color: Colors.lime,
+        child: Padding(
+          padding: EdgeInsets.all(40.0),
+          child: Text('In Flutter we believe !'),
+        ),
+      ),
+    );
+  }
 }
 
 class Map extends StatelessWidget {
@@ -59,16 +78,16 @@ class Map extends StatelessWidget {
       child: Container(
         color: Colors.amberAccent,
         child: Stack(
-
           children: <Widget>[
             Positioned(
               bottom: 100.0,
               right: 100.0,
               child: Container(
-                child: Center(child: Padding(
+                child: Center(
+                    child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('x: ${_position.dx.floor()} y: ${_position.dy
-                      .floor()}'),
+                  child: Text(
+                      'x: ${_position.dx.floor()} y: ${_position.dy.floor()}'),
                 )),
                 decoration: BoxDecoration(color: Colors.red),
               ),
@@ -99,5 +118,3 @@ class Map extends StatelessWidget {
     );
   }
 }
-
-
