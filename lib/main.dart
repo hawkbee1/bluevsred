@@ -1,3 +1,4 @@
+import 'package:bluevsred/draggableWidget.dart';
 import 'package:bluevsred/zoomMap.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,7 @@ class MyHomePage extends StatelessWidget {
         color: Colors.greenAccent,
         child: ZoomMap(
           position: Offset(0.0, 0.0),
-          child: TempMap(),
+          child: DraggableWidget(offset: Offset(0.0,0.0)),
         ),
       ),
     );

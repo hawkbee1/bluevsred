@@ -69,7 +69,6 @@ class _ZoomMapState extends State<ZoomMap> {
   }
 
   void _handleScaleReset() {
-    print('_handleScaleReset');
     setState(() {
       _zoom = 1.0;
       _position = Offset.zero;
