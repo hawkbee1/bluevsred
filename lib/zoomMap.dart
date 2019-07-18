@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 // this zoom object is based on the madium article of Bárbara Watanabe :
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
+// after some rework we drag and zoom with just one gestureDetector since scale has all data needed
 
 class ZoomMap extends StatefulWidget {
   final Offset position;
@@ -16,12 +17,10 @@ class ZoomMap extends StatefulWidget {
 class _ZoomMapState extends State<ZoomMap> {
   double _zoom;
   double _previousZoom;
-  Offset _previousOffset;
   Offset _offset;
-  Offset _previousPosition;
   Offset _position;
   Widget _child;
-  bool _setOnDrag;
+  Offset _pointerOffset;
 
   @override
   void initState() {
@@ -29,8 +28,8 @@ class _ZoomMapState extends State<ZoomMap> {
     _previousZoom = null;
     _offset = Offset.zero;
     _position = widget.position;
-    _setOnDrag = true;
     _child = widget.child;
+    _pointerOffset = Offset(0.0,0.0);
     super.initState();
   }
 
@@ -39,44 +38,38 @@ class _ZoomMapState extends State<ZoomMap> {
     return Stack(
       children: <Widget>[
         Positioned(
-        left: _position.dx,
-        top: _position.dy,
-        child: Transform.scale(
-          scale: _zoom,
-          child: GestureDetector(
-            onScaleStart: (scaleStartDetails) {
-              _setOnDrag == false?_handleScaleStart(scaleStartDetails):null;
-              },
-            onScaleUpdate: (scaleStartDetails) {
-              _setOnDrag == false?_handleScaleUpdate(scaleStartDetails):null;
-            },
-            onDoubleTap: _handleScaleReset,
-            onPanStart: (dragStartDetails) {
-              _setOnDrag == true?_handlePanStart(dragStartDetails):null;
-            },
-            onPanUpdate:(dragUpdateDetails) {
-              _setOnDrag == true?_handlePanUpdate(dragUpdateDetails):null;
-            },
-            child: _child,
+          left: _position.dx,
+          top: _position.dy,
+          child: Transform.scale(
+            scale: _zoom,
+            child: GestureDetector(
+              onScaleStart: _handleScaleStart,
+              onScaleUpdate: _handleScaleUpdate,
+              onDoubleTap: _handleScaleReset,
+              child: _child,
+            ),
           ),
-        ),
-      )],
+        )
+      ],
     );
   }
 
   void _handleScaleStart(ScaleStartDetails start) {
-    print('_handleScaleStart');
+//    print('_handleScaleStart');
+    print('${_position.dx} ${start.localFocalPoint.dx} ${start.focalPoint.dx}');
+    print('${_position.dy} ${start.localFocalPoint.dy} ${start.focalPoint.dy}');
     setState(() {
-      _previousOffset = _offset;
+//      _position is in body coordinates and focalPoint is in screen coordinates. we need to adjust y value with difference between both coordinates
+//    We do the maths also for x just in case
+      _pointerOffset = Offset(start.focalPoint.dx - _position.dx, start.focalPoint.dy - _position.dy);
       _previousZoom = _zoom;
     });
   }
-  
-  void _handleScaleUpdate(ScaleUpdateDetails update) {
-    print('_handleScaleUpdate : ${update.scale}');
 
+  void _handleScaleUpdate(ScaleUpdateDetails update) {
     setState(() {
       _zoom = _previousZoom * update.scale;
+      _position = Offset(update.focalPoint.dx - _pointerOffset.dx, update.focalPoint.dy - _pointerOffset.dy);
     });
   }
 
@@ -86,19 +79,6 @@ class _ZoomMapState extends State<ZoomMap> {
       _zoom = 1.0;
       _offset = Offset.zero;
       _position = Offset.zero;
-    });
-  }
-
-  void _handlePanStart(DragStartDetails details) {
-    setState(() {
-      _previousPosition = _position;
-    });
-  }
-
-  void _handlePanUpdate(DragUpdateDetails details) {
-    setState(() {
-      _position = Offset(_previousPosition.dx + details.delta.dx, _previousPosition.dy + details.delta.dy);
-      _previousPosition = _position;
     });
   }
 }
