@@ -5,16 +5,16 @@ import 'package:flutter/widgets.dart';
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
 // after some rework we drag and zoom with just one gestureDetector since scale has all we need
 
-class ZoomMap extends StatefulWidget {
+class MapGestureDetector extends StatefulWidget {
   final Offset position;
   final Widget child;
 
-  ZoomMap({Key key, this.position, this.child}) : super(key: key);
+  MapGestureDetector({Key key, this.position, this.child}) : super(key: key);
   @override
-  _ZoomMapState createState() => _ZoomMapState();
+  _MapGestureDetectorState createState() => _MapGestureDetectorState();
 }
 
-class _ZoomMapState extends State<ZoomMap> {
+class _MapGestureDetectorState extends State<MapGestureDetector> {
   double _zoom;
   double _previousZoom;
   Offset _position;

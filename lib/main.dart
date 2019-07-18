@@ -1,5 +1,5 @@
-import 'package:bluevsred/draggableWidget.dart';
-import 'package:bluevsred/zoomMap.dart';
+import 'package:bluevsred/board.dart';
+import 'package:bluevsred/MapGestureDetector.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -47,97 +47,9 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.greenAccent,
-        child: ZoomMap(
+        child: MapGestureDetector(
           position: Offset(0.0, 0.0),
-          child: DraggableWidget(offset: Offset(0.0,0.0)),
-        ),
-      ),
-    );
-  }
-}
-
-class StFulTempMap extends StatefulWidget {
-  @override
-  _StFulTempMapState createState() => _StFulTempMapState();
-}
-
-class _StFulTempMapState extends State<StFulTempMap> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: Colors.pinkAccent,
-        child: Padding(
-          padding: EdgeInsets.all(40.0),
-          child: Text('In Flutter we believe !'),
-        ),
-      ),
-    );
-  }
-}
-
-
-class TempMap extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Center(
-      child: Container(
-        color: Colors.lime,
-        child: Padding(
-          padding: EdgeInsets.all(40.0),
-          child: Text('In Flutter we believe !'),
-        ),
-      ),
-    );
-  }
-}
-
-class Map extends StatelessWidget {
-  Map(this._position);
-  final Offset _position;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        color: Colors.amberAccent,
-        child: Stack(
-          children: <Widget>[
-            Positioned(
-              bottom: 100.0,
-              right: 100.0,
-              child: Container(
-                child: Center(
-                    child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      'x: ${_position.dx.floor()} y: ${_position.dy.floor()}'),
-                )),
-                decoration: BoxDecoration(color: Colors.red),
-              ),
-            ),
-            Positioned(
-              top: _position.dy,
-              left: _position.dx,
-              child: Container(
-                child: Center(child: Text('draggable')),
-                height: 120.0,
-                width: 120.0,
-                decoration: BoxDecoration(color: Colors.green),
-              ),
-            ),
-            Positioned(
-              top: _position.dy + 100.0,
-              left: _position.dx + 100.0,
-              child: Container(
-                child: Center(child: Text('Tile2')),
-                height: 120.0,
-                width: 120.0,
-                decoration: BoxDecoration(color: Colors.green),
-              ),
-            )
-          ],
+          child: Board(offset: Offset(0.0,0.0)),
         ),
       ),
     );
