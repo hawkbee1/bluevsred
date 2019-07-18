@@ -17,7 +17,6 @@ class ZoomMap extends StatefulWidget {
 class _ZoomMapState extends State<ZoomMap> {
   double _zoom;
   double _previousZoom;
-  Offset _offset;
   Offset _position;
   Widget _child;
   Offset _pointerOffset;
@@ -26,7 +25,6 @@ class _ZoomMapState extends State<ZoomMap> {
   void initState() {
     _zoom = 1.0;
     _previousZoom = null;
-    _offset = Offset.zero;
     _position = widget.position;
     _child = widget.child;
     _pointerOffset = Offset(0.0,0.0);
@@ -55,9 +53,6 @@ class _ZoomMapState extends State<ZoomMap> {
   }
 
   void _handleScaleStart(ScaleStartDetails start) {
-//    print('_handleScaleStart');
-    print('${_position.dx} ${start.localFocalPoint.dx} ${start.focalPoint.dx}');
-    print('${_position.dy} ${start.localFocalPoint.dy} ${start.focalPoint.dy}');
     setState(() {
 //      _position is in body coordinates and focalPoint is in screen coordinates. we need to adjust y value with difference between both coordinates
 //    We do the maths also for x just in case
@@ -77,7 +72,6 @@ class _ZoomMapState extends State<ZoomMap> {
     print('_handleScaleReset');
     setState(() {
       _zoom = 1.0;
-      _offset = Offset.zero;
       _position = Offset.zero;
     });
   }

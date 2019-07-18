@@ -48,7 +48,7 @@ class MyHomePage extends StatelessWidget {
         color: Colors.greenAccent,
         child: ZoomMap(
           position: Offset(0.0, 0.0),
-          child: StFulTempMap(),
+          child: TempMap(),
         ),
       ),
     );
