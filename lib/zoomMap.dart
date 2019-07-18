@@ -21,8 +21,7 @@ class _ZoomMapState extends State<ZoomMap> {
   Offset _previousPosition;
   Offset _position;
   Widget _child;
-//  double height = 100.0;
-//  double width = 100.0;
+  bool _setOnDrag;
 
   @override
   void initState() {
@@ -30,7 +29,7 @@ class _ZoomMapState extends State<ZoomMap> {
     _previousZoom = null;
     _offset = Offset.zero;
     _position = widget.position;
-
+    _setOnDrag = true;
     _child = widget.child;
     super.initState();
   }
@@ -45,11 +44,19 @@ class _ZoomMapState extends State<ZoomMap> {
         child: Transform.scale(
           scale: _zoom,
           child: GestureDetector(
-//            onScaleStart: _handleScaleStart,
-//            onScaleUpdate: _handleScaleUpdate,
+            onScaleStart: (scaleStartDetails) {
+              _setOnDrag == false?_handleScaleStart(scaleStartDetails):null;
+              },
+            onScaleUpdate: (scaleStartDetails) {
+              _setOnDrag == false?_handleScaleUpdate(scaleStartDetails):null;
+            },
             onDoubleTap: _handleScaleReset,
-            onPanStart: _handlePanStart,
-            onPanUpdate: _handlePanUpdate,
+            onPanStart: (dragStartDetails) {
+              _setOnDrag == true?_handlePanStart(dragStartDetails):null;
+            },
+            onPanUpdate:(dragUpdateDetails) {
+              _setOnDrag == true?_handlePanUpdate(dragUpdateDetails):null;
+            },
             child: _child,
           ),
         ),
