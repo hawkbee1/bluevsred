@@ -1,3 +1,4 @@
+import 'package:bluevsred/testUnit.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,7 +30,8 @@ class _BoardState extends State<Board> {
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
-,
+//          should use a list from a specific class or a stream in order to respect O of SOLID
+TestUnit(position: _position,),
         ],
       ),
     );
