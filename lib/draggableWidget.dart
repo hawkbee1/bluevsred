@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DraggableWidget extends StatefulWidget {
-  Offset offset;
+  final Offset offset;
 
   DraggableWidget({Key key, this.offset}) : super(key: key);
   @override
@@ -11,12 +11,13 @@ class DraggableWidget extends StatefulWidget {
 class _StateDraggableWidget extends State<DraggableWidget> {
   double height = 100.0;
   double width = 100.0;
+  Offset _position;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    widget.offset = Offset(0.0,0.0);
+    _position = widget.offset;
   }
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,14 @@ class _StateDraggableWidget extends State<DraggableWidget> {
             child: Container(
               child: Center(child:Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text('x: ${widget.offset.dx.floor()} y: ${widget.offset.dy.floor()}'),
+                child: Text('x: ${_position.dx.floor()} y: ${_position.dy.floor()}'),
               )),
               decoration: BoxDecoration(color: Colors.red),
             ),
           ),
           Positioned(
-            top: widget.offset.dy,
-            left: widget.offset.dx,
+            top: _position.dy,
+            left: _position.dx,
             child: Draggable(
               feedback: Container(
                 child: Center(child:Text('feedback')),
@@ -56,7 +57,7 @@ class _StateDraggableWidget extends State<DraggableWidget> {
               onDraggableCanceled: (v,o) {
                 setState(() {
                   RenderBox renderBox = context.findRenderObject();
-                  widget.offset = renderBox.globalToLocal(o);
+                  _position = renderBox.globalToLocal(o);
                 });
               },
             ),

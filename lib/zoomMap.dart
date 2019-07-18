@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 // this zoom object is based on the madium article of Bárbara Watanabe :
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
-// after some rework we drag and zoom with just one gestureDetector since scale has all data needed
+// after some rework we drag and zoom with just one gestureDetector since scale has all we need
 
 class ZoomMap extends StatefulWidget {
   final Offset position;
