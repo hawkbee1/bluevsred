@@ -48,6 +48,7 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         color: Colors.greenAccent,
         child: MapGestureDetector(
+          key: Key('MapGestureDetector'),
           position: Offset(0.0, 0.0),
           child: Board(offset: Offset(0.0,0.0)),
         ),
