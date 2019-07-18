@@ -1,3 +1,4 @@
+import 'package:bluevsred/key_strings.dart';
 import 'package:bluevsred/testUnit.dart';
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,7 @@ class _BoardState extends State<Board> {
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Stack(
+        key: Key(BOARD_STACK),
         children: <Widget>[
 //          should use a list from a specific class or a stream in order to respect O of SOLID
 TestUnit(position: _position,),
