@@ -1,3 +1,4 @@
+import 'package:bluevsred/key_strings.dart';
 import 'package:bluevsred/board.dart';
 import 'package:bluevsred/mapGestureDetector.dart';
 import 'package:flutter/gestures.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: APPLICATION_TITLE),
     );
   }
 }
@@ -48,6 +49,7 @@ class MyHomePage extends StatelessWidget {
       body: Container(
         color: Colors.greenAccent,
         child: MapGestureDetector(
+          key: Key(MAP_GESTURE_DETECTOR),
           position: Offset(0.0, 0.0),
           child: Board(offset: Offset(0.0,0.0)),
         ),
