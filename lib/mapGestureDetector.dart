@@ -1,3 +1,4 @@
+import 'package:bluevsred/key_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -41,6 +42,7 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
           child: Transform.scale(
             scale: _zoom,
             child: GestureDetector(
+              key: Key(GESTURE_DETECTOR),
               onScaleStart: _handleScaleStart,
               onScaleUpdate: _handleScaleUpdate,
               onDoubleTap: _handleScaleReset,
