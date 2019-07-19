@@ -11,3 +11,5 @@ const String APPLICATION_TITLE = 'Blue VS Red';
 
 // Key string
 const String MAP_GESTURE_DETECTOR = 'MapGestureDetector';
+const String BOARD_STACK = 'boardStack';
+const String GESTURE_DETECTOR = 'gestureDetector';
