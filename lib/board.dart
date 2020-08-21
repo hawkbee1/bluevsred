@@ -1,7 +1,8 @@
 import 'package:bluevsred/key_strings.dart';
+import 'package:bluevsred/mapGestureDetector.dart';
 import 'package:bluevsred/testUnit.dart';
+import 'package:bluevsred/unit.dart';
 import 'package:flutter/material.dart';
-
 
 //Board class are the container and stack forming the board/map of the game
 class Board extends StatefulWidget {
@@ -23,6 +24,7 @@ class _BoardState extends State<Board> {
     super.initState();
     _position = widget.offset;
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,8 +34,11 @@ class _BoardState extends State<Board> {
       child: Stack(
         key: Key(BOARD_STACK),
         children: <Widget>[
+          Unit(),
 //          should use a list from a specific class or a stream in order to respect O of SOLID
-TestUnit(position: _position,),
+          TestUnit(
+            position: _position,
+          ),
         ],
       ),
     );
