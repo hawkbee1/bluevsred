@@ -24,8 +24,11 @@ void main() {
     await gesture.down(firstLocation);
     final Offset moveOffset = Offset(10.0,0.0);
     await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
+    await tester.pump();
     await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
+    await tester.pump();
     await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
+    await tester.pump();
 //    await gesture.moveBy(moveOffset);
     final Offset secondLocation = tester.getCenter(find.byKey(Key(GESTURE_DETECTOR)));
     expect(secondLocation, Offset(firstLocation.dx + moveOffset.dx, firstLocation.dy + moveOffset.dy));

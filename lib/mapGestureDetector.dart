@@ -2,7 +2,7 @@ import 'package:bluevsred/key_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-// this zoom object is based on the madium article of Bárbara Watanabe :
+// this zoom object is based on the medium article of Bárbara Watanabe :
 // https://medium.com/@barbswatanabe/zoom-draggable-your-images-with-flutter-a32ac166dadd
 // after some rework we drag and zoom with just one gestureDetector since scale has all we need
 
