@@ -14,23 +14,20 @@ void main() {
     final Offset firstLocation =
         tester.getCenter(find.byKey(Key(GESTURE_DETECTOR)));
     print('${firstLocation.dx} ${firstLocation.dy}');
-    final TestGesture gesture = await tester.createGesture();
-    await gesture.down(firstLocation);
-    final Offset moveOffset = Offset(10.0, 0.0);
+    TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
+//    await gesture.down(firstLocation);
+    final Offset moveOffset = Offset(0.0, 10.0);
     await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
     await tester.pump(Duration(seconds: 2));
-    await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
-    await tester.pump(Duration(seconds: 2));
-    await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
-    await tester.pump(Duration(seconds: 2));
-    await gesture.moveBy(moveOffset);
+    await gesture.up();
+    await tester.pumpAndSettle();
     final Offset secondLocation =
         tester.getCenter(find.byKey(Key(GESTURE_DETECTOR)));
     expect(
         secondLocation,
-        Offset(firstLocation.dx + moveOffset.dx,
-            firstLocation.dy + moveOffset.dy));
-    await gesture.up();
+        Offset((firstLocation.dx + moveOffset.dx),
+            (firstLocation.dy + moveOffset.dy)));
+//    await gesture.up();
     expect(find.byKey(Key(GESTURE_DETECTOR)), findsOneWidget);
     print('${secondLocation.dx} ${secondLocation.dy}');
     expect(

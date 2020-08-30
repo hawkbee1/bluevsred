@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 const String ENVIRONMENT = 'DEV';
 
 // used to add some time and force some test failing

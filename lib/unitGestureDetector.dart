@@ -42,6 +42,24 @@ class _UnitGestureDetectorState extends State<UnitGestureDetector> {
           child: Transform.scale(
             scale: _zoom,
             child: GestureDetector(
+              onTapDown: (event) {
+                print('onTapDown ${event.toString()}');
+              },
+              onTapUp: (event) {
+                print(event.toString());
+              },
+              onVerticalDragCancel: () {
+                print('dsfsd');
+              },
+              onVerticalDragUpdate: (event) {
+                print(event.toString());
+              },
+              onVerticalDragDown: (event) {
+                print(event.toString());
+              },
+              onTapCancel: () {
+                print('tap canceled ?');
+              },
               key: Key(GESTURE_DETECTOR),
               onScaleStart: _handleScaleStart,
               onScaleUpdate: _handleScaleUpdate,
