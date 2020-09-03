@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+#  firebase_admob: ^0.9.3+4 # Because bluevsred depends on firebase_admob ^0.9.3+4 which depends on firebase_core ^0.4.2+1, firebase_core ^0.4.2+1 is required.
   firebase_core: ^0.5.0
   firebase_in_app_messaging: ^0.2.0+1
   flutter:
