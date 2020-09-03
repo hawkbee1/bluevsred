@@ -22,10 +22,10 @@ class _UnitState extends State<Unit> {
     return UnitGestureDetector(
       position: Offset(150, 200),
       child: Container(
-        color: Colors.green,
+        color: Colors.purpleAccent,
         height: height,
         width: height,
-        child: Text('YEAH !'),
+        child: Text('I\'m recording !!!!'),
       ),
     );
   }

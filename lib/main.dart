@@ -1,6 +1,7 @@
 import 'package:bluevsred/key_strings.dart';
 import 'package:bluevsred/board.dart';
 import 'package:bluevsred/mapGestureDetector.dart';
+import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+//  Mettre
+  static FirebaseInAppMessaging fiam = FirebaseInAppMessaging();
   final String title;
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -52,6 +55,12 @@ class MyHomePage extends StatelessWidget {
           position: Offset(0.0, 0.0),
           child: Board(offset: Offset(0.0, 0.0)),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_alert),
+        onPressed: () {
+          fiam.triggerEvent('48242172180299776');
+        },
       ),
     );
   }
