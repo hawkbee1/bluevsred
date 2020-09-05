@@ -1,5 +1,4 @@
 import 'package:bluevsred/key_strings.dart';
-import 'package:bluevsred/mapGestureDetector.dart';
 import 'package:bluevsred/testUnit.dart';
 import 'package:bluevsred/unit.dart';
 import 'package:flutter/material.dart';
