@@ -20,6 +20,7 @@ class _UnitState extends State<Unit> {
   @override
   Widget build(BuildContext context) {
     return UnitGestureDetector(
+      key: ValueKey('first-unit'),
       position: Offset(150, 200),
       child: Container(
         color: Colors.purpleAccent,
