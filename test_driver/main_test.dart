@@ -15,6 +15,7 @@ void main() {
     test('Tap the screen', () async {
 //        await driver.tap(buttonFinder);
 //        expect(await driver.getText(textFinder), "1");
+      await driver.tap(textFinder);
       await screenshot(driver, config, 'testing');
     });
     tearDownAll(() {
