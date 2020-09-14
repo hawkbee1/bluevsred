@@ -28,7 +28,7 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
     _previousZoom = null;
     _position = widget.position;
     _child = widget.child;
-    _pointerOffset = Offset(0.0,0.0);
+    _pointerOffset = Offset(0.0, 0.0);
     super.initState();
   }
 
@@ -42,7 +42,6 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
           child: Transform.scale(
             scale: _zoom,
             child: GestureDetector(
-              key: Key(GESTURE_DETECTOR),
               onScaleStart: _handleScaleStart,
               onScaleUpdate: _handleScaleUpdate,
               onDoubleTap: _handleScaleReset,
@@ -58,7 +57,8 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
     setState(() {
 //      _position is in body coordinates and focalPoint is in screen coordinates. we need to adjust y value with difference between both coordinates
 //    We do the maths also for x just in case
-      _pointerOffset = Offset(start.focalPoint.dx - _position.dx, start.focalPoint.dy - _position.dy);
+      _pointerOffset = Offset(start.focalPoint.dx - _position.dx,
+          start.focalPoint.dy - _position.dy);
       _previousZoom = _zoom;
     });
   }
@@ -66,7 +66,8 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
   void _handleScaleUpdate(ScaleUpdateDetails update) {
     setState(() {
       _zoom = _previousZoom * update.scale;
-      _position = Offset(update.focalPoint.dx - _pointerOffset.dx, update.focalPoint.dy - _pointerOffset.dy);
+      _position = Offset(update.focalPoint.dx - _pointerOffset.dx,
+          update.focalPoint.dy - _pointerOffset.dy);
     });
   }
 

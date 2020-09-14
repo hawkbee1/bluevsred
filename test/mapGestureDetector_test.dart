@@ -11,18 +11,19 @@ void main() {
 
 //    verify a draggable widget exist
     expect(find.byKey(Key(GESTURE_DETECTOR)), findsOneWidget);
-    final Offset firstLocation =
-        tester.getCenter(find.byKey(Key(GESTURE_DETECTOR)));
+    final Finder finder = find.byKey(Key(GESTURE_DETECTOR));
+    final Offset firstLocation = tester.getCenter(finder);
     print('${firstLocation.dx} ${firstLocation.dy}');
-    TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
+    final Offset moveOffset = Offset(30.0, 20.0);
+    await tester.drag(finder, moveOffset);
+
+//    TestGesture gesture = await tester.startGesture(firstLocation, pointer: 7);
 //    await gesture.down(firstLocation);
-    final Offset moveOffset = Offset(0.0, 10.0);
-    await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
-    await tester.pump(Duration(seconds: 2));
-    await gesture.up();
+//    await gesture.moveBy(moveOffset, timeStamp: Duration(seconds: 1));
+//    await tester.pump(Duration(seconds: 2));
+//    await gesture.up();
     await tester.pumpAndSettle();
-    final Offset secondLocation =
-        tester.getCenter(find.byKey(Key(GESTURE_DETECTOR)));
+    final Offset secondLocation = tester.getCenter(find.text('draggable'));
     expect(
         secondLocation,
         Offset((firstLocation.dx + moveOffset.dx),

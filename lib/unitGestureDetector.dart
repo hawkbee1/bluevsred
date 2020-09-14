@@ -60,7 +60,6 @@ class _UnitGestureDetectorState extends State<UnitGestureDetector> {
               onTapCancel: () {
                 print('tap canceled ?');
               },
-              key: Key(GESTURE_DETECTOR),
               onScaleStart: _handleScaleStart,
               onScaleUpdate: _handleScaleUpdate,
               onDoubleTap: _handleScaleReset,
