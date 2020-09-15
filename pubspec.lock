@@ -632,7 +632,7 @@ packages:
       name: test
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.0-nullsafety.2"
+    version: "1.16.0-nullsafety.4"
   test_api:
     dependency: transitive
     description:
@@ -646,7 +646,7 @@ packages:
       name: test_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.12-nullsafety.2"
+    version: "0.3.12-nullsafety.4"
   tool_base:
     dependency: transitive
     description:

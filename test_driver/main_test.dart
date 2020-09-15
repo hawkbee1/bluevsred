@@ -14,6 +14,7 @@ void main() {
     );
     test('Tap the screen', () async {
       await driver.tap(textFinder);
+      print(config.stagingDir);
       await screenshot(driver, config, 'testing');
     });
     tearDownAll(() {
