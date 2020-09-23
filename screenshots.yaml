@@ -1,9 +1,16 @@
 tests:
-  - test_driver/app.dart
-staging: /Users/builder/build_outputs
+  - test_driver/main.dart
+#staging: /media/hawkbee/DATA/tests/bluevsred/build_outputs
+staging: /home/hawkbee/Documents/flutter/test/build_outputs
+locales:
+  - en-US
 devices:
-  ios:
-    iPhone XS Max:
-      frame: false
+  android:
+    Nexus 6P:
+#      frame: false
       orientation: Portrait
-archive: /Users/builder/exported_artefacts
+#archive: /media/hawkbee/DATA/tests/bluevsred/exported_artefacts
+archive: /home/hawkbee/Documents/flutter/test/exported_artefacts
+#recording: /media/hawkbee/DATA/tests/bluevsred/screenshots_record
+recording: /home/hawkbee/Documents/flutter/test/screenshots_record
+frame: false
