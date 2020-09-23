@@ -5,16 +5,16 @@ import 'package:test/test.dart';
 void main() {
   final config = Config();
   FlutterDriver driver;
-  final textFinder = find.byValueKey('first-unit');
   group('Test GDPR', () {
     setUpAll(
       () async {
         driver = await FlutterDriver.connect();
       },
     );
+    final buttonFinder = find.text('Login');
     test('Tap the screen', () async {
-      await driver.tap(textFinder);
       print(config.stagingDir);
+      await driver.tap(buttonFinder);
       await screenshot(driver, config, 'testing');
     });
     tearDownAll(() {

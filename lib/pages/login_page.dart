@@ -11,7 +11,15 @@ class LoginPage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.greenAccent,
-        child: Text('Login Page'),
+        child: Column(
+          children: [
+            Text('Login Page'),
+            RaisedButton(
+              onPressed: () {},
+              child: Text('Login'),
+            )
+          ],
+        ),
       ),
     );
   }
