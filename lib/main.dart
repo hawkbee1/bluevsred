@@ -1,6 +1,8 @@
+import 'package:bluevsred/core/routes.dart';
 import 'package:bluevsred/key_strings.dart';
 import 'package:bluevsred/board.dart';
 import 'package:bluevsred/mapGestureDetector.dart';
+import 'package:bluevsred/pages/login_page.dart';
 //import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/rendering.dart';
 void main() {
 //  debugPrintGestureArenaDiagnostics = true;
 //  debugPaintPointersEnabled = true;
+  Routes.createRoutes();
   runApp(MyApp());
 }
 
@@ -30,7 +33,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.orange,
       ),
-      home: MyHomePage(title: APPLICATION_TITLE),
+      home: LoginPage(),
+      navigatorKey: Routes.sailor.navigatorKey, // important
+      onGenerateRoute: Routes.sailor.generator(), // important
     );
   }
 }
