@@ -39,35 +39,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class MyHomePage extends StatelessWidget {
-//  Mettre
-//  static FirebaseInAppMessaging fiam = FirebaseInAppMessaging();
-  final String title;
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(title),
-      ),
-      body: Container(
-        color: Colors.greenAccent,
-        child: MapGestureDetector(
-          key: Key(MAP_GESTURE_DETECTOR),
-          position: Offset(0.0, 0.0),
-          child: Board(offset: Offset(0.0, 0.0)),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_alert),
-        onPressed: () {
-//          fiam.triggerEvent('48242172180299776');
-        },
-      ),
-    );
-  }
-}

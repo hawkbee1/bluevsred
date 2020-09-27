@@ -9,6 +9,12 @@ devices:
     Nexus 6P:
 #      frame: false
       orientation: Portrait
+    Nexus 5X 2 API 29:
+      orientation: Portrait
+    Pixel 3a XL API 29:
+      orientation: Portrait
+#    2.7  QVGA API 29:
+#      orientation: Portrait
 #archive: /media/hawkbee/DATA/tests/bluevsred/exported_artefacts
 archive: /home/hawkbee/Documents/flutter/test/exported_artefacts
 #recording: /media/hawkbee/DATA/tests/bluevsred/screenshots_record
