@@ -1,3 +1,4 @@
+import 'package:bluevsred/core/helpers.dart';
 import 'package:bluevsred/core/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -42,11 +43,11 @@ class GdprSettingsPage extends StatelessWidget {
               child: Column(
                 children: [
                   Text('Here\'s links to our partners policy '),
-                  Text(
-                      'Before you get started through, our team wanted to let you know, upon getting your consent we\'re going to continue improving our game with your device data.'
-                      'Specifically, we will using your device data to optimize the gameplay mechanics, application stability, and showing relevant ads which will give you more '
-                      'in-game Action Points. As always, we thank you for playing our game and helping us in anyway possible. If you\'re ever not interested in sharing your data,'
-                      'you can always adjust your settings at a later time as well.'),
+                  InkWell(
+                      onTap: () {
+                        launchURL('https://policies.google.com/');
+                      },
+                      child: Text('https://policies.google.com/')),
                 ],
               ),
             ),
