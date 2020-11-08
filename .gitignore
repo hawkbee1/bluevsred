@@ -8,6 +8,8 @@
 .buildlog/
 .history
 .svn/
+# add in gitignore when installing fvm and following its install doc https://pub.dev/packages/fvm
+flutter_sdk
 
 # IntelliJ related
 *.iml
