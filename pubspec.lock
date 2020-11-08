@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.0.0"
+    version: "12.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.39.17"
+    version: "0.40.6"
   archive:
     dependency: transitive
     description:
@@ -49,7 +49,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.5.0"
   build_config:
     dependency: transitive
     description:
@@ -63,7 +63,21 @@ packages:
       name: build_resolvers
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.11"
+    version: "1.4.3"
+  built_collection:
+    dependency: transitive
+    description:
+      name: built_collection
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.2"
+  built_value:
+    dependency: transitive
+    description:
+      name: built_value
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.1.0"
   characters:
     dependency: transitive
     description:
@@ -120,6 +134,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1"
+  code_builder:
+    dependency: transitive
+    description:
+      name: code_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.0"
   collection:
     dependency: transitive
     description:
@@ -148,13 +169,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.5"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.16.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -168,7 +182,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.6"
+    version: "1.3.9"
   fake_async:
     dependency: transitive
     description:
@@ -176,6 +190,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
+  fake_process_manager:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "0e98d4f3bbb3022b7f429709c2c2574dbe2a999f"
+      url: "https://github.com/trygvis/fake_process_manager"
+    source: git
+    version: "0.2.0"
   file:
     dependency: transitive
     description:
@@ -189,7 +212,7 @@ packages:
       name: firebase
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.3.0"
+    version: "7.3.2"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -253,6 +276,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.1"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.11"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -306,13 +336,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.0"
-  html:
-    dependency: transitive
-    description:
-      name: html
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.14.0+3"
   http:
     dependency: transitive
     description:
@@ -418,13 +441,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  mockito:
+    dependency: transitive
+    description:
+      name: mockito
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.3"
   node_interop:
     dependency: transitive
     description:
       name: node_interop
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   node_io:
     dependency: transitive
     description:
@@ -473,7 +503,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   pool:
     dependency: transitive
     description:
@@ -488,6 +518,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0-nullsafety.2"
+  pub_cache:
+    dependency: transitive
+    description:
+      name: pub_cache
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.3"
   pub_semver:
     dependency: transitive
     description:
@@ -508,7 +545,16 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.3"
+    version: "2.1.5"
+  reporting:
+    dependency: transitive
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "3b1b53c10bc9980098b2818f1a2e1e3cab4c3bca"
+      url: "https://github.com/mmcc007/reporting.git"
+    source: git
+    version: "0.0.0"
   resource:
     dependency: transitive
     description:
@@ -526,10 +572,12 @@ packages:
   screenshots:
     dependency: "direct dev"
     description:
-      name: screenshots
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.1"
+      path: "."
+      ref: HEAD
+      resolved-ref: "72df4870ec66580bd9a201d94691bba38561ac14"
+      url: "https://github.com/trygvis/screenshots"
+    source: git
+    version: "2.1.1"
   shelf:
     dependency: transitive
     description:
@@ -569,7 +617,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.7+1"
+    version: "0.9.8"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -647,6 +695,33 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.12-nullsafety.5"
+  tool_base:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: adf5b044b649809fa09b58a75ae0d365c4f4feaa
+      url: "https://github.com/speaking-in-code/tool_base"
+    source: git
+    version: "2.0.0"
+  tool_base_test:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "78649c48ae811708127c20123a3f194ed6779638"
+      url: "https://github.com/trygvis/tool_base_test"
+    source: git
+    version: "0.0.0"
+  tool_mobile:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: e3cd02708783542732dc61ef96e18d2f32eb1eaf
+      url: "https://github.com/trygvis/tool_mobile"
+    source: git
+    version: "2.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -667,14 +742,14 @@ packages:
       name: url_launcher_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+1"
+    version: "0.0.1+4"
   url_launcher_macos:
     dependency: transitive
     description:
       name: url_launcher_macos
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+8"
+    version: "0.0.1+9"
   url_launcher_platform_interface:
     dependency: transitive
     description:
@@ -695,7 +770,14 @@ packages:
       name: url_launcher_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+1"
+    version: "0.0.1+3"
+  usage:
+    dependency: transitive
+    description:
+      name: usage
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.4.1"
   vector_math:
     dependency: transitive
     description:
@@ -709,7 +791,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.0"
+    version: "5.5.0"
   vm_service_client:
     dependency: transitive
     description:
@@ -744,7 +826,7 @@ packages:
       name: webkit_inspection_protocol
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.3"
+    version: "0.7.4"
   yaml:
     dependency: transitive
     description:
@@ -753,5 +835,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.10.0-110 <=2.11.0-213.1.beta"
+  dart: ">=2.10.0 <=2.11.0-213.1.beta"
   flutter: ">=1.22.0 <2.0.0"
