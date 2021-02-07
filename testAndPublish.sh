@@ -25,7 +25,7 @@ reset=`tput sgr0`
     flutter build appbundle
 
     echo "${green}Builing IPA..${reset}"
-    cd ./ios && pod install && pod repo update && cd ..
+    cd ./ios && pod deintegrate && pod install && pod update && cd ..
     flutter build ios
 
 #    git commit -a -m "Project Rebuilt"
