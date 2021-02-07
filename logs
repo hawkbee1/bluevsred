@@ -1,5 +1,11 @@
 Adaptation of App Release Automator by @rodydavis
 [32mGenerating built files.. (B[m
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║ A new version of Flutter is available!                                     ║
+  ║                                                                            ║
+  ║ To update to the latest version, run "flutter upgrade".                    ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+
 [32mBuilding Project...(B[m
 Formatting directory .:
 Skipping link ios/.symlinks/plugins/cloud_firestore
@@ -22,30 +28,43 @@ Unchanged lib/pages/login_page.dart
 Unchanged lib/testUnit.dart
 Unchanged lib/unit.dart
 Unchanged lib/unitGestureDetector.dart
-Formatted test/board_test.dart
-Formatted test/main_test.dart
+Unchanged test/board_test.dart
+Unchanged test/main_test.dart
 Unchanged test/mapGestureDetector_test.dart
 Unchanged test_driver/main.dart
 Unchanged test_driver/main_test.dart
 Unchanged test_driver/tests/gdpr_screen_reader_test.dart
 Unchanged test_driver/tests/gdpr_test.dart
-Cleaning Xcode workspace...                                        13,6s
-Deleting build...                                                  193ms
-Deleting .dart_tool...                                               7ms
-Deleting Generated.xcconfig...                                       1ms
+Cleaning Xcode workspace...                                         9,2s
+Deleting build...                                                  384ms
+Deleting .dart_tool...                                               4ms
+Deleting Generated.xcconfig...                                       0ms
 Deleting flutter_export_environment.sh...                            0ms
 Deleting .flutter-plugins-dependencies...                            0ms
 Deleting .flutter-plugins...                                         0ms
 [32mProject Size:    27227(B[m
 [32mBuilding appbundle...(B[m
-Running "flutter pub get" in bluevsred...                           1,2s
+Running "flutter pub get" in bluevsred...                           1,1s
 Running Gradle task 'bundleRelease'...                          
 
 
 Removed unused resources: Binary resource data reduced from 126KB to 101KB: Removed 19%
-Running Gradle task 'bundleRelease'...                            122,0s (!)
+Running Gradle task 'bundleRelease'...                            112,1s
 ✓ Built build/app/outputs/bundle/release/app-release.aab (17.8MB).
 [32mBuiling IPA..(B[m
+Deintegrating `Runner.xcodeproj`
+Deleted 1 'Check Pods Manifest.lock' build phases.
+Deleted 1 'Embed Pods Frameworks' build phases.
+- Pods_Runner.framework
+Deleting Pod file references from project
+- Pods-Runner.debug.xcconfig
+- Pods-Runner.release.xcconfig
+- Pods-Runner.profile.xcconfig
+Deleted 1 empty `Frameworks` groups from project.
+Removing `Pods` directory.
+
+Project has been deintegrated. No traces of CocoaPods left in project.
+Note: The workspace referencing the Pods project still remains.
 Analyzing dependencies
 cloud_firestore: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
 firebase_analytics: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
@@ -145,22 +164,22 @@ Error output from CocoaPods:
 
     [!] Automatically assigning platform `iOS` with version `8.0` on target `Runner` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
 
-[13:03:25]: [33mfastlane detected a Gemfile in the current directory[0m
-[13:03:25]: [33mHowever, it seems like you didn't use `bundle exec`[0m
-[13:03:25]: [33mTo launch fastlane faster, please use[0m
-[13:03:25]: 
-[13:03:25]: [36m$ bundle exec fastlane test[0m
-[13:03:25]: 
-[13:03:25]: [33mGet started using a Gemfile for fastlane https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile[0m
-[13:03:29]: [32m------------------------------[0m
-[13:03:29]: [32m--- Step: default_platform ---[0m
-[13:03:29]: [32m------------------------------[0m
+[17:06:56]: [33mfastlane detected a Gemfile in the current directory[0m
+[17:06:56]: [33mHowever, it seems like you didn't use `bundle exec`[0m
+[17:06:56]: [33mTo launch fastlane faster, please use[0m
+[17:06:56]: 
+[17:06:56]: [36m$ bundle exec fastlane test[0m
+[17:06:56]: 
+[17:06:56]: [33mGet started using a Gemfile for fastlane https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile[0m
+[17:06:59]: [32m------------------------------[0m
+[17:06:59]: [32m--- Step: default_platform ---[0m
+[17:06:59]: [32m------------------------------[0m
 +------------------+-----+
 |      [33mLane Context[0m      |
 +------------------+-----+
 | DEFAULT_PLATFORM | ios |
 +------------------+-----+
-[13:03:29]: [31mCould not find lane 'ios test'. Available lanes: ios beta[0m
+[17:06:59]: [31mCould not find lane 'ios test'. Available lanes: ios beta[0m
 
 +------+------------------+-------------+
 |           [32mfastlane summary[0m            |
@@ -170,7 +189,7 @@ Error output from CocoaPods:
 | 1    | default_platform | 0           |
 +------+------------------+-------------+
 
-[13:03:29]: [31mfastlane finished with errors[0m
+[17:06:59]: [31mfastlane finished with errors[0m
 
 #######################################################################
 # fastlane 2.173.0 is available. You are on 2.171.0.
