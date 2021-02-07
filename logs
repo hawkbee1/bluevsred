@@ -1,0 +1,215 @@
+Adaptation of App Release Automator by @rodydavis
+[32mGenerating built files.. (B[m
+[32mBuilding Project...(B[m
+Formatting directory .:
+Skipping link ios/.symlinks/plugins/cloud_firestore
+Skipping link ios/.symlinks/plugins/firebase_analytics
+Skipping link ios/.symlinks/plugins/firebase_auth
+Skipping link ios/.symlinks/plugins/firebase_core
+Skipping link ios/.symlinks/plugins/url_launcher
+Skipping link ios/Pods/Headers/Private/Firebase/Firebase.h
+Skipping link ios/Pods/Headers/Public/Firebase/Firebase.h
+Unchanged lib/board.dart
+Unchanged lib/core/helpers.dart
+Unchanged lib/core/routes.dart
+Unchanged lib/key_strings.dart
+Unchanged lib/main.dart
+Unchanged lib/mapGestureDetector.dart
+Unchanged lib/pages/board_page.dart
+Unchanged lib/pages/gdpr_landing_page.dart
+Unchanged lib/pages/gdpr_settings_page.dart
+Unchanged lib/pages/login_page.dart
+Unchanged lib/testUnit.dart
+Unchanged lib/unit.dart
+Unchanged lib/unitGestureDetector.dart
+Formatted test/board_test.dart
+Formatted test/main_test.dart
+Unchanged test/mapGestureDetector_test.dart
+Unchanged test_driver/main.dart
+Unchanged test_driver/main_test.dart
+Unchanged test_driver/tests/gdpr_screen_reader_test.dart
+Unchanged test_driver/tests/gdpr_test.dart
+Cleaning Xcode workspace...                                        13,6s
+Deleting build...                                                  193ms
+Deleting .dart_tool...                                               7ms
+Deleting Generated.xcconfig...                                       1ms
+Deleting flutter_export_environment.sh...                            0ms
+Deleting .flutter-plugins-dependencies...                            0ms
+Deleting .flutter-plugins...                                         0ms
+[32mProject Size:    27227(B[m
+[32mBuilding appbundle...(B[m
+Running "flutter pub get" in bluevsred...                           1,2s
+Running Gradle task 'bundleRelease'...                          
+
+
+Removed unused resources: Binary resource data reduced from 126KB to 101KB: Removed 19%
+Running Gradle task 'bundleRelease'...                            122,0s (!)
+✓ Built build/app/outputs/bundle/release/app-release.aab (17.8MB).
+[32mBuiling IPA..(B[m
+Analyzing dependencies
+cloud_firestore: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+firebase_analytics: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+firebase_auth: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+firebase_core: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+[!] CocoaPods could not find compatible versions for pod "Firebase/Firestore":
+  In snapshot (Podfile.lock):
+    Firebase/Firestore (= 6.26.0, ~> 6.26.0)
+
+  In Podfile:
+    cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`) was resolved to 0.14.4, which depends on
+      Firebase/Firestore (~> 6.33.0)
+
+
+You have either:
+ * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
+ * changed the constraints of dependency `Firebase/Firestore` inside your development pod `cloud_firestore`.
+   You should run `pod update Firebase/Firestore` to apply changes you've made.
+Changing current working directory to: /Users/romualdbarbe/Documents/bluevsred
+Building fr.whereassistant.bluevsred for device (ios-release)...
+Signing iOS app for device deployment using developer identity: "Apple Development: Romuald Barbe (JCMB252QMZ)"
+Running pod install...                                              1,3s
+CocoaPods' output:
+↳
+      Preparing
+
+    Analyzing dependencies
+
+    Inspecting targets to integrate
+      Using `ARCHS` setting to build architectures of target `Pods-Runner`: (``)
+
+    Finding Podfile changes
+      A url_launcher
+      - Flutter
+      - cloud_firestore
+      - firebase_analytics
+      - firebase_auth
+      - firebase_core
+
+    Fetching external sources
+    -> Fetching podspec for `Flutter` from `Flutter`
+    -> Fetching podspec for `cloud_firestore` from `.symlinks/plugins/cloud_firestore/ios`
+    cloud_firestore: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+    -> Fetching podspec for `firebase_analytics` from `.symlinks/plugins/firebase_analytics/ios`
+    firebase_analytics: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+    -> Fetching podspec for `firebase_auth` from `.symlinks/plugins/firebase_auth/ios`
+    firebase_auth: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+    -> Fetching podspec for `firebase_core` from `.symlinks/plugins/firebase_core/ios`
+    firebase_core: Using Firebase SDK version '6.33.0' defined in 'firebase_core'
+    -> Fetching podspec for `url_launcher` from `.symlinks/plugins/url_launcher/ios`
+
+    Resolving dependencies of `Podfile`
+      CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only perfomed in repo update
+      CDN: trunk Relative path: all_pods_versions_0_3_5.txt exists! Returning local because checking is only perfomed in repo update
+      CDN: trunk Relative path: Specs/0/3/5/Firebase/7.4.0/Firebase.podspec.json exists! Returning local because checking is only perfomed in repo update
+      CDN: trunk Relative path: Specs/0/3/5/Firebase/6.33.0/Firebase.podspec.json exists! Returning local because checking is only perfomed in repo update
+    [!] CocoaPods could not find compatible versions for pod "Firebase/Firestore":
+      In snapshot (Podfile.lock):
+        Firebase/Firestore (= 6.26.0, ~> 6.26.0)
+
+      In Podfile:
+        cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`) was resolved to 0.14.4, which depends on
+          Firebase/Firestore (~> 6.33.0)
+
+
+    You have either:
+     * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
+     * changed the constraints of dependency `Firebase/Firestore` inside your development pod `cloud_firestore`.
+       You should run `pod update Firebase/Firestore` to apply changes you've made.
+
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:328:in `raise_error_unless_state'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:310:in `block in unwind_for_conflict'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:308:in `tap'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:308:in `unwind_for_conflict'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:257:in `process_topmost_state'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolution.rb:182:in `resolve'
+    /Library/Ruby/Gems/2.6.0/gems/molinillo-0.6.6/lib/molinillo/resolver.rb:43:in `resolve'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/resolver.rb:94:in `resolve'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer/analyzer.rb:1074:in `block in resolve_dependencies'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/user_interface.rb:64:in `section'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer/analyzer.rb:1072:in `resolve_dependencies'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer/analyzer.rb:124:in `analyze'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer.rb:414:in `analyze'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer.rb:239:in `block in resolve_dependencies'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/user_interface.rb:64:in `section'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer.rb:238:in `resolve_dependencies'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/installer.rb:160:in `install!'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/command/install.rb:52:in `run'
+    /Library/Ruby/Gems/2.6.0/gems/claide-1.0.3/lib/claide/command.rb:334:in `run'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/lib/cocoapods/command.rb:52:in `run'
+    /Library/Ruby/Gems/2.6.0/gems/cocoapods-1.10.1/bin/pod:55:in `<top (required)>'
+    /usr/local/bin/pod:23:in `load'
+    /usr/local/bin/pod:23:in `<main>'
+
+Error output from CocoaPods:
+↳
+
+    [!] Automatically assigning platform `iOS` with version `8.0` on target `Runner` because no platform was specified. Please specify a platform for this target in your Podfile. See `https://guides.cocoapods.org/syntax/podfile.html#platform`.
+
+[13:03:25]: [33mfastlane detected a Gemfile in the current directory[0m
+[13:03:25]: [33mHowever, it seems like you didn't use `bundle exec`[0m
+[13:03:25]: [33mTo launch fastlane faster, please use[0m
+[13:03:25]: 
+[13:03:25]: [36m$ bundle exec fastlane test[0m
+[13:03:25]: 
+[13:03:25]: [33mGet started using a Gemfile for fastlane https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile[0m
+[13:03:29]: [32m------------------------------[0m
+[13:03:29]: [32m--- Step: default_platform ---[0m
+[13:03:29]: [32m------------------------------[0m
++------------------+-----+
+|      [33mLane Context[0m      |
++------------------+-----+
+| DEFAULT_PLATFORM | ios |
++------------------+-----+
+[13:03:29]: [31mCould not find lane 'ios test'. Available lanes: ios beta[0m
+
++------+------------------+-------------+
+|           [32mfastlane summary[0m            |
++------+------------------+-------------+
+| Step | Action           | Time (in s) |
++------+------------------+-------------+
+| 1    | default_platform | 0           |
++------+------------------+-------------+
+
+[13:03:29]: [31mfastlane finished with errors[0m
+
+#######################################################################
+# fastlane 2.173.0 is available. You are on 2.171.0.
+# You should use the latest version.
+# Please update using `sudo gem install fastlane`.
+#######################################################################
+
+[32m2.173.0 Opt-In Bypass 2FA Upgrade (for now)[0m
+* [spaceship] opt-in to skipping 2FA upgrade with SPACESHIP_SKIP_2FA_UPGRADE=1 (#18116) via Josh Holtz
+* [gym] make error messages more clear with IPAs and PKGs cannot be found (#18014) via David Brunow
+* [fastlane_core] Support `SUPPORTS_UIKITFORMAC` build setting (#18015) via David Brunow
+
+[32m2.172.0 Big Improvements[0m
+* [frameit] add support for new iPhone 12-family devices and their new colors (#17940) via Nicolas Mauri
+* [deliver][download_metadata] give precedence to generate metadata from edit version instead of live version (#17813) via Roger Oba
+* [action] git_commit - skip commit if git status is clean for paths (#17913) via Pierre Felgines
+* [spaceship][docs] update spaceship app store connect docs (#17938) via Roger Oba
+[snapshot] fix snapshot not saving image files on Apple Silicon M1 (#17912) via Martin Albrecht
+* [fastlane] add BUDDY environment variables (#17922) via Rafał Sztwiorok
+* [spaceship] adding missing localizations attribute to AppStoreVersion (#17928) via gsavit
+* Update sample issue from being an existing issue, to a fake one. (#17934) via Roger Oba
+* [action] swiftlint - avoid throwing error for new types of reporters. (#17935) via Roger Oba
+* [action] change 'platform' optionality since nil is not really a valid value. (#17936) via Roger Oba
+* [gym] update gym's available export_methods to match xcodebuild's. (#17939) via Roger Oba
+* [frameit] fix the screenshot size of iPhone 8 Plus (#17977) via Rhett Tuan
+* [action] register_device - fix regression that was causing a crash when creating a device that already exists (#17799) via Roger Oba
+* [spaceship] allow 2FA request only in interactive mode (#17854) via Oleg Kohtenko
+* [action] new create_xcframework action (#17844) via José González
+* [CI] support Ruby 2.7 on Circle CI (#17861) via Satoshi Namai
+* [action] artifactory - add option to authenticate using an API key (#17835) via Florian Staine
+* [gym] update identifier used to looked up the bundle ID when parsing provisioning profile (#17865) via John Britton
+* [spaceship] allow for updating of beta groups (#17984) via Krish
+* [snapshot] fix picking up 'SnapshotHelper'-files from DerivedData #17828 (#17833) via David Everlöf
+* [gym] use unzip for IPA files that are too big (#17825) via Theodore Dubois
+* [action] change username for register_devices action to optional (#17942) via Econa77
+* [action] add api bearer to create pull request (#17972) via Thilek Silvadorai
+* [scan] fix scan not failing when disable_xcpretty and fail_build are true (#17946) via Jean Mainguy
+* [scan] fix scan regression caused by not setting `slack_default_payloads` option (#17923) via Roger Oba
+* [gym][scan][snapshot] disable automatic SPM dependencies resolution or skip it entirely (#17916) via Roman Tysiachnik
+* [gym][snapshot] fix gym `use_system_scm` option and add `use_system_scm` option to snapshot (#17832) via Roger Oba
+
+[32mPlease update using `sudo gem install fastlane`[0m
