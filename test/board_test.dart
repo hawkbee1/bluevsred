@@ -8,7 +8,6 @@ void main() {
     testWidgets('Board is displaying', (WidgetTester tester) async {
       await tester.pumpWidget(MyApp());
       expect(find.byKey(Key(BOARD_STACK)), findsOneWidget);
-
     });
   });
 }

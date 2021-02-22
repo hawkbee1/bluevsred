@@ -22,11 +22,11 @@ environment:
 
 dependencies:
 #  firebase_admob: ^0.9.3+4 # Because bluevsred depends on firebase_admob ^0.9.3+4 which depends on firebase_core ^0.4.2+1, firebase_core ^0.4.2+1 is required.
-  firebase_core: ^0.7.0
-  firebase_analytics: ^7.0.1
+#  firebase_core: ^0.7.0
+#  firebase_analytics: ^7.0.1
 #  firebase_in_app_messaging: ^0.2.0+1
-  firebase_auth: ^0.20.0+1
-  cloud_firestore: ^0.16.0
+#  firebase_auth: ^0.20.0+1
+#  cloud_firestore: ^0.16.0+1
 #  firebase_messaging: ^7.0.0
   get_it: ^5.0.6
   flutter_mobx: ^1.1.0+2
