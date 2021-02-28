@@ -43,7 +43,7 @@ dependencies:
 #  cupertino_icons: ^1.0.0
 
 dev_dependencies:
-  screenshots: any
+  diff_image: ^1.0.1
   flutter_driver:
     sdk: flutter
   test: any
