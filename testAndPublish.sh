@@ -22,6 +22,7 @@ commitIdLocal=$(git log --format="%H" -n 1)
 
 if [ $commitIdOrigin != $commitIdLocal ]
 then
+  git fetch
    git pull
    echo "${green}Generating built files.. ${reset}"
     flutter packages pub run build_runner clean
@@ -48,6 +49,7 @@ then
     flutter build ios
     flutter drive --target=test_driver/main.dart -d emulator-5554
     flutter drive --target=test_driver/main.dart -d 0CAF54DC-CA9C-4AFB-85BA-6392DF3F0C80
+    flutter test
     pwd
 
     cd android
