@@ -17,12 +17,12 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
+git fetch
 commitIdOrigin=$(git log --format="%H" -n 1 --remotes=origin)
 commitIdLocal=$(git log --format="%H" -n 1)
 
 if [ $commitIdOrigin != $commitIdLocal ]
 then
-  git fetch
    git pull
    echo "${green}Generating built files.. ${reset}"
     flutter packages pub run build_runner clean
@@ -39,7 +39,7 @@ then
     echo "${green}Project Size: $(find . -name "*.dart" | xargs cat | wc -c)${reset}"
 
     echo "${green}Building appbundle...${reset}"
-    flutter build appbundle
+    flutter build apk
 
     echo "${green}Builing IPA..${reset}"
     cd ./ios && pod deintegrate && pod install && pod update
