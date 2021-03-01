@@ -7,10 +7,10 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 
-commitIdOrigin=git log --format="%H" -n 1 --remotes=origin
-commitIdLocal=git log --format="%H" -n 1
+commitIdOrigin=$(git log --format="%H" -n 1 --remotes=origin)
+commitIdLocal=$(git log --format="%H" -n 1)
 
-if [ commitIdOrigin != commitIdLocal]
+if [ $commitIdOrigin != $commitIdLocal ]
 then
    git pull
    echo "${green}Generating built files.. ${reset}"
