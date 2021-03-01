@@ -1,22 +1,14 @@
 #sh
-# Close STDOUT file descriptor
-exec 1<&-
-# Close STDERR FD
-exec 2<&-
-
-# Open STDOUT as $LOG_FILE file for read and write.
-exec 1<>logTests
-
-# Redirect STDERR to STDOUT
-exec 2>&1
-
 echo "Adaptation of App Release Automator by @rodydavis"
 
-action="$1"
+#action="$1"
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
+cd /Users/romualdbarbe/Documents/bluevsred
 
+touch toto
+pwd > toto
 git fetch
 commitIdOrigin=$(git log --format="%H" -n 1 --remotes=origin)
 commitIdLocal=$(git log --format="%H" -n 1)
