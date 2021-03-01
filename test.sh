@@ -1,4 +1,15 @@
 #sh
+# Close STDOUT file descriptor
+exec 1<&-
+# Close STDERR FD
+exec 2<&-
+
+# Open STDOUT as $LOG_FILE file for read and write.
+exec 1<>logTests
+
+# Redirect STDERR to STDOUT
+exec 2>&1
+
 echo "Adaptation of App Release Automator by @rodydavis"
 
 #action="$1"
