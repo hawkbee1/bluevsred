@@ -33,9 +33,11 @@ then
     echo "${green}Builing IPA..${reset}"
     cd ./ios && pod deintegrate && pod install && pod update
     fastlane test
-    flutter drive --target=test_driver/main.dart
     cd ..
+
     flutter build ios
+    flutter drive --target=test_driver/main.dart -d emulator-5554
+    flutter drive --target=test_driver/main.dart -d 0CAF54DC-CA9C-4AFB-85BA-6392DF3F0C80
     pwd
 
     cd android
