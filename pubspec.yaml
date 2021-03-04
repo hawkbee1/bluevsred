@@ -28,12 +28,12 @@ dependencies:
 #  firebase_auth: ^0.20.0+1
 #  cloud_firestore: ^0.16.0+1
 #  firebase_messaging: ^7.0.0
-  get_it: ^5.0.6
+  get_it: ^6.0.0
   flutter_mobx: ^1.1.0+2
   mobx: ^1.2.1+4
-  json_annotation: ^3.1.1
+  json_annotation: ^4.0.0
   sailor: ^0.7.1
-  url_launcher: ^5.7.10
+  url_launcher: ^6.0.2
   flutter:
     sdk: flutter
 
@@ -47,7 +47,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   test: any
-  json_serializable: ^3.5.1
+  json_serializable: ^4.0.2
   mobx_codegen: ^1.1.2
   flutter_test:
     sdk: flutter
