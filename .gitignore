@@ -48,3 +48,4 @@ app.*.map.json
 /ios/GoogleService-Info.plist
 /test_driver/tests/library/tmp_test_image/
 /test_driver/tests/library/tmp_test_difference/
+/test_driver/tests/library/golden_tests/
