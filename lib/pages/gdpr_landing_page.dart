@@ -42,7 +42,7 @@ class GdprLandingPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: () {
                         Routes.sailor.navigate('/GdprSettingsPage');
                       },
@@ -56,7 +56,7 @@ class GdprLandingPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
+                    child: TextButton(
                       onPressed: () {
                         Routes.sailor.navigate('/BoardPage');
                       },

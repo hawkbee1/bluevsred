@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
               key: Key('passwordTextField'),
               decoration: InputDecoration(hintText: 'Password'),
             ),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 Routes.sailor.navigate('/BoardPage');
               },

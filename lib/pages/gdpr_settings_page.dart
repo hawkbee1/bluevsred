@@ -53,7 +53,7 @@ class GdprSettingsPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   Routes.sailor.navigate('/BoardPage');
                 },
