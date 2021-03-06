@@ -44,6 +44,7 @@ dependencies:
 #  cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  build_runner: ^1.11.5
   diff_image: ^1.0.1
   flutter_driver:
     sdk: flutter

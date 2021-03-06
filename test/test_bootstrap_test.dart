@@ -1,4 +1,6 @@
-import 'package:dartz/dartz.dart';
+import 'package:bluevsred/entities/game_action.dart';
+import 'package:bluevsred/entities/game_unit.dart';
+import 'package:get_it/get_it.dart';
 import 'package:test/test.dart';
 
 /// display map
@@ -17,12 +19,12 @@ import 'package:test/test.dart';
 
 void main() {
   group('Throw an error if acting unit does not have enough action points', () {
-    final GameUnit gameUnit = GameUnit();
-    final GameAction gameAction = GameAction();
+    final GameUnit activeUnit = GameUnit();
+    final GameAction gameAction = GameAction(activeUnit: activeUnit);
 
     /// For all the those tests the acting unit has 10 AP
     setUp(() {
-      gameUnit.actionPoints = 10;
+      activeUnit.actionPoints = 10;
     });
 
     test('canActionHappen return Right(true) when Unit has enough points', () {
@@ -30,19 +32,17 @@ void main() {
       var response = gameAction.canActionHappen();
       bool right;
       response.fold((l) => null, (r) => right = r);
-      expect(right, true);
+      expect(right, isTrue);
+    });
+    test('canActionHappen return Right(Error) when Unit has not enough points',
+        () {
+      gameAction.actionPointsCost = 20;
+      var response = gameAction.canActionHappen();
+      var left;
+      bool isLeftAnError = false;
+      response.fold((l) => left = l, (r) => null);
+      left is Error ? isLeftAnError = true : isLeftAnError = false;
+      expect(isLeftAnError, isTrue);
     });
   });
-}
-
-class GameAction {
-  int actionPointsCost = 0;
-
-  Either<Error, bool> canActionHappen() {
-    return Right(true);
-  }
-}
-
-class GameUnit {
-  int actionPoints = 0;
 }
