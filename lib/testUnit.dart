@@ -27,16 +27,10 @@ class _TestUnitState extends State<TestUnit> {
       child: Draggable(
         key: Key(GESTURE_DETECTOR),
         feedback: Container(
-          child: Center(child: Text('feedback')),
           height: 80.0,
           width: 120.0,
           decoration: BoxDecoration(color: Colors.red),
-        ),
-        child: Container(
-          child: Center(child: Text('draggable')),
-          height: 150.0,
-          width: 120.0,
-          decoration: BoxDecoration(color: Colors.green),
+          child: Center(child: Text('feedback')),
         ),
         onDraggableCanceled: (v, o) {
           print('canceled');
@@ -51,6 +45,12 @@ class _TestUnitState extends State<TestUnit> {
         onDragCompleted: () {
           print('completed');
         },
+        child: Container(
+          height: 150.0,
+          width: 120.0,
+          decoration: BoxDecoration(color: Colors.green),
+          child: Center(child: Text('draggable')),
+        ),
       ),
     );
   }

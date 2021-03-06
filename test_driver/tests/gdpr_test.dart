@@ -22,19 +22,19 @@ void main() {
     final acceptGdprSettingsButtonFinder = find.text('ACCEPT');
     test('All the GDPR process on sign up which end by displaying the Board',
         () async {
-      await takeScreenshot(driver, 'gdpr_test_homePage');
+      takeScreenshot(driver, 'gdpr_test_homePage');
       await driver.tap(signUpButtonFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprLandingPage');
+      takeScreenshot(driver, 'gdpr_test_gdprLandingPage');
       await driver.tap(manageGdprSettingsButtonFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprSettingsPage');
+      takeScreenshot(driver, 'gdpr_test_gdprSettingsPage');
       await driver.tap(manageAnalyticsSwitchFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprAnalytics_false');
+      takeScreenshot(driver, 'gdpr_test_gdprAnalytics_false');
       await driver.tap(manageAdvertisingSwitchFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprAdvertising_false');
+      takeScreenshot(driver, 'gdpr_test_gdprAdvertising_false');
       await driver.tap(manageAnalyticsSwitchFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprAnalytics_true');
+      takeScreenshot(driver, 'gdpr_test_gdprAnalytics_true');
       await driver.tap(acceptGdprSettingsButtonFinder);
-      await takeScreenshot(driver, 'gdpr_test_gdprBoardPage');
+      takeScreenshot(driver, 'gdpr_test_gdprBoardPage');
     });
     tearDownAll(() {
       if (driver != null) {

@@ -5,16 +5,16 @@ import 'package:image/image.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 
 // Delete all files in folder
-deleteFolderFiles(String path) {
+void deleteFolderFiles(String path) {
   final dir = Directory(path);
   dir.deleteSync(recursive: true);
   Directory(path).createSync();
 }
 
 // take a screenshot from the driver, save it and compare it with golden test image
-takeScreenshot(FlutterDriver driver, String path) async {
+void takeScreenshot(FlutterDriver driver, String path) async {
   final List<int> pixels = await driver.screenshot();
-  final File file = new File('test_driver/tests/library/tmp_test_image/$path');
+  final File file = File('test_driver/tests/library/tmp_test_image/$path');
   await file.writeAsBytes(pixels);
   print(path);
   var firstImageFromMemory = decodeImage(

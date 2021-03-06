@@ -28,14 +28,15 @@ dependencies:
 #  firebase_auth: ^0.20.0+1
 #  cloud_firestore: ^0.16.0+1
 #  firebase_messaging: ^7.0.0
+  dartz: ^0.9.2
   get_it: ^6.0.0
-  flutter_mobx: ^1.1.0+2
-  mobx: ^1.2.1+4
-  json_annotation: ^4.0.0
-  sailor: ^0.7.1
-  url_launcher: ^6.0.2
   flutter:
     sdk: flutter
+  flutter_mobx: ^1.1.0+2
+  json_annotation: ^4.0.0
+  mobx: ^1.2.1+4
+  sailor: ^0.7.1
+  url_launcher: ^6.0.2
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -23,10 +23,10 @@ class BoardPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_alert),
         onPressed: () {
 //          fiam.triggerEvent('48242172180299776');
         },
+        child: Icon(Icons.add_alert),
       ),
     );
   }
