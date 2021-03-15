@@ -1,9 +1,10 @@
+import 'dart:math';
+
 import 'package:bluevsred/entities/game_action.dart';
-import 'package:bluevsred/entities/game_position.dart';
 
 class GameUnit {
   int actionPoints = 0;
-  GamePosition position;
+  Point position;
   int healthPoints = 0;
   int speed = 0;
   int camouflage = 0;
