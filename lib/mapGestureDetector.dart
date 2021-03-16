@@ -1,3 +1,5 @@
+import 'package:bluevsred/core/injection_container.dart';
+import 'package:bluevsred/entities/game_map_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -15,7 +17,7 @@ class MapGestureDetector extends StatefulWidget {
 }
 
 class _MapGestureDetectorState extends State<MapGestureDetector> {
-  double _zoom;
+  final GameMapState gameMapState = sl();
   double _previousZoom;
   Offset _position;
   Widget _child;
@@ -23,7 +25,7 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
 
   @override
   void initState() {
-    _zoom = 1.0;
+    gameMapState.scale = 1.0;
     _previousZoom = null;
     _position = widget.position;
     _child = widget.child;
@@ -39,7 +41,7 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
           left: _position.dx,
           top: _position.dy,
           child: Transform.scale(
-            scale: _zoom,
+            scale: gameMapState.scale,
             child: GestureDetector(
               onScaleStart: _handleScaleStart,
               onScaleUpdate: _handleScaleUpdate,
@@ -58,13 +60,13 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
 //    We do the maths also for x just in case
       _pointerOffset = Offset(start.focalPoint.dx - _position.dx,
           start.focalPoint.dy - _position.dy);
-      _previousZoom = _zoom;
+      _previousZoom = gameMapState.scale;
     });
   }
 
   void _handleScaleUpdate(ScaleUpdateDetails update) {
     setState(() {
-      _zoom = _previousZoom * update.scale;
+      gameMapState.scale = _previousZoom * update.scale;
       _position = Offset(update.focalPoint.dx - _pointerOffset.dx,
           update.focalPoint.dy - _pointerOffset.dy);
     });
@@ -72,7 +74,7 @@ class _MapGestureDetectorState extends State<MapGestureDetector> {
 
   void _handleScaleReset() {
     setState(() {
-      _zoom = 1.0;
+      gameMapState.scale = 1.0;
       _position = Offset.zero;
     });
   }

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bluevsred/entities/game_map.dart';
+import 'package:bluevsred/entities/game_map_state.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt sl = GetIt.instance;
@@ -11,4 +12,5 @@ void setup() async {
     newGameMap.mapSize = Point(100.0, 150.0);
     return newGameMap;
   });
+  sl.registerLazySingleton<GameMapState>(() => GameMapState());
 }

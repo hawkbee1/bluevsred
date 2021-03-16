@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:bluevsred/core/injection_container.dart';
+import 'package:bluevsred/entities/game_map_state.dart';
 import 'package:flutter/material.dart';
 
 class UnitGestureDetector extends StatefulWidget {
@@ -13,7 +15,8 @@ class UnitGestureDetector extends StatefulWidget {
 class _UnitGestureDetectorState extends State<UnitGestureDetector> {
   Offset _position;
   Offset _newPosition;
-  Offset _mapOffset;
+  Offset _dragStartPoint;
+  Offset _dragEndPoint;
   bool _updateMapOffset = false;
 
   @override
@@ -28,24 +31,41 @@ class _UnitGestureDetectorState extends State<UnitGestureDetector> {
       left: _position.dx,
       child: LayoutBuilder(
         builder: (context, constraints) {
+          final GameMapState gameMapState = sl();
           return Draggable(
             onDragStarted: () {
               _updateMapOffset = true;
             },
             onDragUpdate: (details) {
               if (_updateMapOffset) {
-                _mapOffset = Offset(details.globalPosition.dx - _position.dx,
-                    details.globalPosition.dy - _position.dy);
+                _dragStartPoint = Offset(
+                    details.globalPosition.dx, details.globalPosition.dy);
                 _updateMapOffset = false;
+              } else {
+                _dragEndPoint = Offset(
+                    details.globalPosition.dx, details.globalPosition.dy);
               }
             },
             onDraggableCanceled: (v, o) {
-              _newPosition = Offset(o.dx - _mapOffset.dx, o.dy - _mapOffset.dy);
+              /// o is not trustworthy according to tests so we do computation
+              /// without it.
+              /// Draggable widget is not giving coordinates in same cartesian
+              /// system as Positionned widget of the stack. Conversion between
+              /// cartesian systems is done by applying scale on the movement.
+
+              _newPosition = Offset(
+                  _position.dx +
+                      (_dragEndPoint.dx - _dragStartPoint.dx) /
+                          gameMapState.scale,
+                  _position.dy +
+                      (_dragEndPoint.dy - _dragStartPoint.dy) /
+                          gameMapState.scale);
               setState(() {
                 _position = _newPosition;
               });
             },
-            feedback: Icon(Icons.details),
+            feedback:
+                Transform.scale(scale: gameMapState.scale, child: widget.child),
             child: widget.child,
           );
         },

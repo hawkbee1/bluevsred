@@ -57,8 +57,8 @@ class _BoardState extends State<Board> {
           UnitGestureDetector(
               unitPosition: Point(10.0, 10.0),
               child: SizedBox(
-                width: 10,
-                height: 10,
+                width: 1,
+                height: 1,
                 child: Container(
                   color: Colors.green,
                   child: Transform.translate(
