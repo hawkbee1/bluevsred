@@ -1,9 +1,11 @@
+import 'package:bluevsred/core/injection_container.dart';
 import 'package:bluevsred/core/routes.dart';
 import 'package:bluevsred/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   Routes.createRoutes();
+  setup();
   runApp(MyApp());
 }
 
