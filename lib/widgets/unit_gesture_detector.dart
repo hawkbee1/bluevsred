@@ -12,6 +12,9 @@ class UnitGestureDetector extends StatefulWidget {
 
 class _UnitGestureDetectorState extends State<UnitGestureDetector> {
   Offset _position;
+  Offset _newPosition;
+  Offset _mapOffset;
+  bool _updateMapOffset = false;
 
   @override
   void initState() {
@@ -25,16 +28,24 @@ class _UnitGestureDetectorState extends State<UnitGestureDetector> {
       left: _position.dx,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          return GestureDetector(
-            onPanUpdate: (detail) {
+          return Draggable(
+            onDragStarted: () {
+              _updateMapOffset = true;
+            },
+            onDragUpdate: (details) {
+              if (_updateMapOffset) {
+                _mapOffset = Offset(details.globalPosition.dx - _position.dx,
+                    details.globalPosition.dy - _position.dy);
+                _updateMapOffset = false;
+              }
+            },
+            onDraggableCanceled: (v, o) {
+              _newPosition = Offset(o.dx - _mapOffset.dx, o.dy - _mapOffset.dy);
               setState(() {
-                RenderBox renderBox = context.findRenderObject();
-                Offset newPosition =
-                    renderBox.globalToLocal(detail.globalPosition);
-                _position = newPosition;
-                print("final offset: ${_position.toString()}");
+                _position = _newPosition;
               });
             },
+            feedback: Icon(Icons.details),
             child: widget.child,
           );
         },
