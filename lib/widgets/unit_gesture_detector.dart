@@ -22,6 +22,7 @@ class _UnitGestureDetectorState extends State<UnitGestureDetector> {
   @override
   void initState() {
     _position = Offset(widget.unitPosition.x, widget.unitPosition.y);
+    super.initState();
   }
 
   @override

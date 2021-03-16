@@ -1,55 +1,21 @@
-import 'package:bluevsred/key_strings.dart';
 import 'package:flutter/material.dart';
 
-class TestUnit extends StatefulWidget {
-  final position;
-  TestUnit({this.position});
-
-  @override
-  _TestUnitState createState() => _TestUnitState();
-}
-
-class _TestUnitState extends State<TestUnit> {
-  Offset _position;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _position = widget.position;
-  }
-
+class TestUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      top: _position.dy,
-      left: _position.dx,
-      child: Draggable(
-        key: Key(GESTURE_DETECTOR),
-        feedback: Container(
-          height: 80.0,
-          width: 120.0,
-          decoration: BoxDecoration(color: Colors.red),
-          child: Center(child: Text('feedback')),
-        ),
-        onDraggableCanceled: (v, o) {
-          print('canceled');
-          setState(() {
-            RenderBox renderBox = context.findRenderObject();
-            _position = renderBox.globalToLocal(o);
-          });
-        },
-        onDragStarted: () {
-          print('started');
-        },
-        onDragCompleted: () {
-          print('completed');
-        },
-        child: Container(
-          height: 150.0,
-          width: 120.0,
-          decoration: BoxDecoration(color: Colors.green),
-          child: Center(child: Text('draggable')),
+    return SizedBox(
+      width: 1,
+      height: 1,
+      child: Container(
+        color: Colors.transparent,
+        child: Transform.translate(
+          offset: Offset(-0.57, -0.57),
+          child: Transform.scale(
+              scale: 0.05,
+              child: Icon(
+                Icons.ac_unit_rounded,
+                color: Colors.yellowAccent,
+              )),
         ),
       ),
     );
