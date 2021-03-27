@@ -22,12 +22,6 @@ class BoardPage extends StatelessWidget {
           child: Board(offset: Offset(0.0, 0.0)),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-//          fiam.triggerEvent('48242172180299776');
-        },
-        child: Icon(Icons.add_alert),
-      ),
     );
   }
 }

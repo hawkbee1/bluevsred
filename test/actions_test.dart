@@ -5,11 +5,12 @@ import 'package:test/test.dart';
 void main() {
   group('Can unit do action ?', () {
     final GameUnit activeUnit = GameUnit();
-    final GameAction gameAction = GameAction(activeUnit: activeUnit);
+    final GameAction gameAction = GameAction();
 
     /// For all the those tests the acting unit has 10 AP
     setUp(() {
       activeUnit.actionPoints = 10;
+      gameAction.activeUnit = activeUnit;
     });
 
     test('canActionHappen return Right(true) when Unit has enough points', () {

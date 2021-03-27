@@ -1,6 +1,8 @@
 import 'dart:math';
+import 'package:mobx/mobx.dart';
 
 import 'package:flutter/material.dart';
+part 'game_layer.g.dart';
 
 enum LayerType {
   ground,
@@ -9,9 +11,13 @@ enum LayerType {
   unit,
 }
 
-class GameLayer {
-  GameLayer({this.position, this.layerType, this.layerDisplay});
+class GameLayer extends _GameLayerBase with _$GameLayer {}
+
+abstract class _GameLayerBase with Store {
+  @observable
   Point position = Point(0, 0);
-  final LayerType layerType;
-  final Widget layerDisplay;
+  @observable
+  LayerType layerType;
+  @observable
+  Widget layerDisplay;
 }

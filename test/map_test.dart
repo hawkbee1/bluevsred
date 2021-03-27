@@ -11,7 +11,8 @@ void main() {
     setUpAll(() {});
 
     test('Every Layers of the map is inside the map', () {
-      final GameLayer wrongLayerX = GameLayer(position: Point(15, 3));
+      final GameLayer wrongLayerX = GameLayer();
+      wrongLayerX.position = Point(15, 3);
       gameMap.layerList.addAll(goodLayerList);
       expect(gameMap.checkMapProperties(), true);
       gameMap.layerList.add(wrongLayerX);
