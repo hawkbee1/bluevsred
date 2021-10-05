@@ -28,15 +28,15 @@ dependencies:
 #  firebase_auth: ^0.20.0+1
 #  cloud_firestore: ^0.16.0+1
 #  firebase_messaging: ^7.0.0
-  dartz: ^0.10.0-nullsafety.2
+  dartz: ^0.10.0
   get_it: ^7.2.0
   flutter:
     sdk: flutter
-  flutter_mobx: ^2.0.1
+  flutter_mobx: ^2.0.2
   json_annotation: ^4.1.0
-  mobx: ^2.0.3
+  mobx: ^2.0.4
   sailor: ^0.7.1
-  url_launcher: ^6.0.9
+  url_launcher: ^6.0.12
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -44,34 +44,17 @@ dependencies:
 #  cupertino_icons: ^1.0.0
 
 dev_dependencies:
-  build_runner: ^2.1.0
+  build_runner: ^2.1.4
 #  diff_image: ^1.0.1
   integration_test:
     sdk: flutter
   test: any
-  json_serializable: ^5.0.0
-  mobx_codegen: ^2.0.2
+  json_serializable: ^5.0.2
+  mobx_codegen: ^2.0.3
   flutter_test:
     sdk: flutter
 
 dependency_overrides:
-#  crypto: ^3.0.0
-#  analyzer: ^2.0.0
-#  meta: ^1.7.0
-#  archive: ^3.1.2
-#  convert: ^3.0.0
-#  because of diff_image
-#  http_parser: ^4.0.0
- # screenshots:
-  #  git: https://github.com/trygvis/screenshots
-  #tool_base:
-  #  git: https://github.com/speaking-in-code/tool_base
-  #tool_base_test:
-  #  git: https://github.com/trygvis/tool_base_test
-  #tool_mobile:
-  #  git: https://github.com/trygvis/tool_mobile
-  #fake_process_manager:
-  #  git: https://github.com/trygvis/fake_process_manager
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
