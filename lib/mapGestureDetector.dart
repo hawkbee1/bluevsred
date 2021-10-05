@@ -12,6 +12,7 @@ class MapGestureDetector extends StatefulWidget {
   final Widget child;
 
   MapGestureDetector({Key key, this.position, this.child}) : super(key: key);
+
   @override
   _MapGestureDetectorState createState() => _MapGestureDetectorState();
 }

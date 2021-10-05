@@ -46,6 +46,6 @@ app.*.map.json
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 /android/app/google-services.json
 /ios/GoogleService-Info.plist
-/test_driver/tests/library/tmp_test_image/
-/test_driver/tests/library/tmp_test_difference/
-/test_driver/tests/library/golden_tests/
+/integration_test/tests/library/tmp_test_image/
+/integration_test/tests/library/tmp_test_difference/
+/integration_test/tests/library/golden_tests/

@@ -1,7 +1,8 @@
+import 'dart:math';
+
+import 'package:bluevsred/entities/game_layer.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'dart:math';
-import 'package:bluevsred/entities/game_layer.dart';
 
 part 'game_map.g.dart';
 

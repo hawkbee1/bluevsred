@@ -1,7 +1,8 @@
 import 'dart:math';
-import 'package:mobx/mobx.dart';
 
 import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
+
 part 'game_layer.g.dart';
 
 enum LayerType {

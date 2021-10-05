@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 
 class UnitGestureDetector extends StatefulWidget {
   UnitGestureDetector({this.child, this.unitPosition});
+
   final Widget child;
   final Point unitPosition;
+
   @override
   _UnitGestureDetectorState createState() => _UnitGestureDetectorState();
 }

@@ -1,8 +1,8 @@
 // Routes class is created by you.
 import 'package:bluevsred/pages/board_page.dart';
+import 'package:bluevsred/pages/gdpr_landing_page.dart';
 import 'package:bluevsred/pages/gdpr_settings_page.dart';
 import 'package:bluevsred/pages/login_page.dart';
-import 'package:bluevsred/pages/gdpr_landing_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sailor/sailor.dart';
 

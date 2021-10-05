@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bluevsred/entities/game_action.dart';
 import 'package:mobx/mobx.dart';
+
 part 'game_unit.g.dart';
 
 class GameUnit extends _GameUnitBase with _$GameUnit {}
