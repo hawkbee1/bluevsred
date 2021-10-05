@@ -1,5 +1,5 @@
 name: bluevsred
-description: A new Flutter project.
+description: A War Game
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -56,10 +56,10 @@ dev_dependencies:
 
 dependency_overrides:
 #  crypto: ^3.0.0
-  analyzer: ^2.0.0
-  meta: ^1.7.0
-  archive: ^3.1.2
-  convert: ^3.0.0
+#  analyzer: ^2.0.0
+#  meta: ^1.7.0
+#  archive: ^3.1.2
+#  convert: ^3.0.0
 #  because of diff_image
 #  http_parser: ^4.0.0
  # screenshots:
