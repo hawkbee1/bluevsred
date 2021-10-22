@@ -5,10 +5,10 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:bluevsred/counter/counter.dart';
 import 'package:bluevsred/l10n/l10n.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -17,7 +17,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        accentColor: const Color(0xFF13B9FF),
+        colorScheme: ThemeData()
+            .colorScheme
+            .copyWith(secondary: const Color(0xFF13B9FF)),
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
       ),
       localizationsDelegates: const [

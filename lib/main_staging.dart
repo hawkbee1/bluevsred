@@ -9,10 +9,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/widgets.dart';
-
 import 'package:bluevsred/app/app.dart';
 import 'package:bluevsred/app/app_bloc_observer.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
