@@ -4,10 +4,11 @@ cd ..
 flutter clean
 flutter pub get
 flutter test --coverage --test-randomize-ordering-seed random
-flutter build appbundle
+genhtml coverage/lcov.info -o coverage/
+flutter build appbundle --flavor development --target lib/main_development.dart
 cd android
-fastlane deploy
+bundle exec fastlane deploy
 cd ..
-flutter build ios
+flutter build ios --flavor development --target lib/main_development.dart
 cd ios
-fastlane beta
+bundle exec fastlane beta
