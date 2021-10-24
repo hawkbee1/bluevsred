@@ -1,4 +1,4 @@
-package com.example.verygoodcore
+package fr.whereassistant.bluevsred
 
 import io.flutter.embedding.android.FlutterActivity
 
