@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 cd ..
+git pull
 flutter clean
 flutter pub get
 flutter test --coverage --test-randomize-ordering-seed random
