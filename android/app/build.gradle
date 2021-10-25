@@ -68,7 +68,7 @@ android {
     productFlavors { 
         production {
             dimension "default"
-            applicationIdSuffix ""
+            applicationIdSuffix ".prd"
         }
         staging {
             dimension "default"
@@ -76,7 +76,7 @@ android {
         }        
         development {
             dimension "default"
-            applicationIdSuffix ".dev"
+            applicationIdSuffix ""
         }
     }
 
