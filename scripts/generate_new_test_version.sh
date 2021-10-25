@@ -8,9 +8,7 @@ genhtml coverage/lcov.info -o coverage/
 flutter build appbundle --flavor development --target lib/main_development.dart
 cd android
 fastlane supply --aab /Users/romualdbarbe/Documents/bluevsred/build/app/outputs/bundle/developmentRelease/app-development-release.aab --track internal
-bundle exec fastlane upload_to_play_store(
-skip_upload_changelogs: true,
-)
+bundle exec fastlane upload_to_play_store
 cd ..
 #flutter build ios --flavor development --target lib/main_development.dart
 #cd ios
