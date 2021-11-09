@@ -5,8 +5,8 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-import 'package:bluevsred/counter/counter.dart';
 import 'package:bluevsred/l10n/l10n.dart';
+import 'package:bluevsred/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -27,7 +27,7 @@ class App extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const LoginPage(),
     );
   }
 }

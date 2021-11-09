@@ -11,6 +11,6 @@ cd android
 fastlane supply --aab /Users/romualdbarbe/Documents/bluevsred/build/app/outputs/bundle/developmentRelease/app-development-release.aab --track internal
 bundle exec fastlane deploy
 cd ..
-#flutter build ios --flavor development --target lib/main_development.dart
-#cd ios
-#bundle exec fastlane beta
+flutter build ios --flavor development --target lib/main_development.dart
+cd ios
+bundle exec fastlane beta
