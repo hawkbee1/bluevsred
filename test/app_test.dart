@@ -6,7 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:bluevsred/app/app.dart';
-import 'package:bluevsred/login/login_page.dart';
+import 'package:bluevsred/login/view/login_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

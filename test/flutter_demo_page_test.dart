@@ -4,8 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 
 void main() {
-  testGoldens('DeviceBuilder - launch app - override devices',
-      (tester) async {
+  testGoldens('DeviceBuilder - launch app - override devices', (tester) async {
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
         Device.phone,
@@ -20,12 +19,10 @@ void main() {
 
     await tester.pumpDeviceBuilder(builder);
 
-    await screenMatchesGolden(
-        tester, 'launch_app');
+    await screenMatchesGolden(tester, 'launch_app');
   });
 
-  testGoldens('Login to app',
-      (tester) async {
+  testGoldens('Login to app', (tester) async {
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
         Device.phone,

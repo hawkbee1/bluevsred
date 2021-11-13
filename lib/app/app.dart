@@ -6,7 +6,7 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:bluevsred/l10n/l10n.dart';
-import 'package:bluevsred/login/login_page.dart';
+import 'package:bluevsred/login/view/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
