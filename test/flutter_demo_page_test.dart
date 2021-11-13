@@ -4,19 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
 
 void main() {
-  testGoldens('DeviceBuilder - one scenario - default devices', (tester) async {
-    final builder = DeviceBuilder()
-      ..addScenario(
-        widget: const app.App(),
-        name: 'default page',
-      );
-
-    await tester.pumpDeviceBuilder(builder);
-
-    await screenMatchesGolden(tester, 'flutter_demo_page_single_scenario');
-  });
-
-  testGoldens('DeviceBuilder - one scenario - override devices',
+  testGoldens('DeviceBuilder - launch app - override devices',
       (tester) async {
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
@@ -33,10 +21,10 @@ void main() {
     await tester.pumpDeviceBuilder(builder);
 
     await screenMatchesGolden(
-        tester, 'flutter_demo_page_single_scenario_more_devices');
+        tester, 'launch_app');
   });
 
-  testGoldens('DeviceBuilder - multiple scenarios - with onCreate',
+  testGoldens('Login to app',
       (tester) async {
     final builder = DeviceBuilder()
       ..overrideDevicesForAllScenarios(devices: [
@@ -63,6 +51,6 @@ void main() {
 
     await tester.pumpDeviceBuilder(builder);
 
-    await screenMatchesGolden(tester, 'flutter_demo_page_multiple_scenarios');
+    await screenMatchesGolden(tester, 'login_to_app');
   });
 }
