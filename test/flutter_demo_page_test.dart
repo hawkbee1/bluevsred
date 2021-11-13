@@ -27,7 +27,7 @@ void main() {
       ])
       ..addScenario(
         widget: const app.App(),
-        name: 'default page',
+        name: 'Login page',
       );
 
     await tester.pumpDeviceBuilder(builder);
@@ -51,30 +51,12 @@ void main() {
       )
       ..addScenario(
         widget: const app.App(),
-        name: 'tap once',
+        name: 'Login button and helper',
         onCreate: (scenarioWidgetKey) async {
           final finder = find.descendant(
             of: find.byKey(scenarioWidgetKey),
-            matching: find.byIcon(Icons.add),
-          );
+            matching: find.byKey(const Key('LoginButton')));
           expect(finder, findsOneWidget);
-          await tester.tap(finder);
-        },
-      )
-      ..addScenario(
-        widget: const app.App(),
-        name: 'tap five times',
-        onCreate: (scenarioWidgetKey) async {
-          final finder = find.descendant(
-            of: find.byKey(scenarioWidgetKey),
-            matching: find.byIcon(Icons.add),
-          );
-          expect(finder, findsOneWidget);
-
-          await tester.tap(finder);
-          await tester.tap(finder);
-          await tester.tap(finder);
-          await tester.tap(finder);
           await tester.tap(finder);
         },
       );

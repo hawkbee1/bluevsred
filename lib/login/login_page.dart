@@ -25,6 +25,7 @@ class LoginPage extends StatelessWidget {
               decoration: InputDecoration(hintText: 'Password'),
             ),
             ElevatedButton(
+              key: const Key('LoginButton'),
               onPressed: () {
                 // Routes.sailor.navigate('/BoardPage');
               },
