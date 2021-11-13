@@ -8,8 +8,6 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: const Text('Blue vs Red'),
       ),
       body: Center(

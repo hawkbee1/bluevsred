@@ -54,8 +54,8 @@ void main() {
         name: 'Login button and helper',
         onCreate: (scenarioWidgetKey) async {
           final finder = find.descendant(
-            of: find.byKey(scenarioWidgetKey),
-            matching: find.byKey(const Key('LoginButton')));
+              of: find.byKey(scenarioWidgetKey),
+              matching: find.byKey(const Key('LoginButton')));
           expect(finder, findsOneWidget);
           await tester.tap(finder);
         },
