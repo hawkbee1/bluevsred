@@ -1,7 +1,23 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "appBarTitle": "Blue vs Red",
+    "@appBarTitle": {
+        "description": "Default Text shown in the AppBar of the application"
+    },
+    "loginFieldText": "Login",
+    "@loginFieldText": {
+        "description": "Text shown in the Login field"
+    },
+    "passwordFieldText": "Password",
+    "@passwordFieldText": {
+        "description": "Text shown in the Password field"
+    },
+    "loginButtonText": "Login",
+    "@loginButtonText": {
+        "description": "Text shown in the Login button"
+    },
+    "signUpButtonText": "Sign Up",
+    "@signUpButtonText": {
+        "description": "Text shown in the Sign Up button"
     }
 }

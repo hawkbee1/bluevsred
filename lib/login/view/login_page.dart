@@ -1,3 +1,5 @@
+import 'package:bluevsred/l10n/l10n.dart';
+import 'package:bluevsred/shared/app_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -5,6 +7,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -12,28 +15,30 @@ class LoginPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const TextField(
-              key: Key('loginTextField'),
-              decoration: InputDecoration(hintText: 'Login'),
+            AppTextField(
+              appTextFieldKey: const Key('loginTextField'),
+              appTextFieldHintText: l10n.loginFieldText,
             ),
-            const TextField(
-              key: Key('passwordTextField'),
-              decoration: InputDecoration(hintText: 'Password'),
+            AppTextField(
+              appTextFieldKey: const Key('passwordTextField'),
+              appTextFieldHintText: l10n.loginFieldText,
             ),
             ElevatedButton(
               key: const Key('LoginButton'),
               onPressed: () {
                 // Routes.sailor.navigate('/BoardPage');
               },
-              child: const Text('Login'),
+              child: Text(l10n.loginButtonText),
             ),
-            InkWell(
-              onTap: () {
-                // Routes.sailor.navigate('/GdprLandingPage');
-              },
-              child: const Text('Sign Up'),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: InkWell(
+                onTap: () {
+                  // Routes.sailor.navigate('/GdprLandingPage');
+                },
+                child: Text(l10n.signUpButtonText),
+              ),
             )
           ],
         ),

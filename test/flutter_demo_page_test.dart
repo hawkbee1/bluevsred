@@ -6,12 +6,14 @@ import 'package:golden_toolkit/golden_toolkit.dart';
 void main() {
   testGoldens('DeviceBuilder - launch app - override devices', (tester) async {
     final builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: [
-        Device.phone,
-        Device.iphone11,
-        Device.tabletPortrait,
-        Device.tabletLandscape,
-      ])
+      ..overrideDevicesForAllScenarios(
+        devices: [
+          Device.phone,
+          Device.iphone11,
+          Device.tabletPortrait,
+          Device.tabletLandscape,
+        ],
+      )
       ..addScenario(
         widget: const app.App(),
         name: 'Login page',
@@ -24,12 +26,15 @@ void main() {
 
   testGoldens('Login to app', (tester) async {
     final builder = DeviceBuilder()
-      ..overrideDevicesForAllScenarios(devices: [
-        Device.phone,
-        Device.iphone11,
-        Device.tabletPortrait,
-        Device.tabletLandscape,
-      ])
+      // ignore: require_trailing_commas
+      ..overrideDevicesForAllScenarios(
+        devices: [
+          Device.phone,
+          Device.iphone11,
+          Device.tabletPortrait,
+          Device.tabletLandscape,
+        ],
+      )
       ..addScenario(
         widget: const app.App(),
         name: 'default page',
@@ -39,8 +44,11 @@ void main() {
         name: 'Login button and helper',
         onCreate: (scenarioWidgetKey) async {
           final finder = find.descendant(
-              of: find.byKey(scenarioWidgetKey),
-              matching: find.byKey(const Key('LoginButton')));
+            of: find.byKey(scenarioWidgetKey),
+            matching: find.byKey(
+              const Key('LoginButton'),
+            ),
+          );
           expect(finder, findsOneWidget);
           await tester.tap(finder);
         },
