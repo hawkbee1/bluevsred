@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
             ),
             AppTextField(
               appTextFieldKey: const Key('passwordTextField'),
-              appTextFieldHintText: l10n.loginFieldText,
+              appTextFieldHintText: l10n.passwordFieldText,
             ),
             ElevatedButton(
               key: const Key('LoginButton'),
