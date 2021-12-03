@@ -1,4 +1,5 @@
 import 'package:bluevsred/app/app.dart' as app;
+import 'package:bluevsred/map/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:golden_toolkit/golden_toolkit.dart';
@@ -37,20 +38,23 @@ void main() {
       )
       ..addScenario(
         widget: const app.App(),
-        name: 'default page',
+        name: 'When launching app the the login page is shown',
       )
       ..addScenario(
         widget: const app.App(),
         name: 'Login button and helper',
         onCreate: (scenarioWidgetKey) async {
-          final finder = find.descendant(
+          final buttonFinder = find.descendant(
             of: find.byKey(scenarioWidgetKey),
             matching: find.byKey(
               const Key('LoginButton'),
             ),
           );
-          expect(finder, findsOneWidget);
-          await tester.tap(finder);
+          expect(buttonFinder, findsOneWidget);
+          await tester.tap(buttonFinder);
+          expect(buttonFinder, findsNothing);
+          final mapPageFinder = find.byType(MapPage);
+          expect(mapPageFinder, findsOneWidget);
         },
       );
 
