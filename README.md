@@ -53,6 +53,12 @@ $ genhtml coverage/lcov.info -o coverage/
 $ open coverage/index.html
 ```
 
+To update golden test reference:
+
+```sh
+$ flutter test --update-goldens
+```
+
 ---
 
 ## Working with Translations 🌐
