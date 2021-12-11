@@ -7,11 +7,10 @@
 
 import 'package:bluevsred/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-extension PumpApp on WidgetTester {
+extension PumpApp on WidgetTester {cd
   Future<void> pumpApp(Widget widget) {
     return pumpWidget(
       MaterialApp(
