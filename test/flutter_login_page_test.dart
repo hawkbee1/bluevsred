@@ -50,10 +50,14 @@ void main() {
               const Key('LoginButton'),
             ),
           );
+          final mapPageFinder = find.descendant(
+            of: find.byKey(scenarioWidgetKey),
+            matching: find.byType(MapPage),
+          );
           expect(buttonFinder, findsOneWidget);
           await tester.tap(buttonFinder);
+          await tester.pumpAndSettle();
           expect(buttonFinder, findsNothing);
-          final mapPageFinder = find.byType(MapPage);
           expect(mapPageFinder, findsOneWidget);
         },
       );

@@ -20,6 +20,7 @@ extension PumpApp on WidgetTester {
           GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('en'),
         home: widget,
       ),
     );
