@@ -5,20 +5,6 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
-/*
-  static Route route() {
-    return MaterialPageRoute(
-      builder: (context) {
-        return BlocProvider(
-          create: (context) => ChatBloc(
-            chatRepository: context.read<ChatRepository>(),
-          ),
-          child: const ChatOverviewPage(),
-        );
-      },
-    );
-  }
-  */
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -51,7 +37,6 @@ class LoginPage extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: InkWell(
                 onTap: () {
-                  // Routes.sailor.navigate('/GdprLandingPage');
                 },
                 child: Text(l10n.signUpButtonText),
               ),
