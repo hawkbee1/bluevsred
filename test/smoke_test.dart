@@ -103,6 +103,35 @@ void main() {
       expect(game.world.speed, 0);
     },
   );
+  testWithGame(
+    'world gravity is 0, don\'t fall',
+    () {
+      return EndlessRunner(
+        level: (
+          number: 1,
+          winScore: 3,
+          canSpawnTall: false,
+        ),
+        playerProgress: PlayerProgress(
+          store: MemoryOnlyPlayerProgressPersistence(),
+        ),
+        audioController: _MockAudioController(),
+      );
+    },
+    (game) async {
+      game.overlays.addEntry(
+        GameScreen.backButtonKey,
+        (context, game) => Container(),
+      );
+      game.overlays.addEntry(
+        GameScreen.winDialogKey,
+        (context, game) => Container(),
+      );
+      await game.onLoad();
+      game.update(0);
+      expect(game.world.gravity, 0);
+    },
+  );
 }
 
 class _MockAudioController implements AudioController {
