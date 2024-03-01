@@ -73,6 +73,36 @@ void main() {
       expect(game.world.player.isLoading, isTrue);
     },
   );
+
+  testWithGame(
+    'world speed is 0, static map',
+    () {
+      return EndlessRunner(
+        level: (
+          number: 1,
+          winScore: 3,
+          canSpawnTall: false,
+        ),
+        playerProgress: PlayerProgress(
+          store: MemoryOnlyPlayerProgressPersistence(),
+        ),
+        audioController: _MockAudioController(),
+      );
+    },
+    (game) async {
+      game.overlays.addEntry(
+        GameScreen.backButtonKey,
+        (context, game) => Container(),
+      );
+      game.overlays.addEntry(
+        GameScreen.winDialogKey,
+        (context, game) => Container(),
+      );
+      await game.onLoad();
+      game.update(0);
+      expect(game.world.speed, 0);
+    },
+  );
 }
 
 class _MockAudioController implements AudioController {
