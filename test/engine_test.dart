@@ -1,5 +1,6 @@
 import 'package:endless_runner/engine/battle/battle.dart';
 import 'package:endless_runner/engine/game_player/game_player.dart';
+import 'package:endless_runner/engine/team/team.dart';
 import 'package:endless_runner/engine/troops/troop.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -38,7 +39,93 @@ void main() {
         resultingTroopList.remove((element) => element != troop);
         expect(resultingTroopList.length, equals(1));
       });
-      test('description', () => null);
+      test('Team added to a battle is in the list of teams', () {
+        final team = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final battle = Battle();
+        battle.addTeams(newTeams: [team]);
+        expect(battle.teams, contains(team));
+      });
+      test('Team is added only once to a battle (already added)', () {
+        final team = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final battle = Battle();
+        battle.addTeams(newTeams: [team]);
+        battle.addTeams(newTeams: [team]);
+        final resultingTeamList = List.from(battle.teams);
+        resultingTeamList.remove((element) => element != team);
+        expect(resultingTeamList.length, equals(1));
+      });
+      test(
+          'Team is added only once to a battle (attempt to add same team twice in the same list)',
+          () {
+        final team = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final battle = Battle();
+        battle.addTeams(newTeams: [team, team]);
+        final resultingTeamList = List.from(battle.teams);
+        resultingTeamList.remove((element) => element != team);
+        expect(resultingTeamList.length, equals(1));
+      });
+      test('Player added to a team which is in a battle, is in the battle.',
+          () {
+        final battle = Battle();
+        final team = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final gamePlayer = GamePlayer(name: 'test player');
+        battle.addTeams(newTeams: [team]);
+        battle.addGamePlayersToTeam(newGamePlayers: [gamePlayer], team: team);
+        expect(battle.teams, contains(team));
+        expect(team.gamePlayers, contains(gamePlayer));
+      });
+      test('A player can be added to a team only once.', () {
+        final team = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final gamePlayer = GamePlayer(name: 'test player');
+        final battle = Battle();
+        battle.addGamePlayersToTeam(newGamePlayers: [gamePlayer, gamePlayer], team: team);
+        battle.addGamePlayersToTeam(newGamePlayers: [gamePlayer], team: team);
+        
+        final resultingGamePlayerList = [];
+         for( final element in battle.teams) {
+          resultingGamePlayerList.addAll(element.gamePlayers);
+         }
+        resultingGamePlayerList.remove((element) => element != gamePlayer);
+        expect(resultingGamePlayerList.length, equals(1));
+      });
+      test('A player can be added only once to a battle.', () {
+        final teamBlue = Team(
+          name: 'test team blue',
+          colorCode: '0000FF',
+        );
+        final teamRed = Team(
+          name: 'test team blue',
+          colorCode: 'FF0000',
+        );
+        final battle = Battle();
+        battle.addTeams(newTeams: [teamRed, teamBlue]);
+        final gamePlayer = GamePlayer(name: 'test player');
+        battle.addGamePlayersToTeam(newGamePlayers: [gamePlayer], team: teamBlue);
+        battle.addGamePlayersToTeam(newGamePlayers: [gamePlayer], team: teamRed);
+        final resultingGamePlayerList = [];
+        for (final list in battle.teams) {
+          resultingGamePlayerList.addAll(list.gamePlayers);
+        }
+
+        resultingGamePlayerList.remove((element) => element != gamePlayer);
+        expect(resultingGamePlayerList.length, equals(1));
+      });
+
       test('A battle has an utc starting date', () async {
         final expectedDate = DateTime.now().toUtc();
 
