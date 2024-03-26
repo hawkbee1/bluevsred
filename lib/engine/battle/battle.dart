@@ -38,17 +38,14 @@ class Battle with _$Battle {
     for (final list in teams) {
       if (list != team) {
         isPlayerAlreadyInBattle.addAll(list.gamePlayers);
+      } else {
+        team.gamePlayers.addAll(list.gamePlayers);
       }
     }
     team.gamePlayers.addAll(newGamePlayers);
     team.gamePlayers
         .removeWhere((element) => isPlayerAlreadyInBattle.contains(element));
-
     // Be certain that team is part of this battle
     addTeams(newTeams: [team]);
-
-    // for (final element in teams) {
-    //   element.gamePlayers.addAll(newGamePlayers);
-    // }
   }
 }
