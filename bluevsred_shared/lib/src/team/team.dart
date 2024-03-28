@@ -1,4 +1,4 @@
-import 'package:bluevsred_flutter/engine/game_player/game_player.dart';
+import '../game_player/game_player.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'team.freezed.dart';

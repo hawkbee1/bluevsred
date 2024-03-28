@@ -1,3 +1,10 @@
 type: server
 
 client_package_path: ../bluevsred_client
+
+extraClasses:
+  - package: bluevsred_shared/lib/src/troops/troop.dart:Troop
+  - package: bluevsred_shared/lib/src/battle/battle.dart:Battle
+  - package: bluevsred_shared/lib/src/battle_map/battle_map.dart:BattleMap
+  - package: bluevsred_shared/lib/src/game_player/game_player.dart:GamePlayer
+  - package: bluevsred_shared/lib/src/team/team.dart:Team

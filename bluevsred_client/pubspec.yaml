@@ -6,3 +6,5 @@ environment:
 
 dependencies:
   serverpod_client: 1.2.6
+  bluevsred_shared:
+    path: ../bluevsred_shared

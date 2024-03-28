@@ -1,7 +1,7 @@
-import 'package:bluevsred_flutter/engine/battle/battle.dart';
-import 'package:bluevsred_flutter/engine/game_player/game_player.dart';
-import 'package:bluevsred_flutter/engine/team/team.dart';
-import 'package:bluevsred_flutter/engine/troops/troop.dart';
+import '../../bluevsred_shared/lib/src/battle/battle.dart';
+import '../../bluevsred_shared/lib/src/game_player/game_player.dart';
+import '../../bluevsred_shared/lib/src/team/team.dart';
+import '../../bluevsred_shared/lib/src/troops/troop.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

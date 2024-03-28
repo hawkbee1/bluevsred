@@ -1,8 +1,8 @@
 
-import 'package:bluevsred_flutter/engine/battle_map/battle_map.dart';
-import 'package:bluevsred_flutter/engine/game_player/game_player.dart';
-import 'package:bluevsred_flutter/engine/team/team.dart';
-import 'package:bluevsred_flutter/engine/troops/troop.dart';
+import '../battle_map/battle_map.dart';
+import '../game_player/game_player.dart';
+import '../team/team.dart';
+import '../troops/troop.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'battle.freezed.dart';
