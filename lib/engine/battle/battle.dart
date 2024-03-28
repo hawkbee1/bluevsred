@@ -1,3 +1,4 @@
+
 import 'package:endless_runner/engine/battle_map/battle_map.dart';
 import 'package:endless_runner/engine/game_player/game_player.dart';
 import 'package:endless_runner/engine/team/team.dart';
@@ -11,9 +12,9 @@ part 'battle.g.dart';
 class Battle with _$Battle {
   Battle._();
   factory Battle.def(
-      {required DateTime startDate, required BattleMap battleMap}) = _Battle;
-  factory Battle() {
-    return _Battle(startDate: _dateTimeNow(), battleMap: const BattleMap());
+      {required DateTime creationDate, required BattleMap battleMap, required DateTime startDate, required double maxActionPoints, required double actionPointsRecoveryRate}) = _Battle;
+  factory Battle({required DateTime startDate, required double maxActionPoints, required double actionPointsRecoveryRate}) {
+    return _Battle(creationDate: _dateTimeNow(), battleMap: const BattleMap(), startDate: startDate, maxActionPoints: maxActionPoints, actionPointsRecoveryRate: actionPointsRecoveryRate);
   }
   final Set<Troop> troops = {};
   final Set<Team> teams = {};

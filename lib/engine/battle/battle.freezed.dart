@@ -20,21 +20,42 @@ Battle _$BattleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Battle {
-  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get creationDate => throw _privateConstructorUsedError;
   BattleMap get battleMap => throw _privateConstructorUsedError;
+  DateTime get startDate => throw _privateConstructorUsedError;
+  double get maxActionPoints => throw _privateConstructorUsedError;
+  double get actionPointsRecoveryRate => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime startDate, BattleMap battleMap) def,
+    required TResult Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)
+        def,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime startDate, BattleMap battleMap)? def,
+    TResult? Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)?
+        def,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime startDate, BattleMap battleMap)? def,
+    TResult Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)?
+        def,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +85,12 @@ abstract class $BattleCopyWith<$Res> {
   factory $BattleCopyWith(Battle value, $Res Function(Battle) then) =
       _$BattleCopyWithImpl<$Res, Battle>;
   @useResult
-  $Res call({DateTime startDate, BattleMap battleMap});
+  $Res call(
+      {DateTime creationDate,
+      BattleMap battleMap,
+      DateTime startDate,
+      double maxActionPoints,
+      double actionPointsRecoveryRate});
 
   $BattleMapCopyWith<$Res> get battleMap;
 }
@@ -82,18 +108,33 @@ class _$BattleCopyWithImpl<$Res, $Val extends Battle>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
+    Object? creationDate = null,
     Object? battleMap = null,
+    Object? startDate = null,
+    Object? maxActionPoints = null,
+    Object? actionPointsRecoveryRate = null,
   }) {
     return _then(_value.copyWith(
-      startDate: null == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
       battleMap: null == battleMap
           ? _value.battleMap
           : battleMap // ignore: cast_nullable_to_non_nullable
               as BattleMap,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      maxActionPoints: null == maxActionPoints
+          ? _value.maxActionPoints
+          : maxActionPoints // ignore: cast_nullable_to_non_nullable
+              as double,
+      actionPointsRecoveryRate: null == actionPointsRecoveryRate
+          ? _value.actionPointsRecoveryRate
+          : actionPointsRecoveryRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 
@@ -113,7 +154,12 @@ abstract class _$$BattleImplCopyWith<$Res> implements $BattleCopyWith<$Res> {
       __$$BattleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime startDate, BattleMap battleMap});
+  $Res call(
+      {DateTime creationDate,
+      BattleMap battleMap,
+      DateTime startDate,
+      double maxActionPoints,
+      double actionPointsRecoveryRate});
 
   @override
   $BattleMapCopyWith<$Res> get battleMap;
@@ -130,18 +176,33 @@ class __$$BattleImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = null,
+    Object? creationDate = null,
     Object? battleMap = null,
+    Object? startDate = null,
+    Object? maxActionPoints = null,
+    Object? actionPointsRecoveryRate = null,
   }) {
     return _then(_$BattleImpl(
-      startDate: null == startDate
-          ? _value.startDate
-          : startDate // ignore: cast_nullable_to_non_nullable
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
       battleMap: null == battleMap
           ? _value.battleMap
           : battleMap // ignore: cast_nullable_to_non_nullable
               as BattleMap,
+      startDate: null == startDate
+          ? _value.startDate
+          : startDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      maxActionPoints: null == maxActionPoints
+          ? _value.maxActionPoints
+          : maxActionPoints // ignore: cast_nullable_to_non_nullable
+              as double,
+      actionPointsRecoveryRate: null == actionPointsRecoveryRate
+          ? _value.actionPointsRecoveryRate
+          : actionPointsRecoveryRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -149,19 +210,31 @@ class __$$BattleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BattleImpl extends _Battle {
-  _$BattleImpl({required this.startDate, required this.battleMap}) : super._();
+  _$BattleImpl(
+      {required this.creationDate,
+      required this.battleMap,
+      required this.startDate,
+      required this.maxActionPoints,
+      required this.actionPointsRecoveryRate})
+      : super._();
 
   factory _$BattleImpl.fromJson(Map<String, dynamic> json) =>
       _$$BattleImplFromJson(json);
 
   @override
-  final DateTime startDate;
+  final DateTime creationDate;
   @override
   final BattleMap battleMap;
+  @override
+  final DateTime startDate;
+  @override
+  final double maxActionPoints;
+  @override
+  final double actionPointsRecoveryRate;
 
   @override
   String toString() {
-    return 'Battle.def(startDate: $startDate, battleMap: $battleMap)';
+    return 'Battle.def(creationDate: $creationDate, battleMap: $battleMap, startDate: $startDate, maxActionPoints: $maxActionPoints, actionPointsRecoveryRate: $actionPointsRecoveryRate)';
   }
 
   @override
@@ -169,15 +242,23 @@ class _$BattleImpl extends _Battle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BattleImpl &&
+            (identical(other.creationDate, creationDate) ||
+                other.creationDate == creationDate) &&
+            (identical(other.battleMap, battleMap) ||
+                other.battleMap == battleMap) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
-            (identical(other.battleMap, battleMap) ||
-                other.battleMap == battleMap));
+            (identical(other.maxActionPoints, maxActionPoints) ||
+                other.maxActionPoints == maxActionPoints) &&
+            (identical(
+                    other.actionPointsRecoveryRate, actionPointsRecoveryRate) ||
+                other.actionPointsRecoveryRate == actionPointsRecoveryRate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, startDate, battleMap);
+  int get hashCode => Object.hash(runtimeType, creationDate, battleMap,
+      startDate, maxActionPoints, actionPointsRecoveryRate);
 
   @JsonKey(ignore: true)
   @override
@@ -188,27 +269,48 @@ class _$BattleImpl extends _Battle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(DateTime startDate, BattleMap battleMap) def,
+    required TResult Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)
+        def,
   }) {
-    return def(startDate, battleMap);
+    return def(creationDate, battleMap, startDate, maxActionPoints,
+        actionPointsRecoveryRate);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(DateTime startDate, BattleMap battleMap)? def,
+    TResult? Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)?
+        def,
   }) {
-    return def?.call(startDate, battleMap);
+    return def?.call(creationDate, battleMap, startDate, maxActionPoints,
+        actionPointsRecoveryRate);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(DateTime startDate, BattleMap battleMap)? def,
+    TResult Function(
+            DateTime creationDate,
+            BattleMap battleMap,
+            DateTime startDate,
+            double maxActionPoints,
+            double actionPointsRecoveryRate)?
+        def,
     required TResult orElse(),
   }) {
     if (def != null) {
-      return def(startDate, battleMap);
+      return def(creationDate, battleMap, startDate, maxActionPoints,
+          actionPointsRecoveryRate);
     }
     return orElse();
   }
@@ -251,16 +353,25 @@ class _$BattleImpl extends _Battle {
 
 abstract class _Battle extends Battle {
   factory _Battle(
-      {required final DateTime startDate,
-      required final BattleMap battleMap}) = _$BattleImpl;
+      {required final DateTime creationDate,
+      required final BattleMap battleMap,
+      required final DateTime startDate,
+      required final double maxActionPoints,
+      required final double actionPointsRecoveryRate}) = _$BattleImpl;
   _Battle._() : super._();
 
   factory _Battle.fromJson(Map<String, dynamic> json) = _$BattleImpl.fromJson;
 
   @override
-  DateTime get startDate;
+  DateTime get creationDate;
   @override
   BattleMap get battleMap;
+  @override
+  DateTime get startDate;
+  @override
+  double get maxActionPoints;
+  @override
+  double get actionPointsRecoveryRate;
   @override
   @JsonKey(ignore: true)
   _$$BattleImplCopyWith<_$BattleImpl> get copyWith =>

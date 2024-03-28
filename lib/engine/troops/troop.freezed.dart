@@ -160,8 +160,9 @@ class __$$TroopImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TroopImpl implements _Troop {
-  _$TroopImpl({required this.id, required this.path, required this.gamePlayer});
+class _$TroopImpl extends _Troop {
+  _$TroopImpl({required this.id, required this.path, required this.gamePlayer})
+      : super._();
 
   factory _$TroopImpl.fromJson(Map<String, dynamic> json) =>
       _$$TroopImplFromJson(json);
@@ -264,11 +265,12 @@ class _$TroopImpl implements _Troop {
   }
 }
 
-abstract class _Troop implements Troop {
+abstract class _Troop extends Troop {
   factory _Troop(
       {required final String id,
       required final String path,
       required final GamePlayer gamePlayer}) = _$TroopImpl;
+  _Troop._() : super._();
 
   factory _Troop.fromJson(Map<String, dynamic> json) = _$TroopImpl.fromJson;
 
