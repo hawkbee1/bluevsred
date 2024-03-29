@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 part 'battle_map.freezed.dart';
 part 'battle_map.g.dart';
@@ -7,7 +8,7 @@ part 'battle_map.g.dart';
 class BattleMap with _$BattleMap {
   const BattleMap._();
   const factory BattleMap() = _BattleMap;
-  final String path = 'default_map.png';
+final String path = 'default_map.png';
   factory BattleMap.fromJson(Map<String, Object?> json) =>
       _$BattleMapFromJson(json);
 }

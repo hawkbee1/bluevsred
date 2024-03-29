@@ -18,4 +18,9 @@ class ExampleEndpoint extends Endpoint {
   Future<String> hello(Session session, String name) async {
     return 'Hello $name';
   }
+
+  Future<GamePlayer> coucou(Session session, String name) async {
+    return 'Hello $name';
+  }
+
 }

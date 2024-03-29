@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 part 'game_player.freezed.dart';
 part 'game_player.g.dart';

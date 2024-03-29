@@ -1,6 +1,7 @@
 import '../game_player/game_player.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
+import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 part 'troop.freezed.dart';
 part 'troop.g.dart';

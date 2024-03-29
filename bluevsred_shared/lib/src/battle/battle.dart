@@ -4,6 +4,7 @@ import '../game_player/game_player.dart';
 import '../team/team.dart';
 import '../troops/troop.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 part 'battle.freezed.dart';
 part 'battle.g.dart';
