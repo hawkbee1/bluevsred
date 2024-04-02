@@ -19,8 +19,4 @@ class ExampleEndpoint extends Endpoint {
     return 'Hello $name';
   }
 
-  Future<GamePlayer> coucou(Session session, String name) async {
-    return 'Hello $name';
-  }
-
 }

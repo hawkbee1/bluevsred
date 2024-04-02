@@ -1,4 +1,3 @@
-
 import '../battle_map/battle_map.dart';
 import '../game_player/game_player.dart';
 import '../team/team.dart';
@@ -13,9 +12,21 @@ part 'battle.g.dart';
 class Battle with _$Battle {
   Battle._();
   factory Battle.def(
-      {required DateTime creationDate, required BattleMap battleMap, required DateTime startDate, required double maxActionPoints, required double actionPointsRecoveryRate}) = _Battle;
-  factory Battle({required DateTime startDate, required double maxActionPoints, required double actionPointsRecoveryRate}) {
-    return _Battle(creationDate: _dateTimeNow(), battleMap: const BattleMap(), startDate: startDate, maxActionPoints: maxActionPoints, actionPointsRecoveryRate: actionPointsRecoveryRate);
+      {required DateTime creationDate,
+      required BattleMap battleMap,
+      required DateTime startDate,
+      required double maxActionPoints,
+      required double actionPointsRecoveryRate}) = _Battle;
+  factory Battle(
+      {required DateTime startDate,
+      required double maxActionPoints,
+      required double actionPointsRecoveryRate}) {
+    return _Battle(
+        creationDate: _dateTimeNow(),
+        battleMap: const BattleMap(),
+        startDate: startDate,
+        maxActionPoints: maxActionPoints,
+        actionPointsRecoveryRate: actionPointsRecoveryRate);
   }
   final Set<Troop> troops = {};
   final Set<Team> teams = {};
@@ -23,7 +34,11 @@ class Battle with _$Battle {
     return DateTime.now().toUtc();
   }
 
-  factory Battle.fromJson(Map<String, Object?> json) => _$BattleFromJson(json);
+  factory Battle.fromJson(
+    Map<String, Object?> json,
+    SerializationManager serializationManager,
+  ) =>
+      _$BattleFromJson(json);
 
   void addTroops({required List<Troop> newTroops}) {
     troops.addAll(newTroops);

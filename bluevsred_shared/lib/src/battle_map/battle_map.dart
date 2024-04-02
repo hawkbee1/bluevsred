@@ -9,6 +9,8 @@ class BattleMap with _$BattleMap {
   const BattleMap._();
   const factory BattleMap() = _BattleMap;
 final String path = 'default_map.png';
-  factory BattleMap.fromJson(Map<String, Object?> json) =>
+  factory BattleMap.fromJson(Map<String, Object?> json,
+    SerializationManager serializationManager,
+  ) =>
       _$BattleMapFromJson(json);
 }

@@ -9,7 +9,9 @@ part 'team.g.dart';
 class Team with _$Team {
   Team._();
   factory Team({required String name, required String colorCode}) = _Team;
-  factory Team.fromJson(Map<String, Object?> json) => _$TeamFromJson(json);
+  factory Team.fromJson(Map<String, Object?> json,
+    SerializationManager serializationManager,
+  ) => _$TeamFromJson(json);
   final Set<GamePlayer> gamePlayers = {};
 
   void remove(GamePlayer gamePlayer) {
