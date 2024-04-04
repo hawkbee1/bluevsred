@@ -1,0 +1,7 @@
+class: BattleDb
+table: battle
+fields:
+  creationDate: DateTime
+  startDate: DateTime
+  maxActionPoints: double
+  actionPointsRecoveryRate: double

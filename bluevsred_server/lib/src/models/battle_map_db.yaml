@@ -1,0 +1,4 @@
+class: BattleMapDb
+table: talle_map
+fields:
+  path: String

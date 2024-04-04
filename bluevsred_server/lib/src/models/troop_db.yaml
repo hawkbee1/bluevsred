@@ -1,0 +1,4 @@
+class: TroopDb
+table: troop
+fields:
+  path: String
