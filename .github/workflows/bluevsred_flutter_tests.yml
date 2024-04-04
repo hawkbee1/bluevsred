@@ -2,9 +2,9 @@ name: Flutter_Tests
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   tests:
@@ -17,6 +17,8 @@ jobs:
         uses: subosito/flutter-action@v1.4.0
         with:
           flutter-version: '3.19.3'
+      - name: move to bluevsred_flutter
+        run: cd bluevsred_flutter
       - name: Restore packages
         run: flutter pub get
       - name: Analyze
