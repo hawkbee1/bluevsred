@@ -27,7 +27,6 @@ jobs:
         working-directory: bluevsred_flutter
         run: flutter test --coverage
       - name: Upload coverage reports to Codecov
-        working-directory: bluevsred_flutter
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
