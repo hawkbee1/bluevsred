@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3.1.0
       - name: Install and set Flutter version
-        uses: subosito/flutter-action@v1.4.0
+        uses: subosito/flutter-action@v2.7.1
         with:
           flutter-version: '3.19.3'
       - name: move to bluevsred_flutter
