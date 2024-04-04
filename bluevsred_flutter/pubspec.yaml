@@ -28,6 +28,8 @@ dependencies:
   serverpod_flutter: 1.2.6
   bluevsred_client:
     path: ../bluevsred_client
+  bluevsred_shared:
+    path: ../bluevsred_shared
   audioplayers: ^5.2.1
   cupertino_icons: ^1.0.6
   flame_audio: ^2.1.7
