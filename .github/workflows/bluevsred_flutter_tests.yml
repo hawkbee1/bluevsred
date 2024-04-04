@@ -12,20 +12,22 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
       - name: Install and set Flutter version
         uses: subosito/flutter-action@v2.7.1
         with:
           flutter-version: '3.19.3'
-      - name: move to bluevsred_flutter
-        run: cd bluevsred_flutter
       - name: Restore packages
+        working-directory: bluevsred_flutter
         run: flutter pub get
       - name: Analyze
+        working-directory: bluevsred_flutter
         run: flutter analyze
       - name: Run tests
+        working-directory: bluevsred_flutter
         run: flutter test --coverage
       - name: Upload coverage reports to Codecov
+        working-directory: bluevsred_flutter
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
