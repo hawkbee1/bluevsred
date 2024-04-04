@@ -2,7 +2,7 @@ import 'package:bluevsred_shared/src/game_player/game_player.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final String gamePlayer1Name = 'first test player';
+  const String gamePlayer1Name = 'first test player';
   final List<GamePlayer> initialPlayerList = [GamePlayer(name: 'initial player 1'), GamePlayer(name: 'initial player 2'), GamePlayer(name: 'initial player 3'), GamePlayer(name: 'initial player 4'),];
   group('player lifecycle', () {
         test('when game player is created, he appear in the player list', () {
