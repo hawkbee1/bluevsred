@@ -22,6 +22,7 @@ Team _$TeamFromJson(Map<String, dynamic> json) {
 mixin _$Team {
   String get name => throw _privateConstructorUsedError;
   String get colorCode => throw _privateConstructorUsedError;
+  Set<GamePlayer> get gamePlayers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +34,7 @@ abstract class $TeamCopyWith<$Res> {
   factory $TeamCopyWith(Team value, $Res Function(Team) then) =
       _$TeamCopyWithImpl<$Res, Team>;
   @useResult
-  $Res call({String name, String colorCode});
+  $Res call({String name, String colorCode, Set<GamePlayer> gamePlayers});
 }
 
 /// @nodoc
@@ -51,6 +52,7 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
   $Res call({
     Object? name = null,
     Object? colorCode = null,
+    Object? gamePlayers = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -61,6 +63,10 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
           ? _value.colorCode
           : colorCode // ignore: cast_nullable_to_non_nullable
               as String,
+      gamePlayers: null == gamePlayers
+          ? _value.gamePlayers
+          : gamePlayers // ignore: cast_nullable_to_non_nullable
+              as Set<GamePlayer>,
     ) as $Val);
   }
 }
@@ -72,7 +78,7 @@ abstract class _$$TeamImplCopyWith<$Res> implements $TeamCopyWith<$Res> {
       __$$TeamImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String colorCode});
+  $Res call({String name, String colorCode, Set<GamePlayer> gamePlayers});
 }
 
 /// @nodoc
@@ -87,6 +93,7 @@ class __$$TeamImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? colorCode = null,
+    Object? gamePlayers = null,
   }) {
     return _then(_$TeamImpl(
       name: null == name
@@ -97,6 +104,10 @@ class __$$TeamImplCopyWithImpl<$Res>
           ? _value.colorCode
           : colorCode // ignore: cast_nullable_to_non_nullable
               as String,
+      gamePlayers: null == gamePlayers
+          ? _value.gamePlayers
+          : gamePlayers // ignore: cast_nullable_to_non_nullable
+              as Set<GamePlayer>,
     ));
   }
 }
@@ -104,7 +115,9 @@ class __$$TeamImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$TeamImpl extends _Team {
-  _$TeamImpl({required this.name, required this.colorCode}) : super._();
+  _$TeamImpl(
+      {required this.name, required this.colorCode, required this.gamePlayers})
+      : super._();
 
   factory _$TeamImpl.fromJson(Map<String, dynamic> json) =>
       _$$TeamImplFromJson(json);
@@ -113,10 +126,12 @@ class _$TeamImpl extends _Team {
   final String name;
   @override
   final String colorCode;
+  @override
+  final Set<GamePlayer> gamePlayers;
 
   @override
   String toString() {
-    return 'Team(name: $name, colorCode: $colorCode)';
+    return 'Team(name: $name, colorCode: $colorCode, gamePlayers: $gamePlayers)';
   }
 
   @override
@@ -126,12 +141,15 @@ class _$TeamImpl extends _Team {
             other is _$TeamImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.colorCode, colorCode) ||
-                other.colorCode == colorCode));
+                other.colorCode == colorCode) &&
+            const DeepCollectionEquality()
+                .equals(other.gamePlayers, gamePlayers));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, colorCode);
+  int get hashCode => Object.hash(runtimeType, name, colorCode,
+      const DeepCollectionEquality().hash(gamePlayers));
 
   @JsonKey(ignore: true)
   @override
@@ -148,8 +166,10 @@ class _$TeamImpl extends _Team {
 }
 
 abstract class _Team extends Team {
-  factory _Team({required final String name, required final String colorCode}) =
-      _$TeamImpl;
+  factory _Team(
+      {required final String name,
+      required final String colorCode,
+      required final Set<GamePlayer> gamePlayers}) = _$TeamImpl;
   _Team._() : super._();
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$TeamImpl.fromJson;
@@ -158,6 +178,8 @@ abstract class _Team extends Team {
   String get name;
   @override
   String get colorCode;
+  @override
+  Set<GamePlayer> get gamePlayers;
   @override
   @JsonKey(ignore: true)
   _$$TeamImplCopyWith<_$TeamImpl> get copyWith =>

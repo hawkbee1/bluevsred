@@ -13,14 +13,14 @@ import 'dart:async' as _i2;
 import 'protocol.dart' as _i3;
 
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+class EndpointGamePlayer extends _i1.EndpointRef {
+  EndpointGamePlayer(_i1.EndpointCaller caller) : super(caller);
 
   @override
-  String get name => 'example';
+  String get name => 'gamePlayer';
 
   _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
+        'gamePlayer',
         'hello',
         {'name': name},
       );
@@ -41,13 +41,14 @@ class Client extends _i1.ServerpodClient {
           streamingConnectionTimeout: streamingConnectionTimeout,
           connectionTimeout: connectionTimeout,
         ) {
-    example = EndpointExample(this);
+    gamePlayer = EndpointGamePlayer(this);
   }
 
-  late final EndpointExample example;
+  late final EndpointGamePlayer gamePlayer;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'example': example};
+  Map<String, _i1.EndpointRef> get endpointRefLookup =>
+      {'gamePlayer': gamePlayer};
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

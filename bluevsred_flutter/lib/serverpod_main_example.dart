@@ -50,17 +50,17 @@ class MyHomePageState extends State<MyHomePage> {
   // `_resultMessage` or `_errorMessage` field, depending on if the call
   // is successful.
   void _callHello() async {
-    try {
-      final result = await client.example.hello(_textEditingController.text);
-      setState(() {
-        _errorMessage = null;
-        _resultMessage = result;
-      });
-    } catch (e) {
-      setState(() {
-        _errorMessage = '$e';
-      });
-    }
+    // try {
+    //   final result = await client.example.hello(_textEditingController.text);
+    //   setState(() {
+    //     _errorMessage = null;
+    //     _resultMessage = result;
+    //   });
+    // } catch (e) {
+    //   setState(() {
+    //     _errorMessage = '$e';
+    //   });
+    // }
   }
 
   @override

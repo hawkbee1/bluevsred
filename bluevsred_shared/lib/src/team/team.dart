@@ -1,18 +1,15 @@
 import '../game_player/game_player.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:serverpod_serialization/serverpod_serialization.dart';
 
 part 'team.freezed.dart';
 part 'team.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class Team with _$Team {
   Team._();
-  factory Team({required String name, required String colorCode}) = _Team;
+  factory Team({required String name, required String colorCode, required Set<GamePlayer> gamePlayers}) = _Team;
   factory Team.fromJson(Map<String, Object?> json,
-    SerializationManager serializationManager,
   ) => _$TeamFromJson(json);
-  final Set<GamePlayer> gamePlayers = {};
 
   void remove(GamePlayer gamePlayer) {
     gamePlayers.removeWhere((element) => element == gamePlayer);

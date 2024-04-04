@@ -15,7 +15,6 @@ abstract class Troop with _$Troop {
   factory Troop({required GamePlayer gamePlayer}) =>
       _Troop(id: _uuid(), path: 'testing_troop.png', gamePlayer: gamePlayer);
   factory Troop.fromJson(Map<String, Object?> json,
-    SerializationManager serializationManager,
   ) => _$TroopFromJson(json);
 
   get actionPoints {

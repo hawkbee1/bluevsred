@@ -25,6 +25,8 @@ mixin _$Battle {
   DateTime get startDate => throw _privateConstructorUsedError;
   double get maxActionPoints => throw _privateConstructorUsedError;
   double get actionPointsRecoveryRate => throw _privateConstructorUsedError;
+  Set<Troop>? get troops => throw _privateConstructorUsedError;
+  Set<Team>? get teams => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -32,7 +34,9 @@ mixin _$Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)
         def,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,7 +47,9 @@ mixin _$Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)?
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)?
         def,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +60,9 @@ mixin _$Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)?
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)?
         def,
     required TResult orElse(),
   }) =>
@@ -90,7 +98,9 @@ abstract class $BattleCopyWith<$Res> {
       BattleMap battleMap,
       DateTime startDate,
       double maxActionPoints,
-      double actionPointsRecoveryRate});
+      double actionPointsRecoveryRate,
+      Set<Troop>? troops,
+      Set<Team>? teams});
 
   $BattleMapCopyWith<$Res> get battleMap;
 }
@@ -113,6 +123,8 @@ class _$BattleCopyWithImpl<$Res, $Val extends Battle>
     Object? startDate = null,
     Object? maxActionPoints = null,
     Object? actionPointsRecoveryRate = null,
+    Object? troops = freezed,
+    Object? teams = freezed,
   }) {
     return _then(_value.copyWith(
       creationDate: null == creationDate
@@ -135,6 +147,14 @@ class _$BattleCopyWithImpl<$Res, $Val extends Battle>
           ? _value.actionPointsRecoveryRate
           : actionPointsRecoveryRate // ignore: cast_nullable_to_non_nullable
               as double,
+      troops: freezed == troops
+          ? _value.troops
+          : troops // ignore: cast_nullable_to_non_nullable
+              as Set<Troop>?,
+      teams: freezed == teams
+          ? _value.teams
+          : teams // ignore: cast_nullable_to_non_nullable
+              as Set<Team>?,
     ) as $Val);
   }
 
@@ -159,7 +179,9 @@ abstract class _$$BattleImplCopyWith<$Res> implements $BattleCopyWith<$Res> {
       BattleMap battleMap,
       DateTime startDate,
       double maxActionPoints,
-      double actionPointsRecoveryRate});
+      double actionPointsRecoveryRate,
+      Set<Troop>? troops,
+      Set<Team>? teams});
 
   @override
   $BattleMapCopyWith<$Res> get battleMap;
@@ -181,6 +203,8 @@ class __$$BattleImplCopyWithImpl<$Res>
     Object? startDate = null,
     Object? maxActionPoints = null,
     Object? actionPointsRecoveryRate = null,
+    Object? troops = freezed,
+    Object? teams = freezed,
   }) {
     return _then(_$BattleImpl(
       creationDate: null == creationDate
@@ -203,6 +227,14 @@ class __$$BattleImplCopyWithImpl<$Res>
           ? _value.actionPointsRecoveryRate
           : actionPointsRecoveryRate // ignore: cast_nullable_to_non_nullable
               as double,
+      troops: freezed == troops
+          ? _value.troops
+          : troops // ignore: cast_nullable_to_non_nullable
+              as Set<Troop>?,
+      teams: freezed == teams
+          ? _value.teams
+          : teams // ignore: cast_nullable_to_non_nullable
+              as Set<Team>?,
     ));
   }
 }
@@ -215,7 +247,9 @@ class _$BattleImpl extends _Battle {
       required this.battleMap,
       required this.startDate,
       required this.maxActionPoints,
-      required this.actionPointsRecoveryRate})
+      required this.actionPointsRecoveryRate,
+      this.troops,
+      this.teams})
       : super._();
 
   factory _$BattleImpl.fromJson(Map<String, dynamic> json) =>
@@ -231,10 +265,14 @@ class _$BattleImpl extends _Battle {
   final double maxActionPoints;
   @override
   final double actionPointsRecoveryRate;
+  @override
+  final Set<Troop>? troops;
+  @override
+  final Set<Team>? teams;
 
   @override
   String toString() {
-    return 'Battle.def(creationDate: $creationDate, battleMap: $battleMap, startDate: $startDate, maxActionPoints: $maxActionPoints, actionPointsRecoveryRate: $actionPointsRecoveryRate)';
+    return 'Battle.def(creationDate: $creationDate, battleMap: $battleMap, startDate: $startDate, maxActionPoints: $maxActionPoints, actionPointsRecoveryRate: $actionPointsRecoveryRate, troops: $troops, teams: $teams)';
   }
 
   @override
@@ -252,13 +290,22 @@ class _$BattleImpl extends _Battle {
                 other.maxActionPoints == maxActionPoints) &&
             (identical(
                     other.actionPointsRecoveryRate, actionPointsRecoveryRate) ||
-                other.actionPointsRecoveryRate == actionPointsRecoveryRate));
+                other.actionPointsRecoveryRate == actionPointsRecoveryRate) &&
+            const DeepCollectionEquality().equals(other.troops, troops) &&
+            const DeepCollectionEquality().equals(other.teams, teams));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, creationDate, battleMap,
-      startDate, maxActionPoints, actionPointsRecoveryRate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      creationDate,
+      battleMap,
+      startDate,
+      maxActionPoints,
+      actionPointsRecoveryRate,
+      const DeepCollectionEquality().hash(troops),
+      const DeepCollectionEquality().hash(teams));
 
   @JsonKey(ignore: true)
   @override
@@ -274,11 +321,13 @@ class _$BattleImpl extends _Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)
         def,
   }) {
     return def(creationDate, battleMap, startDate, maxActionPoints,
-        actionPointsRecoveryRate);
+        actionPointsRecoveryRate, troops, teams);
   }
 
   @override
@@ -289,11 +338,13 @@ class _$BattleImpl extends _Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)?
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)?
         def,
   }) {
     return def?.call(creationDate, battleMap, startDate, maxActionPoints,
-        actionPointsRecoveryRate);
+        actionPointsRecoveryRate, troops, teams);
   }
 
   @override
@@ -304,13 +355,15 @@ class _$BattleImpl extends _Battle {
             BattleMap battleMap,
             DateTime startDate,
             double maxActionPoints,
-            double actionPointsRecoveryRate)?
+            double actionPointsRecoveryRate,
+            Set<Troop>? troops,
+            Set<Team>? teams)?
         def,
     required TResult orElse(),
   }) {
     if (def != null) {
       return def(creationDate, battleMap, startDate, maxActionPoints,
-          actionPointsRecoveryRate);
+          actionPointsRecoveryRate, troops, teams);
     }
     return orElse();
   }
@@ -357,7 +410,9 @@ abstract class _Battle extends Battle {
       required final BattleMap battleMap,
       required final DateTime startDate,
       required final double maxActionPoints,
-      required final double actionPointsRecoveryRate}) = _$BattleImpl;
+      required final double actionPointsRecoveryRate,
+      final Set<Troop>? troops,
+      final Set<Team>? teams}) = _$BattleImpl;
   _Battle._() : super._();
 
   factory _Battle.fromJson(Map<String, dynamic> json) = _$BattleImpl.fromJson;
@@ -372,6 +427,10 @@ abstract class _Battle extends Battle {
   double get maxActionPoints;
   @override
   double get actionPointsRecoveryRate;
+  @override
+  Set<Troop>? get troops;
+  @override
+  Set<Team>? get teams;
   @override
   @JsonKey(ignore: true)
   _$$BattleImplCopyWith<_$BattleImpl> get copyWith =>

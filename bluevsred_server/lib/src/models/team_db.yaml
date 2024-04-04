@@ -1,0 +1,5 @@
+class: TeamDb
+table: team
+fields:
+  name: String
+  colorCode: String

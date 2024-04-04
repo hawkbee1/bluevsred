@@ -1,0 +1,4 @@
+class: GamePlayerDb
+table: player
+fields:
+  name: String
