@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Battle _$BattleFromJson(Map<String, dynamic> json) {
-  return _Battle.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Battle {
   DateTime get creationDate => throw _privateConstructorUsedError;
@@ -83,7 +79,7 @@ mixin _$Battle {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $BattleCopyWith<Battle> get copyWith => throw _privateConstructorUsedError;
 }
@@ -240,7 +236,7 @@ class __$$BattleImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$BattleImpl extends _Battle {
   _$BattleImpl(
       {required this.creationDate,
@@ -251,9 +247,6 @@ class _$BattleImpl extends _Battle {
       this.troops,
       this.teams})
       : super._();
-
-  factory _$BattleImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BattleImplFromJson(json);
 
   @override
   final DateTime creationDate;
@@ -295,7 +288,6 @@ class _$BattleImpl extends _Battle {
             const DeepCollectionEquality().equals(other.teams, teams));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -395,13 +387,6 @@ class _$BattleImpl extends _Battle {
     }
     return orElse();
   }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BattleImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Battle extends Battle {
@@ -414,8 +399,6 @@ abstract class _Battle extends Battle {
       final Set<Troop>? troops,
       final Set<Team>? teams}) = _$BattleImpl;
   _Battle._() : super._();
-
-  factory _Battle.fromJson(Map<String, dynamic> json) = _$BattleImpl.fromJson;
 
   @override
   DateTime get creationDate;

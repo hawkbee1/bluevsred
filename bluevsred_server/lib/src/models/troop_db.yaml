@@ -1,4 +1,5 @@
 class: TroopDb
 table: troop
 fields:
-  path: String
+  troopType: TroopType
+  actionPoints: double

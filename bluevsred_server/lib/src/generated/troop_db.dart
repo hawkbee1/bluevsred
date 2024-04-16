@@ -9,16 +9,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 abstract class TroopDb extends _i1.TableRow {
   TroopDb._({
     int? id,
-    required this.path,
+    required this.troopType,
+    required this.actionPoints,
   }) : super(id);
 
   factory TroopDb({
     int? id,
-    required String path,
+    required _i2.TroopType troopType,
+    required double actionPoints,
   }) = _TroopDbImpl;
 
   factory TroopDb.fromJson(
@@ -27,7 +30,10 @@ abstract class TroopDb extends _i1.TableRow {
   ) {
     return TroopDb(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      path: serializationManager.deserialize<String>(jsonSerialization['path']),
+      troopType: serializationManager
+          .deserialize<_i2.TroopType>(jsonSerialization['troopType']),
+      actionPoints: serializationManager
+          .deserialize<double>(jsonSerialization['actionPoints']),
     );
   }
 
@@ -35,20 +41,24 @@ abstract class TroopDb extends _i1.TableRow {
 
   static const db = TroopDbRepository._();
 
-  String path;
+  _i2.TroopType troopType;
+
+  double actionPoints;
 
   @override
   _i1.Table get table => t;
 
   TroopDb copyWith({
     int? id,
-    String? path,
+    _i2.TroopType? troopType,
+    double? actionPoints,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
       if (id != null) 'id': id,
-      'path': path,
+      'troopType': troopType.toJson(),
+      'actionPoints': actionPoints,
     };
   }
 
@@ -57,7 +67,8 @@ abstract class TroopDb extends _i1.TableRow {
   Map<String, dynamic> toJsonForDatabase() {
     return {
       'id': id,
-      'path': path,
+      'troopType': troopType,
+      'actionPoints': actionPoints,
     };
   }
 
@@ -65,7 +76,8 @@ abstract class TroopDb extends _i1.TableRow {
   Map<String, dynamic> allToJson() {
     return {
       if (id != null) 'id': id,
-      'path': path,
+      'troopType': troopType.toJson(),
+      'actionPoints': actionPoints,
     };
   }
 
@@ -79,8 +91,11 @@ abstract class TroopDb extends _i1.TableRow {
       case 'id':
         id = value;
         return;
-      case 'path':
-        path = value;
+      case 'troopType':
+        troopType = value;
+        return;
+      case 'actionPoints':
+        actionPoints = value;
         return;
       default:
         throw UnimplementedError();
@@ -234,38 +249,50 @@ class _Undefined {}
 class _TroopDbImpl extends TroopDb {
   _TroopDbImpl({
     int? id,
-    required String path,
+    required _i2.TroopType troopType,
+    required double actionPoints,
   }) : super._(
           id: id,
-          path: path,
+          troopType: troopType,
+          actionPoints: actionPoints,
         );
 
   @override
   TroopDb copyWith({
     Object? id = _Undefined,
-    String? path,
+    _i2.TroopType? troopType,
+    double? actionPoints,
   }) {
     return TroopDb(
       id: id is int? ? id : this.id,
-      path: path ?? this.path,
+      troopType: troopType ?? this.troopType,
+      actionPoints: actionPoints ?? this.actionPoints,
     );
   }
 }
 
 class TroopDbTable extends _i1.Table {
   TroopDbTable({super.tableRelation}) : super(tableName: 'troop') {
-    path = _i1.ColumnString(
-      'path',
+    troopType = _i1.ColumnEnum(
+      'troopType',
+      this,
+      _i1.EnumSerialization.byName,
+    );
+    actionPoints = _i1.ColumnDouble(
+      'actionPoints',
       this,
     );
   }
 
-  late final _i1.ColumnString path;
+  late final _i1.ColumnEnum<_i2.TroopType> troopType;
+
+  late final _i1.ColumnDouble actionPoints;
 
   @override
   List<_i1.Column> get columns => [
         id,
-        path,
+        troopType,
+        actionPoints,
       ];
 }
 

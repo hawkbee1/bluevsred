@@ -10,7 +10,7 @@ dependencies:
   serverpod: 1.2.6
   bluevsred_shared:
     path: ../bluevsred_shared
-  serverpod_serialization: ^1.2.6
+  serverpod_serialization: 1.2.6
 
 dev_dependencies:
   lints: ^3.0.0

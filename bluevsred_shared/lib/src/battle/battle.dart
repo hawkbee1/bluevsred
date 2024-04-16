@@ -5,7 +5,6 @@ import '../troops/troop.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'battle.freezed.dart';
-part 'battle.g.dart';
 
 @Freezed(makeCollectionsUnmodifiable: false)
 class Battle with _$Battle {
@@ -38,10 +37,6 @@ class Battle with _$Battle {
     return DateTime.now().toUtc();
   }
 
-  factory Battle.fromJson(
-    Map<String, Object?> json,
-  ) =>
-      _$BattleFromJson(json);
 
   void addTroops({required List<Troop> newTroops}) {
     troops!.addAll(newTroops);

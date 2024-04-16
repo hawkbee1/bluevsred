@@ -16,11 +16,13 @@ import 'battle_map_db.dart' as _i4;
 import 'game_player_db.dart' as _i5;
 import 'team_db.dart' as _i6;
 import 'troop_db.dart' as _i7;
+import 'troop_type.dart' as _i8;
 export 'battle_db.dart';
 export 'battle_map_db.dart';
 export 'game_player_db.dart';
 export 'team_db.dart';
 export 'troop_db.dart';
+export 'troop_type.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -222,10 +224,16 @@ class Protocol extends _i1.SerializationManagerServer {
           columnDefault: 'nextval(\'troop_id_seq\'::regclass)',
         ),
         _i2.ColumnDefinition(
-          name: 'path',
+          name: 'troopType',
           columnType: _i2.ColumnType.text,
           isNullable: false,
-          dartType: 'String',
+          dartType: 'protocol:TroopType',
+        ),
+        _i2.ColumnDefinition(
+          name: 'actionPoints',
+          columnType: _i2.ColumnType.doublePrecision,
+          isNullable: false,
+          dartType: 'double',
         ),
       ],
       foreignKeys: [],
@@ -273,6 +281,9 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i7.TroopDb) {
       return _i7.TroopDb.fromJson(data, this) as T;
     }
+    if (t == _i8.TroopType) {
+      return _i8.TroopType.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i3.BattleDb?>()) {
       return (data != null ? _i3.BattleDb.fromJson(data, this) : null) as T;
     }
@@ -287,6 +298,9 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (t == _i1.getType<_i7.TroopDb?>()) {
       return (data != null ? _i7.TroopDb.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i8.TroopType?>()) {
+      return (data != null ? _i8.TroopType.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -311,6 +325,9 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i7.TroopDb) {
       return 'TroopDb';
     }
+    if (data is _i8.TroopType) {
+      return 'TroopType';
+    }
     return super.getClassNameForObject(data);
   }
 
@@ -330,6 +347,9 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (data['className'] == 'TroopDb') {
       return deserialize<_i7.TroopDb>(data['data']);
+    }
+    if (data['className'] == 'TroopType') {
+      return deserialize<_i8.TroopType>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

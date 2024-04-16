@@ -15,11 +15,13 @@ import 'battle_map_db.dart' as _i3;
 import 'game_player_db.dart' as _i4;
 import 'team_db.dart' as _i5;
 import 'troop_db.dart' as _i6;
+import 'troop_type.dart' as _i7;
 export 'battle_db.dart';
 export 'battle_map_db.dart';
 export 'game_player_db.dart';
 export 'team_db.dart';
 export 'troop_db.dart';
+export 'troop_type.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
@@ -55,6 +57,9 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i6.TroopDb) {
       return _i6.TroopDb.fromJson(data, this) as T;
     }
+    if (t == _i7.TroopType) {
+      return _i7.TroopType.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i2.BattleDb?>()) {
       return (data != null ? _i2.BattleDb.fromJson(data, this) : null) as T;
     }
@@ -69,6 +74,9 @@ class Protocol extends _i1.SerializationManager {
     }
     if (t == _i1.getType<_i6.TroopDb?>()) {
       return (data != null ? _i6.TroopDb.fromJson(data, this) : null) as T;
+    }
+    if (t == _i1.getType<_i7.TroopType?>()) {
+      return (data != null ? _i7.TroopType.fromJson(data) : null) as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -90,6 +98,9 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i6.TroopDb) {
       return 'TroopDb';
     }
+    if (data is _i7.TroopType) {
+      return 'TroopType';
+    }
     return super.getClassNameForObject(data);
   }
 
@@ -109,6 +120,9 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data['className'] == 'TroopDb') {
       return deserialize<_i6.TroopDb>(data['data']);
+    }
+    if (data['className'] == 'TroopType') {
+      return deserialize<_i7.TroopType>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

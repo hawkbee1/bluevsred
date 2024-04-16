@@ -14,49 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Troop _$TroopFromJson(Map<String, dynamic> json) {
-  return _Troop.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Troop {
-  String get id => throw _privateConstructorUsedError;
-  String get path => throw _privateConstructorUsedError;
+  TroopDb get troopDb => throw _privateConstructorUsedError;
   GamePlayer get gamePlayer => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id, String path, GamePlayer gamePlayer)
-        def,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String path, GamePlayer gamePlayer)? def,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String path, GamePlayer gamePlayer)? def,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Troop value) def,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Troop value)? def,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Troop value)? def,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $TroopCopyWith<Troop> get copyWith => throw _privateConstructorUsedError;
 }
@@ -66,7 +28,7 @@ abstract class $TroopCopyWith<$Res> {
   factory $TroopCopyWith(Troop value, $Res Function(Troop) then) =
       _$TroopCopyWithImpl<$Res, Troop>;
   @useResult
-  $Res call({String id, String path, GamePlayer gamePlayer});
+  $Res call({TroopDb troopDb, GamePlayer gamePlayer});
 
   $GamePlayerCopyWith<$Res> get gamePlayer;
 }
@@ -84,19 +46,14 @@ class _$TroopCopyWithImpl<$Res, $Val extends Troop>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? path = null,
+    Object? troopDb = null,
     Object? gamePlayer = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
+      troopDb: null == troopDb
+          ? _value.troopDb
+          : troopDb // ignore: cast_nullable_to_non_nullable
+              as TroopDb,
       gamePlayer: null == gamePlayer
           ? _value.gamePlayer
           : gamePlayer // ignore: cast_nullable_to_non_nullable
@@ -120,7 +77,7 @@ abstract class _$$TroopImplCopyWith<$Res> implements $TroopCopyWith<$Res> {
       __$$TroopImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String path, GamePlayer gamePlayer});
+  $Res call({TroopDb troopDb, GamePlayer gamePlayer});
 
   @override
   $GamePlayerCopyWith<$Res> get gamePlayer;
@@ -137,19 +94,14 @@ class __$$TroopImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? path = null,
+    Object? troopDb = null,
     Object? gamePlayer = null,
   }) {
     return _then(_$TroopImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
+      troopDb: null == troopDb
+          ? _value.troopDb
+          : troopDb // ignore: cast_nullable_to_non_nullable
+              as TroopDb,
       gamePlayer: null == gamePlayer
           ? _value.gamePlayer
           : gamePlayer // ignore: cast_nullable_to_non_nullable
@@ -159,24 +111,18 @@ class __$$TroopImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$TroopImpl extends _Troop {
-  _$TroopImpl({required this.id, required this.path, required this.gamePlayer})
-      : super._();
-
-  factory _$TroopImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TroopImplFromJson(json);
+  _$TroopImpl({required this.troopDb, required this.gamePlayer}) : super._();
 
   @override
-  final String id;
-  @override
-  final String path;
+  final TroopDb troopDb;
   @override
   final GamePlayer gamePlayer;
 
   @override
   String toString() {
-    return 'Troop.def(id: $id, path: $path, gamePlayer: $gamePlayer)';
+    return 'Troop(troopDb: $troopDb, gamePlayer: $gamePlayer)';
   }
 
   @override
@@ -184,100 +130,29 @@ class _$TroopImpl extends _Troop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TroopImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.path, path) || other.path == path) &&
+            (identical(other.troopDb, troopDb) || other.troopDb == troopDb) &&
             (identical(other.gamePlayer, gamePlayer) ||
                 other.gamePlayer == gamePlayer));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, path, gamePlayer);
+  int get hashCode => Object.hash(runtimeType, troopDb, gamePlayer);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TroopImplCopyWith<_$TroopImpl> get copyWith =>
       __$$TroopImplCopyWithImpl<_$TroopImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String id, String path, GamePlayer gamePlayer)
-        def,
-  }) {
-    return def(id, path, gamePlayer);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id, String path, GamePlayer gamePlayer)? def,
-  }) {
-    return def?.call(id, path, gamePlayer);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id, String path, GamePlayer gamePlayer)? def,
-    required TResult orElse(),
-  }) {
-    if (def != null) {
-      return def(id, path, gamePlayer);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Troop value) def,
-  }) {
-    return def(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Troop value)? def,
-  }) {
-    return def?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Troop value)? def,
-    required TResult orElse(),
-  }) {
-    if (def != null) {
-      return def(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TroopImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Troop extends Troop {
   factory _Troop(
-      {required final String id,
-      required final String path,
+      {required final TroopDb troopDb,
       required final GamePlayer gamePlayer}) = _$TroopImpl;
   _Troop._() : super._();
 
-  factory _Troop.fromJson(Map<String, dynamic> json) = _$TroopImpl.fromJson;
-
   @override
-  String get id;
-  @override
-  String get path;
+  TroopDb get troopDb;
   @override
   GamePlayer get gamePlayer;
   @override

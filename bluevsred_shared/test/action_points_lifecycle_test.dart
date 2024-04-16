@@ -1,3 +1,4 @@
+import 'package:bluevsred_client/bluevsred_client.dart';
 import 'package:bluevsred_shared/src/battle/battle.dart';
 import 'package:bluevsred_shared/src/game_player/game_player.dart';
 import 'package:bluevsred_shared/src/troops/troop.dart';
@@ -9,7 +10,7 @@ void main() {
       maxActionPoints: 30,
       actionPointsRecoveryRate: 1);
   final initialGamePlayer1 = GamePlayer(name: 'test player name');
-  final initialTroop1 = Troop(gamePlayer: initialGamePlayer1);
+  final initialTroop1 = Troop(gamePlayer: initialGamePlayer1, troopDb: TroopDb(troopType: TroopType.commander, actionPoints: 10));
 
   group('Action Points lifecycle', () {
     test(
@@ -23,7 +24,7 @@ void main() {
       var isTestTroopFound = false;
       for (final battleTroop in battle.troops!) {
         if (battleTroop == testTroop) {
-          expect(battleTroop.actionPoints, equals(maxActionPoints));
+          expect(battleTroop.troopDb.actionPoints, equals(maxActionPoints));
           isTestTroopFound = true;
           return;
         }

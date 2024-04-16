@@ -9,16 +9,19 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'protocol.dart' as _i2;
 
 abstract class TroopDb extends _i1.SerializableEntity {
   TroopDb._({
     this.id,
-    required this.path,
+    required this.troopType,
+    required this.actionPoints,
   });
 
   factory TroopDb({
     int? id,
-    required String path,
+    required _i2.TroopType troopType,
+    required double actionPoints,
   }) = _TroopDbImpl;
 
   factory TroopDb.fromJson(
@@ -27,7 +30,10 @@ abstract class TroopDb extends _i1.SerializableEntity {
   ) {
     return TroopDb(
       id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      path: serializationManager.deserialize<String>(jsonSerialization['path']),
+      troopType: serializationManager
+          .deserialize<_i2.TroopType>(jsonSerialization['troopType']),
+      actionPoints: serializationManager
+          .deserialize<double>(jsonSerialization['actionPoints']),
     );
   }
 
@@ -36,17 +42,21 @@ abstract class TroopDb extends _i1.SerializableEntity {
   /// the id will be null.
   int? id;
 
-  String path;
+  _i2.TroopType troopType;
+
+  double actionPoints;
 
   TroopDb copyWith({
     int? id,
-    String? path,
+    _i2.TroopType? troopType,
+    double? actionPoints,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
       if (id != null) 'id': id,
-      'path': path,
+      'troopType': troopType.toJson(),
+      'actionPoints': actionPoints,
     };
   }
 }
@@ -56,20 +66,24 @@ class _Undefined {}
 class _TroopDbImpl extends TroopDb {
   _TroopDbImpl({
     int? id,
-    required String path,
+    required _i2.TroopType troopType,
+    required double actionPoints,
   }) : super._(
           id: id,
-          path: path,
+          troopType: troopType,
+          actionPoints: actionPoints,
         );
 
   @override
   TroopDb copyWith({
     Object? id = _Undefined,
-    String? path,
+    _i2.TroopType? troopType,
+    double? actionPoints,
   }) {
     return TroopDb(
       id: id is int? ? id : this.id,
-      path: path ?? this.path,
+      troopType: troopType ?? this.troopType,
+      actionPoints: actionPoints ?? this.actionPoints,
     );
   }
 }

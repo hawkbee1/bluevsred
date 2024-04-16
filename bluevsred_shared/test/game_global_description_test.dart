@@ -1,3 +1,4 @@
+import 'package:bluevsred_client/bluevsred_client.dart';
 import 'package:bluevsred_shared/src/battle/battle.dart';
 import 'package:bluevsred_shared/src/game_player/game_player.dart';
 import 'package:bluevsred_shared/src/team/team.dart';
@@ -13,7 +14,9 @@ void main() {
         () {
       test('Troop added to a battle is in the list of troops', () {
         final gamePlayer = GamePlayer(name: 'test player name');
-        final troop = Troop(gamePlayer: gamePlayer);
+        final troop = Troop(
+            gamePlayer: gamePlayer,
+            troopDb: TroopDb(troopType: TroopType.commander, actionPoints: 10));
         final battle = Battle(
             startDate: DateTime.now().toUtc().add(const Duration(minutes: 1)),
             maxActionPoints: 30,
@@ -23,7 +26,9 @@ void main() {
       });
       test('Troop is added only once to a battle (already added)', () {
         final gamePlayer = GamePlayer(name: 'test player name');
-        final troop = Troop(gamePlayer: gamePlayer);
+        final troop = Troop(
+            gamePlayer: gamePlayer,
+            troopDb: TroopDb(troopType: TroopType.commander, actionPoints: 10));
         final battle = Battle(
             startDate: DateTime.now().toUtc().add(const Duration(minutes: 1)),
             maxActionPoints: 30,
@@ -38,7 +43,7 @@ void main() {
           'Troop is added only once to a battle (attempt to add same troop twice in the same list)',
           () {
         final gamePlayer = GamePlayer(name: 'test player name');
-        final troop = Troop(gamePlayer: gamePlayer);
+        final troop = Troop(gamePlayer: gamePlayer, troopDb: TroopDb(troopType: TroopType.commander, actionPoints: 10));
         final battle = Battle(
             startDate: DateTime.now().toUtc().add(const Duration(minutes: 1)),
             maxActionPoints: 30,

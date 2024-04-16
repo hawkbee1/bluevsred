@@ -1,0 +1,4 @@
+enum: TroopType
+serialized: byName
+values:
+  - commander
