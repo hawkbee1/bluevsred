@@ -1,5 +1,6 @@
 import 'package:bluevsred_flutter/level_selection/instructions_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nes_ui/nes_ui.dart';
 import 'package:provider/provider.dart';
@@ -8,21 +9,18 @@ import '../audio/audio_controller.dart';
 import '../audio/sounds.dart';
 import '../player_progress/player_progress.dart';
 import '../style/wobbly_button.dart';
-import '../style/palette.dart';
 import 'levels.dart';
 
-class LevelSelectionScreen extends StatelessWidget {
+class LevelSelectionScreen extends ConsumerWidget {
   const LevelSelectionScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final palette = context.watch<Palette>();
-    final playerProgress = context.watch<PlayerProgress>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final playerProgress = ref.watch(playerProgressProvider);
     final levelTextStyle =
         Theme.of(context).textTheme.bodyMedium?.copyWith(height: 1.4);
-
     return Scaffold(
-      backgroundColor: palette.backgroundLevelSelection.color,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Column(
         children: [
           Padding(
@@ -58,7 +56,7 @@ class LevelSelectionScreen extends StatelessWidget {
                 children: [
                   for (final level in gameLevels)
                     ListTile(
-                      enabled: playerProgress.levels.length >= level.number - 1,
+                      enabled: ref.read(playerProgressProvider).length >= level.number - 1,
                       onTap: () {
                         final audioController = context.read<AudioController>();
                         audioController.playSfx(SfxType.buttonTap);
@@ -76,15 +74,15 @@ class LevelSelectionScreen extends StatelessWidget {
                             'Level #${level.number}',
                             style: levelTextStyle,
                           ),
-                          if (playerProgress.levels.length <
+                          if (playerProgress.length <
                               level.number - 1) ...[
                             const SizedBox(width: 10),
                             const Icon(Icons.lock, size: 20),
-                          ] else if (playerProgress.levels.length >=
+                          ] else if (playerProgress.length >=
                               level.number) ...[
                             const SizedBox(width: 50),
                             Text(
-                              '${playerProgress.levels[level.number - 1]}s',
+                              '${playerProgress[level.number - 1]}s',
                               style: levelTextStyle,
                             ),
                           ],

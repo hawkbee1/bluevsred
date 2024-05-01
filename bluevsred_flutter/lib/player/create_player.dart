@@ -13,9 +13,12 @@ Future<void> createGamePlayer(
   final troopsProvider = activeGamePlayerTroopsProvider(troops: const {});
   // container.listen(troopsProvider, (previous, next) {});
 
-  container.read(troopsProvider).value!.addTroops(newTroops: [
+  container.read(troopsProvider.notifier).addTroops(newTroops: [
     Troop(
         troopDb: TroopDb(troopType: TroopType.commander, actionPoints: 10),
-        gamePlayer: container.read(gamePlayerProvider).value!),
+        gamePlayer: await container.read(gamePlayerProvider.future).then((value) {
+          return value;
+        }),
+    ),
   ]);
 }

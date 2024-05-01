@@ -1,0 +1,75 @@
+{
+  "actions": [
+    {
+      "type": "deleteTable",
+      "deleteTable": "troop"
+    },
+    {
+      "type": "createTable",
+      "createTable": {
+        "name": "troop",
+        "dartName": "TroopDb",
+        "module": "bluevsred",
+        "schema": "public",
+        "columns": [
+          {
+            "name": "id",
+            "columnType": 2,
+            "isNullable": false,
+            "columnDefault": "nextval('troop_id_seq'::regclass)",
+            "dartType": "int?"
+          },
+          {
+            "name": "troopType",
+            "columnType": 0,
+            "isNullable": false,
+            "dartType": "protocol:TroopType"
+          },
+          {
+            "name": "actionPoints",
+            "columnType": 3,
+            "isNullable": false,
+            "dartType": "double"
+          }
+        ],
+        "foreignKeys": [],
+        "indexes": [
+          {
+            "indexName": "troop_pkey",
+            "elements": [
+              {
+                "type": 0,
+                "definition": "id"
+              }
+            ],
+            "type": "btree",
+            "isUnique": true,
+            "isPrimary": true
+          }
+        ],
+        "managed": true
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "columnDropped",
+      "message": "Column \"path\" of table \"troop\" will be dropped.",
+      "table": "troop",
+      "columns": [
+        "path"
+      ],
+      "destrucive": true
+    },
+    {
+      "type": "tableDropped",
+      "message": "One or more columns are added to table \"troop\" which cannot be added in a table migration. The complete table will be deleted and recreated.",
+      "table": "troop",
+      "columns": [
+        "actionPoints"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}
