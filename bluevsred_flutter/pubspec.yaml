@@ -30,7 +30,7 @@ dependencies:
     path: ../bluevsred_client
   bluevsred_shared:
     path: ../bluevsred_shared
-  audioplayers: ^6.1.0
+  audioplayers: ^5.2.1
   cupertino_icons: ^1.0.6
   flame_audio: ^2.1.7
   go_router: ^14.2.7
