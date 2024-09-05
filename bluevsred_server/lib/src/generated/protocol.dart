@@ -29,8 +29,6 @@ class Protocol extends _i1.SerializationManagerServer {
 
   factory Protocol() => _instance;
 
-  static final Map<Type, _i1.constructor> customConstructors = {};
-
   static final Protocol _instance = Protocol._();
 
   static final List<_i2.TableDefinition> targetTableDefinitions = [
@@ -42,7 +40,7 @@ class Protocol extends _i1.SerializationManagerServer {
       columns: [
         _i2.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.integer,
+          columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
           columnDefault: 'nextval(\'battle_id_seq\'::regclass)',
@@ -98,7 +96,7 @@ class Protocol extends _i1.SerializationManagerServer {
       columns: [
         _i2.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.integer,
+          columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
           columnDefault: 'nextval(\'player_id_seq\'::regclass)',
@@ -136,7 +134,7 @@ class Protocol extends _i1.SerializationManagerServer {
       columns: [
         _i2.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.integer,
+          columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
           columnDefault: 'nextval(\'talle_map_id_seq\'::regclass)',
@@ -174,7 +172,7 @@ class Protocol extends _i1.SerializationManagerServer {
       columns: [
         _i2.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.integer,
+          columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
           columnDefault: 'nextval(\'team_id_seq\'::regclass)',
@@ -218,7 +216,7 @@ class Protocol extends _i1.SerializationManagerServer {
       columns: [
         _i2.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.integer,
+          columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
           columnDefault: 'nextval(\'troop_id_seq\'::regclass)',
@@ -263,48 +261,45 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-    if (customConstructors.containsKey(t)) {
-      return customConstructors[t]!(data, this) as T;
-    }
     if (t == _i3.BattleDb) {
-      return _i3.BattleDb.fromJson(data, this) as T;
+      return _i3.BattleDb.fromJson(data) as T;
     }
     if (t == _i4.BattleMapDb) {
-      return _i4.BattleMapDb.fromJson(data, this) as T;
+      return _i4.BattleMapDb.fromJson(data) as T;
     }
     if (t == _i5.GamePlayerDb) {
-      return _i5.GamePlayerDb.fromJson(data, this) as T;
+      return _i5.GamePlayerDb.fromJson(data) as T;
     }
     if (t == _i6.TeamDb) {
-      return _i6.TeamDb.fromJson(data, this) as T;
+      return _i6.TeamDb.fromJson(data) as T;
     }
     if (t == _i7.TroopDb) {
-      return _i7.TroopDb.fromJson(data, this) as T;
+      return _i7.TroopDb.fromJson(data) as T;
     }
     if (t == _i8.TroopType) {
       return _i8.TroopType.fromJson(data) as T;
     }
     if (t == _i1.getType<_i3.BattleDb?>()) {
-      return (data != null ? _i3.BattleDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i3.BattleDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i4.BattleMapDb?>()) {
-      return (data != null ? _i4.BattleMapDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i4.BattleMapDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i5.GamePlayerDb?>()) {
-      return (data != null ? _i5.GamePlayerDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i5.GamePlayerDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i6.TeamDb?>()) {
-      return (data != null ? _i6.TeamDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i6.TeamDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i7.TroopDb?>()) {
-      return (data != null ? _i7.TroopDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i7.TroopDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i8.TroopType?>()) {
       return (data != null ? _i8.TroopType.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
-    } catch (_) {}
+    } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
 

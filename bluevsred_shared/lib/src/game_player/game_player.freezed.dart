@@ -22,8 +22,12 @@ GamePlayer _$GamePlayerFromJson(Map<String, dynamic> json) {
 mixin _$GamePlayer {
   String get name => throw _privateConstructorUsedError;
 
+  /// Serializes this GamePlayer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GamePlayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GamePlayerCopyWith<GamePlayer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$GamePlayerCopyWithImpl<$Res, $Val extends GamePlayer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GamePlayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$GamePlayerImplCopyWithImpl<$Res>
       _$GamePlayerImpl _value, $Res Function(_$GamePlayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GamePlayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,11 +126,13 @@ class _$GamePlayerImpl implements _GamePlayer {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GamePlayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GamePlayerImplCopyWith<_$GamePlayerImpl> get copyWith =>
@@ -144,8 +154,11 @@ abstract class _GamePlayer implements GamePlayer {
 
   @override
   String get name;
+
+  /// Create a copy of GamePlayer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GamePlayerImplCopyWith<_$GamePlayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -10,20 +10,20 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-enum TroopType with _i1.SerializableEntity {
+enum TroopType implements _i1.SerializableModel {
   commander;
 
-  static TroopType? fromJson(String name) {
+  static TroopType fromJson(String name) {
     switch (name) {
       case 'commander':
         return commander;
       default:
-        return null;
+        throw ArgumentError('Value "$name" cannot be converted to "TroopType"');
     }
   }
 
   @override
   String toJson() => name;
   @override
-  String toString() => toJson();
+  String toString() => name;
 }

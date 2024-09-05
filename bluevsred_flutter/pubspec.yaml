@@ -25,7 +25,7 @@ dependencies:
   flame: ^1.14.0
   flutter:
     sdk: flutter
-  serverpod_flutter: 1.2.6
+  serverpod_flutter: 2.0.2
   bluevsred_client:
     path: ../bluevsred_client
   bluevsred_shared:

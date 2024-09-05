@@ -20,6 +20,7 @@ BattleMap _$BattleMapFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BattleMap {
+  /// Serializes this BattleMap to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -38,6 +39,9 @@ class _$BattleMapCopyWithImpl<$Res, $Val extends BattleMap>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BattleMap
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -54,6 +58,9 @@ class __$$BattleMapImplCopyWithImpl<$Res>
   __$$BattleMapImplCopyWithImpl(
       _$BattleMapImpl _value, $Res Function(_$BattleMapImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BattleMap
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -75,7 +82,7 @@ class _$BattleMapImpl extends _BattleMap {
         (other.runtimeType == runtimeType && other is _$BattleMapImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

@@ -19,7 +19,9 @@ mixin _$Troop {
   TroopDb get troopDb => throw _privateConstructorUsedError;
   GamePlayer get gamePlayer => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TroopCopyWith<Troop> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -43,6 +45,8 @@ class _$TroopCopyWithImpl<$Res, $Val extends Troop>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -61,6 +65,8 @@ class _$TroopCopyWithImpl<$Res, $Val extends Troop>
     ) as $Val);
   }
 
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GamePlayerCopyWith<$Res> get gamePlayer {
@@ -91,6 +97,8 @@ class __$$TroopImplCopyWithImpl<$Res>
       _$TroopImpl _value, $Res Function(_$TroopImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,7 +146,9 @@ class _$TroopImpl extends _Troop {
   @override
   int get hashCode => Object.hash(runtimeType, troopDb, gamePlayer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TroopImplCopyWith<_$TroopImpl> get copyWith =>
@@ -155,8 +165,11 @@ abstract class _Troop extends Troop {
   TroopDb get troopDb;
   @override
   GamePlayer get gamePlayer;
+
+  /// Create a copy of Troop
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TroopImplCopyWith<_$TroopImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

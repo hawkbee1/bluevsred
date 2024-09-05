@@ -10,7 +10,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 
-abstract class BattleMapDb extends _i1.TableRow {
+abstract class BattleMapDb extends _i1.TableRow
+    implements _i1.ProtocolSerialization {
   BattleMapDb._({
     int? id,
     required this.path,
@@ -21,13 +22,10 @@ abstract class BattleMapDb extends _i1.TableRow {
     required String path,
   }) = _BattleMapDbImpl;
 
-  factory BattleMapDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory BattleMapDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return BattleMapDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      path: serializationManager.deserialize<String>(jsonSerialization['path']),
+      id: jsonSerialization['id'] as int?,
+      path: jsonSerialization['path'] as String,
     );
   }
 
@@ -53,155 +51,11 @@ abstract class BattleMapDb extends _i1.TableRow {
   }
 
   @override
-  @Deprecated('Will be removed in 2.0.0')
-  Map<String, dynamic> toJsonForDatabase() {
-    return {
-      'id': id,
-      'path': path,
-    };
-  }
-
-  @override
-  Map<String, dynamic> allToJson() {
+  Map<String, dynamic> toJsonForProtocol() {
     return {
       if (id != null) 'id': id,
       'path': path,
     };
-  }
-
-  @override
-  @Deprecated('Will be removed in 2.0.0')
-  void setColumn(
-    String columnName,
-    value,
-  ) {
-    switch (columnName) {
-      case 'id':
-        id = value;
-        return;
-      case 'path':
-        path = value;
-        return;
-      default:
-        throw UnimplementedError();
-    }
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.find instead.')
-  static Future<List<BattleMapDb>> find(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleMapDbTable>? where,
-    int? limit,
-    int? offset,
-    _i1.Column? orderBy,
-    List<_i1.Order>? orderByList,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.find<BattleMapDb>(
-      where: where != null ? where(BattleMapDb.t) : null,
-      limit: limit,
-      offset: offset,
-      orderBy: orderBy,
-      orderByList: orderByList,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findRow instead.')
-  static Future<BattleMapDb?> findSingleRow(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleMapDbTable>? where,
-    int? offset,
-    _i1.Column? orderBy,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.findSingleRow<BattleMapDb>(
-      where: where != null ? where(BattleMapDb.t) : null,
-      offset: offset,
-      orderBy: orderBy,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findById instead.')
-  static Future<BattleMapDb?> findById(
-    _i1.Session session,
-    int id,
-  ) async {
-    return session.db.findById<BattleMapDb>(id);
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteWhere instead.')
-  static Future<int> delete(
-    _i1.Session session, {
-    required _i1.WhereExpressionBuilder<BattleMapDbTable> where,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.delete<BattleMapDb>(
-      where: where(BattleMapDb.t),
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteRow instead.')
-  static Future<bool> deleteRow(
-    _i1.Session session,
-    BattleMapDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.deleteRow(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.update instead.')
-  static Future<bool> update(
-    _i1.Session session,
-    BattleMapDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.update(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated(
-      'Will be removed in 2.0.0. Use: db.insert instead. Important note: In db.insert, the object you pass in is no longer modified, instead a new copy with the added row is returned which contains the inserted id.')
-  static Future<void> insert(
-    _i1.Session session,
-    BattleMapDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.insert(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.count instead.')
-  static Future<int> count(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleMapDbTable>? where,
-    int? limit,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.count<BattleMapDb>(
-      where: where != null ? where(BattleMapDb.t) : null,
-      limit: limit,
-      useCache: useCache,
-      transaction: transaction,
-    );
   }
 
   static BattleMapDbInclude include() {
@@ -226,6 +80,11 @@ abstract class BattleMapDb extends _i1.TableRow {
       orderByList: orderByList?.call(BattleMapDb.t),
       include: include,
     );
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 
@@ -268,9 +127,6 @@ class BattleMapDbTable extends _i1.Table {
         path,
       ];
 }
-
-@Deprecated('Use BattleMapDbTable.t instead.')
-BattleMapDbTable tBattleMapDb = BattleMapDbTable();
 
 class BattleMapDbInclude extends _i1.IncludeObject {
   BattleMapDbInclude._();
@@ -315,7 +171,7 @@ class BattleMapDbRepository {
     _i1.OrderByListBuilder<BattleMapDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.find<BattleMapDb>(
+    return session.db.find<BattleMapDb>(
       where: where?.call(BattleMapDb.t),
       orderBy: orderBy?.call(BattleMapDb.t),
       orderByList: orderByList?.call(BattleMapDb.t),
@@ -335,7 +191,7 @@ class BattleMapDbRepository {
     _i1.OrderByListBuilder<BattleMapDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findFirstRow<BattleMapDb>(
+    return session.db.findFirstRow<BattleMapDb>(
       where: where?.call(BattleMapDb.t),
       orderBy: orderBy?.call(BattleMapDb.t),
       orderByList: orderByList?.call(BattleMapDb.t),
@@ -350,7 +206,7 @@ class BattleMapDbRepository {
     int id, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findById<BattleMapDb>(
+    return session.db.findById<BattleMapDb>(
       id,
       transaction: transaction,
     );
@@ -361,7 +217,7 @@ class BattleMapDbRepository {
     List<BattleMapDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insert<BattleMapDb>(
+    return session.db.insert<BattleMapDb>(
       rows,
       transaction: transaction,
     );
@@ -372,7 +228,7 @@ class BattleMapDbRepository {
     BattleMapDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insertRow<BattleMapDb>(
+    return session.db.insertRow<BattleMapDb>(
       row,
       transaction: transaction,
     );
@@ -384,7 +240,7 @@ class BattleMapDbRepository {
     _i1.ColumnSelections<BattleMapDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.update<BattleMapDb>(
+    return session.db.update<BattleMapDb>(
       rows,
       columns: columns?.call(BattleMapDb.t),
       transaction: transaction,
@@ -397,41 +253,41 @@ class BattleMapDbRepository {
     _i1.ColumnSelections<BattleMapDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.updateRow<BattleMapDb>(
+    return session.db.updateRow<BattleMapDb>(
       row,
       columns: columns?.call(BattleMapDb.t),
       transaction: transaction,
     );
   }
 
-  Future<List<int>> delete(
+  Future<List<BattleMapDb>> delete(
     _i1.Session session,
     List<BattleMapDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.delete<BattleMapDb>(
+    return session.db.delete<BattleMapDb>(
       rows,
       transaction: transaction,
     );
   }
 
-  Future<int> deleteRow(
+  Future<BattleMapDb> deleteRow(
     _i1.Session session,
     BattleMapDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteRow<BattleMapDb>(
+    return session.db.deleteRow<BattleMapDb>(
       row,
       transaction: transaction,
     );
   }
 
-  Future<List<int>> deleteWhere(
+  Future<List<BattleMapDb>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<BattleMapDbTable> where,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteWhere<BattleMapDb>(
+    return session.db.deleteWhere<BattleMapDb>(
       where: where(BattleMapDb.t),
       transaction: transaction,
     );
@@ -443,7 +299,7 @@ class BattleMapDbRepository {
     int? limit,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.count<BattleMapDb>(
+    return session.db.count<BattleMapDb>(
       where: where?.call(BattleMapDb.t),
       limit: limit,
       transaction: transaction,

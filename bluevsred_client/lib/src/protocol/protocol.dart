@@ -29,8 +29,6 @@ class Protocol extends _i1.SerializationManager {
 
   factory Protocol() => _instance;
 
-  static final Map<Type, _i1.constructor> customConstructors = {};
-
   static final Protocol _instance = Protocol._();
 
   @override
@@ -39,41 +37,38 @@ class Protocol extends _i1.SerializationManager {
     Type? t,
   ]) {
     t ??= T;
-    if (customConstructors.containsKey(t)) {
-      return customConstructors[t]!(data, this) as T;
-    }
     if (t == _i2.BattleDb) {
-      return _i2.BattleDb.fromJson(data, this) as T;
+      return _i2.BattleDb.fromJson(data) as T;
     }
     if (t == _i3.BattleMapDb) {
-      return _i3.BattleMapDb.fromJson(data, this) as T;
+      return _i3.BattleMapDb.fromJson(data) as T;
     }
     if (t == _i4.GamePlayerDb) {
-      return _i4.GamePlayerDb.fromJson(data, this) as T;
+      return _i4.GamePlayerDb.fromJson(data) as T;
     }
     if (t == _i5.TeamDb) {
-      return _i5.TeamDb.fromJson(data, this) as T;
+      return _i5.TeamDb.fromJson(data) as T;
     }
     if (t == _i6.TroopDb) {
-      return _i6.TroopDb.fromJson(data, this) as T;
+      return _i6.TroopDb.fromJson(data) as T;
     }
     if (t == _i7.TroopType) {
       return _i7.TroopType.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.BattleDb?>()) {
-      return (data != null ? _i2.BattleDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i2.BattleDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i3.BattleMapDb?>()) {
-      return (data != null ? _i3.BattleMapDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i3.BattleMapDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i4.GamePlayerDb?>()) {
-      return (data != null ? _i4.GamePlayerDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i4.GamePlayerDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i5.TeamDb?>()) {
-      return (data != null ? _i5.TeamDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i5.TeamDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i6.TroopDb?>()) {
-      return (data != null ? _i6.TroopDb.fromJson(data, this) : null) as T;
+      return (data != null ? _i6.TroopDb.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i7.TroopType?>()) {
       return (data != null ? _i7.TroopType.fromJson(data) : null) as T;

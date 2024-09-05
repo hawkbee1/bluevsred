@@ -11,7 +11,8 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod_serialization/serverpod_serialization.dart';
 
-abstract class BattleDb extends _i1.TableRow {
+abstract class BattleDb extends _i1.TableRow
+    implements _i1.ProtocolSerialization {
   BattleDb._({
     int? id,
     required this.creationDate,
@@ -28,20 +29,16 @@ abstract class BattleDb extends _i1.TableRow {
     required double actionPointsRecoveryRate,
   }) = _BattleDbImpl;
 
-  factory BattleDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory BattleDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return BattleDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      creationDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['creationDate']),
-      startDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['startDate']),
-      maxActionPoints: serializationManager
-          .deserialize<double>(jsonSerialization['maxActionPoints']),
-      actionPointsRecoveryRate: serializationManager
-          .deserialize<double>(jsonSerialization['actionPointsRecoveryRate']),
+      id: jsonSerialization['id'] as int?,
+      creationDate:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['creationDate']),
+      startDate:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['startDate']),
+      maxActionPoints: (jsonSerialization['maxActionPoints'] as num).toDouble(),
+      actionPointsRecoveryRate:
+          (jsonSerialization['actionPointsRecoveryRate'] as num).toDouble(),
     );
   }
 
@@ -79,19 +76,7 @@ abstract class BattleDb extends _i1.TableRow {
   }
 
   @override
-  @Deprecated('Will be removed in 2.0.0')
-  Map<String, dynamic> toJsonForDatabase() {
-    return {
-      'id': id,
-      'creationDate': creationDate,
-      'startDate': startDate,
-      'maxActionPoints': maxActionPoints,
-      'actionPointsRecoveryRate': actionPointsRecoveryRate,
-    };
-  }
-
-  @override
-  Map<String, dynamic> allToJson() {
+  Map<String, dynamic> toJsonForProtocol() {
     return {
       if (id != null) 'id': id,
       'creationDate': creationDate.toJson(),
@@ -99,150 +84,6 @@ abstract class BattleDb extends _i1.TableRow {
       'maxActionPoints': maxActionPoints,
       'actionPointsRecoveryRate': actionPointsRecoveryRate,
     };
-  }
-
-  @override
-  @Deprecated('Will be removed in 2.0.0')
-  void setColumn(
-    String columnName,
-    value,
-  ) {
-    switch (columnName) {
-      case 'id':
-        id = value;
-        return;
-      case 'creationDate':
-        creationDate = value;
-        return;
-      case 'startDate':
-        startDate = value;
-        return;
-      case 'maxActionPoints':
-        maxActionPoints = value;
-        return;
-      case 'actionPointsRecoveryRate':
-        actionPointsRecoveryRate = value;
-        return;
-      default:
-        throw UnimplementedError();
-    }
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.find instead.')
-  static Future<List<BattleDb>> find(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleDbTable>? where,
-    int? limit,
-    int? offset,
-    _i1.Column? orderBy,
-    List<_i1.Order>? orderByList,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.find<BattleDb>(
-      where: where != null ? where(BattleDb.t) : null,
-      limit: limit,
-      offset: offset,
-      orderBy: orderBy,
-      orderByList: orderByList,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findRow instead.')
-  static Future<BattleDb?> findSingleRow(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleDbTable>? where,
-    int? offset,
-    _i1.Column? orderBy,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.findSingleRow<BattleDb>(
-      where: where != null ? where(BattleDb.t) : null,
-      offset: offset,
-      orderBy: orderBy,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findById instead.')
-  static Future<BattleDb?> findById(
-    _i1.Session session,
-    int id,
-  ) async {
-    return session.db.findById<BattleDb>(id);
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteWhere instead.')
-  static Future<int> delete(
-    _i1.Session session, {
-    required _i1.WhereExpressionBuilder<BattleDbTable> where,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.delete<BattleDb>(
-      where: where(BattleDb.t),
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteRow instead.')
-  static Future<bool> deleteRow(
-    _i1.Session session,
-    BattleDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.deleteRow(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.update instead.')
-  static Future<bool> update(
-    _i1.Session session,
-    BattleDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.update(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated(
-      'Will be removed in 2.0.0. Use: db.insert instead. Important note: In db.insert, the object you pass in is no longer modified, instead a new copy with the added row is returned which contains the inserted id.')
-  static Future<void> insert(
-    _i1.Session session,
-    BattleDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.insert(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.count instead.')
-  static Future<int> count(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<BattleDbTable>? where,
-    int? limit,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.count<BattleDb>(
-      where: where != null ? where(BattleDb.t) : null,
-      limit: limit,
-      useCache: useCache,
-      transaction: transaction,
-    );
   }
 
   static BattleDbInclude include() {
@@ -267,6 +108,11 @@ abstract class BattleDb extends _i1.TableRow {
       orderByList: orderByList?.call(BattleDb.t),
       include: include,
     );
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 
@@ -344,9 +190,6 @@ class BattleDbTable extends _i1.Table {
       ];
 }
 
-@Deprecated('Use BattleDbTable.t instead.')
-BattleDbTable tBattleDb = BattleDbTable();
-
 class BattleDbInclude extends _i1.IncludeObject {
   BattleDbInclude._();
 
@@ -390,7 +233,7 @@ class BattleDbRepository {
     _i1.OrderByListBuilder<BattleDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.find<BattleDb>(
+    return session.db.find<BattleDb>(
       where: where?.call(BattleDb.t),
       orderBy: orderBy?.call(BattleDb.t),
       orderByList: orderByList?.call(BattleDb.t),
@@ -410,7 +253,7 @@ class BattleDbRepository {
     _i1.OrderByListBuilder<BattleDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findFirstRow<BattleDb>(
+    return session.db.findFirstRow<BattleDb>(
       where: where?.call(BattleDb.t),
       orderBy: orderBy?.call(BattleDb.t),
       orderByList: orderByList?.call(BattleDb.t),
@@ -425,7 +268,7 @@ class BattleDbRepository {
     int id, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findById<BattleDb>(
+    return session.db.findById<BattleDb>(
       id,
       transaction: transaction,
     );
@@ -436,7 +279,7 @@ class BattleDbRepository {
     List<BattleDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insert<BattleDb>(
+    return session.db.insert<BattleDb>(
       rows,
       transaction: transaction,
     );
@@ -447,7 +290,7 @@ class BattleDbRepository {
     BattleDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insertRow<BattleDb>(
+    return session.db.insertRow<BattleDb>(
       row,
       transaction: transaction,
     );
@@ -459,7 +302,7 @@ class BattleDbRepository {
     _i1.ColumnSelections<BattleDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.update<BattleDb>(
+    return session.db.update<BattleDb>(
       rows,
       columns: columns?.call(BattleDb.t),
       transaction: transaction,
@@ -472,41 +315,41 @@ class BattleDbRepository {
     _i1.ColumnSelections<BattleDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.updateRow<BattleDb>(
+    return session.db.updateRow<BattleDb>(
       row,
       columns: columns?.call(BattleDb.t),
       transaction: transaction,
     );
   }
 
-  Future<List<int>> delete(
+  Future<List<BattleDb>> delete(
     _i1.Session session,
     List<BattleDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.delete<BattleDb>(
+    return session.db.delete<BattleDb>(
       rows,
       transaction: transaction,
     );
   }
 
-  Future<int> deleteRow(
+  Future<BattleDb> deleteRow(
     _i1.Session session,
     BattleDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteRow<BattleDb>(
+    return session.db.deleteRow<BattleDb>(
       row,
       transaction: transaction,
     );
   }
 
-  Future<List<int>> deleteWhere(
+  Future<List<BattleDb>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<BattleDbTable> where,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteWhere<BattleDb>(
+    return session.db.deleteWhere<BattleDb>(
       where: where(BattleDb.t),
       transaction: transaction,
     );
@@ -518,7 +361,7 @@ class BattleDbRepository {
     int? limit,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.count<BattleDb>(
+    return session.db.count<BattleDb>(
       where: where?.call(BattleDb.t),
       limit: limit,
       transaction: transaction,

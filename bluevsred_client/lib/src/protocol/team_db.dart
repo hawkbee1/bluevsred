@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-abstract class TeamDb extends _i1.SerializableEntity {
+abstract class TeamDb implements _i1.SerializableModel {
   TeamDb._({
     this.id,
     required this.name,
@@ -23,15 +23,11 @@ abstract class TeamDb extends _i1.SerializableEntity {
     required String colorCode,
   }) = _TeamDbImpl;
 
-  factory TeamDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory TeamDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return TeamDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      name: serializationManager.deserialize<String>(jsonSerialization['name']),
-      colorCode: serializationManager
-          .deserialize<String>(jsonSerialization['colorCode']),
+      id: jsonSerialization['id'] as int?,
+      name: jsonSerialization['name'] as String,
+      colorCode: jsonSerialization['colorCode'] as String,
     );
   }
 
@@ -56,6 +52,11 @@ abstract class TeamDb extends _i1.SerializableEntity {
       'name': name,
       'colorCode': colorCode,
     };
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 

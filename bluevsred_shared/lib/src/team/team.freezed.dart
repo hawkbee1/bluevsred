@@ -24,8 +24,12 @@ mixin _$Team {
   String get colorCode => throw _privateConstructorUsedError;
   Set<GamePlayer> get gamePlayers => throw _privateConstructorUsedError;
 
+  /// Serializes this Team to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TeamCopyWith<Team> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -47,6 +51,8 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class __$$TeamImplCopyWithImpl<$Res>
   __$$TeamImplCopyWithImpl(_$TeamImpl _value, $Res Function(_$TeamImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,12 +154,14 @@ class _$TeamImpl extends _Team {
                 .equals(other.gamePlayers, gamePlayers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, colorCode,
       const DeepCollectionEquality().hash(gamePlayers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TeamImplCopyWith<_$TeamImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _Team extends Team {
   String get colorCode;
   @override
   Set<GamePlayer> get gamePlayers;
+
+  /// Create a copy of Team
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TeamImplCopyWith<_$TeamImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

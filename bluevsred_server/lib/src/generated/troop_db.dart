@@ -11,7 +11,8 @@
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'protocol.dart' as _i2;
 
-abstract class TroopDb extends _i1.TableRow {
+abstract class TroopDb extends _i1.TableRow
+    implements _i1.ProtocolSerialization {
   TroopDb._({
     int? id,
     required this.troopType,
@@ -24,16 +25,12 @@ abstract class TroopDb extends _i1.TableRow {
     required double actionPoints,
   }) = _TroopDbImpl;
 
-  factory TroopDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory TroopDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return TroopDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      troopType: serializationManager
-          .deserialize<_i2.TroopType>(jsonSerialization['troopType']),
-      actionPoints: serializationManager
-          .deserialize<double>(jsonSerialization['actionPoints']),
+      id: jsonSerialization['id'] as int?,
+      troopType:
+          _i2.TroopType.fromJson((jsonSerialization['troopType'] as String)),
+      actionPoints: (jsonSerialization['actionPoints'] as num).toDouble(),
     );
   }
 
@@ -63,160 +60,12 @@ abstract class TroopDb extends _i1.TableRow {
   }
 
   @override
-  @Deprecated('Will be removed in 2.0.0')
-  Map<String, dynamic> toJsonForDatabase() {
-    return {
-      'id': id,
-      'troopType': troopType,
-      'actionPoints': actionPoints,
-    };
-  }
-
-  @override
-  Map<String, dynamic> allToJson() {
+  Map<String, dynamic> toJsonForProtocol() {
     return {
       if (id != null) 'id': id,
       'troopType': troopType.toJson(),
       'actionPoints': actionPoints,
     };
-  }
-
-  @override
-  @Deprecated('Will be removed in 2.0.0')
-  void setColumn(
-    String columnName,
-    value,
-  ) {
-    switch (columnName) {
-      case 'id':
-        id = value;
-        return;
-      case 'troopType':
-        troopType = value;
-        return;
-      case 'actionPoints':
-        actionPoints = value;
-        return;
-      default:
-        throw UnimplementedError();
-    }
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.find instead.')
-  static Future<List<TroopDb>> find(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<TroopDbTable>? where,
-    int? limit,
-    int? offset,
-    _i1.Column? orderBy,
-    List<_i1.Order>? orderByList,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.find<TroopDb>(
-      where: where != null ? where(TroopDb.t) : null,
-      limit: limit,
-      offset: offset,
-      orderBy: orderBy,
-      orderByList: orderByList,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findRow instead.')
-  static Future<TroopDb?> findSingleRow(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<TroopDbTable>? where,
-    int? offset,
-    _i1.Column? orderBy,
-    bool orderDescending = false,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.findSingleRow<TroopDb>(
-      where: where != null ? where(TroopDb.t) : null,
-      offset: offset,
-      orderBy: orderBy,
-      orderDescending: orderDescending,
-      useCache: useCache,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.findById instead.')
-  static Future<TroopDb?> findById(
-    _i1.Session session,
-    int id,
-  ) async {
-    return session.db.findById<TroopDb>(id);
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteWhere instead.')
-  static Future<int> delete(
-    _i1.Session session, {
-    required _i1.WhereExpressionBuilder<TroopDbTable> where,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.delete<TroopDb>(
-      where: where(TroopDb.t),
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.deleteRow instead.')
-  static Future<bool> deleteRow(
-    _i1.Session session,
-    TroopDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.deleteRow(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.update instead.')
-  static Future<bool> update(
-    _i1.Session session,
-    TroopDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.update(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated(
-      'Will be removed in 2.0.0. Use: db.insert instead. Important note: In db.insert, the object you pass in is no longer modified, instead a new copy with the added row is returned which contains the inserted id.')
-  static Future<void> insert(
-    _i1.Session session,
-    TroopDb row, {
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.insert(
-      row,
-      transaction: transaction,
-    );
-  }
-
-  @Deprecated('Will be removed in 2.0.0. Use: db.count instead.')
-  static Future<int> count(
-    _i1.Session session, {
-    _i1.WhereExpressionBuilder<TroopDbTable>? where,
-    int? limit,
-    bool useCache = true,
-    _i1.Transaction? transaction,
-  }) async {
-    return session.db.count<TroopDb>(
-      where: where != null ? where(TroopDb.t) : null,
-      limit: limit,
-      useCache: useCache,
-      transaction: transaction,
-    );
   }
 
   static TroopDbInclude include() {
@@ -241,6 +90,11 @@ abstract class TroopDb extends _i1.TableRow {
       orderByList: orderByList?.call(TroopDb.t),
       include: include,
     );
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 
@@ -296,9 +150,6 @@ class TroopDbTable extends _i1.Table {
       ];
 }
 
-@Deprecated('Use TroopDbTable.t instead.')
-TroopDbTable tTroopDb = TroopDbTable();
-
 class TroopDbInclude extends _i1.IncludeObject {
   TroopDbInclude._();
 
@@ -342,7 +193,7 @@ class TroopDbRepository {
     _i1.OrderByListBuilder<TroopDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.find<TroopDb>(
+    return session.db.find<TroopDb>(
       where: where?.call(TroopDb.t),
       orderBy: orderBy?.call(TroopDb.t),
       orderByList: orderByList?.call(TroopDb.t),
@@ -362,7 +213,7 @@ class TroopDbRepository {
     _i1.OrderByListBuilder<TroopDbTable>? orderByList,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findFirstRow<TroopDb>(
+    return session.db.findFirstRow<TroopDb>(
       where: where?.call(TroopDb.t),
       orderBy: orderBy?.call(TroopDb.t),
       orderByList: orderByList?.call(TroopDb.t),
@@ -377,7 +228,7 @@ class TroopDbRepository {
     int id, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.findById<TroopDb>(
+    return session.db.findById<TroopDb>(
       id,
       transaction: transaction,
     );
@@ -388,7 +239,7 @@ class TroopDbRepository {
     List<TroopDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insert<TroopDb>(
+    return session.db.insert<TroopDb>(
       rows,
       transaction: transaction,
     );
@@ -399,7 +250,7 @@ class TroopDbRepository {
     TroopDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.insertRow<TroopDb>(
+    return session.db.insertRow<TroopDb>(
       row,
       transaction: transaction,
     );
@@ -411,7 +262,7 @@ class TroopDbRepository {
     _i1.ColumnSelections<TroopDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.update<TroopDb>(
+    return session.db.update<TroopDb>(
       rows,
       columns: columns?.call(TroopDb.t),
       transaction: transaction,
@@ -424,41 +275,41 @@ class TroopDbRepository {
     _i1.ColumnSelections<TroopDbTable>? columns,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.updateRow<TroopDb>(
+    return session.db.updateRow<TroopDb>(
       row,
       columns: columns?.call(TroopDb.t),
       transaction: transaction,
     );
   }
 
-  Future<List<int>> delete(
+  Future<List<TroopDb>> delete(
     _i1.Session session,
     List<TroopDb> rows, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.delete<TroopDb>(
+    return session.db.delete<TroopDb>(
       rows,
       transaction: transaction,
     );
   }
 
-  Future<int> deleteRow(
+  Future<TroopDb> deleteRow(
     _i1.Session session,
     TroopDb row, {
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteRow<TroopDb>(
+    return session.db.deleteRow<TroopDb>(
       row,
       transaction: transaction,
     );
   }
 
-  Future<List<int>> deleteWhere(
+  Future<List<TroopDb>> deleteWhere(
     _i1.Session session, {
     required _i1.WhereExpressionBuilder<TroopDbTable> where,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.deleteWhere<TroopDb>(
+    return session.db.deleteWhere<TroopDb>(
       where: where(TroopDb.t),
       transaction: transaction,
     );
@@ -470,7 +321,7 @@ class TroopDbRepository {
     int? limit,
     _i1.Transaction? transaction,
   }) async {
-    return session.dbNext.count<TroopDb>(
+    return session.db.count<TroopDb>(
       where: where?.call(TroopDb.t),
       limit: limit,
       transaction: transaction,

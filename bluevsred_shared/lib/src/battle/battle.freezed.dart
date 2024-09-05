@@ -80,7 +80,9 @@ mixin _$Battle {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BattleCopyWith<Battle> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -111,6 +113,8 @@ class _$BattleCopyWithImpl<$Res, $Val extends Battle>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -154,6 +158,8 @@ class _$BattleCopyWithImpl<$Res, $Val extends Battle>
     ) as $Val);
   }
 
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BattleMapCopyWith<$Res> get battleMap {
@@ -191,6 +197,8 @@ class __$$BattleImplCopyWithImpl<$Res>
       _$BattleImpl _value, $Res Function(_$BattleImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,7 +307,9 @@ class _$BattleImpl extends _Battle {
       const DeepCollectionEquality().hash(troops),
       const DeepCollectionEquality().hash(teams));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BattleImplCopyWith<_$BattleImpl> get copyWith =>
@@ -414,8 +424,11 @@ abstract class _Battle extends Battle {
   Set<Troop>? get troops;
   @override
   Set<Team>? get teams;
+
+  /// Create a copy of Battle
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BattleImplCopyWith<_$BattleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

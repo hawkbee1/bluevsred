@@ -11,7 +11,7 @@
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'protocol.dart' as _i2;
 
-abstract class TroopDb extends _i1.SerializableEntity {
+abstract class TroopDb implements _i1.SerializableModel {
   TroopDb._({
     this.id,
     required this.troopType,
@@ -24,16 +24,12 @@ abstract class TroopDb extends _i1.SerializableEntity {
     required double actionPoints,
   }) = _TroopDbImpl;
 
-  factory TroopDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory TroopDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return TroopDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      troopType: serializationManager
-          .deserialize<_i2.TroopType>(jsonSerialization['troopType']),
-      actionPoints: serializationManager
-          .deserialize<double>(jsonSerialization['actionPoints']),
+      id: jsonSerialization['id'] as int?,
+      troopType:
+          _i2.TroopType.fromJson((jsonSerialization['troopType'] as String)),
+      actionPoints: (jsonSerialization['actionPoints'] as num).toDouble(),
     );
   }
 
@@ -58,6 +54,11 @@ abstract class TroopDb extends _i1.SerializableEntity {
       'troopType': troopType.toJson(),
       'actionPoints': actionPoints,
     };
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 

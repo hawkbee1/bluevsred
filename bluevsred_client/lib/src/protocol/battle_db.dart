@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-abstract class BattleDb extends _i1.SerializableEntity {
+abstract class BattleDb implements _i1.SerializableModel {
   BattleDb._({
     this.id,
     required this.creationDate,
@@ -27,20 +27,16 @@ abstract class BattleDb extends _i1.SerializableEntity {
     required double actionPointsRecoveryRate,
   }) = _BattleDbImpl;
 
-  factory BattleDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory BattleDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return BattleDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      creationDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['creationDate']),
-      startDate: serializationManager
-          .deserialize<DateTime>(jsonSerialization['startDate']),
-      maxActionPoints: serializationManager
-          .deserialize<double>(jsonSerialization['maxActionPoints']),
-      actionPointsRecoveryRate: serializationManager
-          .deserialize<double>(jsonSerialization['actionPointsRecoveryRate']),
+      id: jsonSerialization['id'] as int?,
+      creationDate:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['creationDate']),
+      startDate:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['startDate']),
+      maxActionPoints: (jsonSerialization['maxActionPoints'] as num).toDouble(),
+      actionPointsRecoveryRate:
+          (jsonSerialization['actionPointsRecoveryRate'] as num).toDouble(),
     );
   }
 
@@ -73,6 +69,11 @@ abstract class BattleDb extends _i1.SerializableEntity {
       'maxActionPoints': maxActionPoints,
       'actionPointsRecoveryRate': actionPointsRecoveryRate,
     };
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 

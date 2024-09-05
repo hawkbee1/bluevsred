@@ -7,10 +7,10 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  serverpod: 1.2.6
+  serverpod: 2.0.2
   bluevsred_shared:
     path: ../bluevsred_shared
-  serverpod_serialization: 1.2.6
+  serverpod_serialization: 2.0.2
 
 dev_dependencies:
   lints: ^3.0.0

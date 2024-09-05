@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-abstract class BattleMapDb extends _i1.SerializableEntity {
+abstract class BattleMapDb implements _i1.SerializableModel {
   BattleMapDb._({
     this.id,
     required this.path,
@@ -21,13 +21,10 @@ abstract class BattleMapDb extends _i1.SerializableEntity {
     required String path,
   }) = _BattleMapDbImpl;
 
-  factory BattleMapDb.fromJson(
-    Map<String, dynamic> jsonSerialization,
-    _i1.SerializationManager serializationManager,
-  ) {
+  factory BattleMapDb.fromJson(Map<String, dynamic> jsonSerialization) {
     return BattleMapDb(
-      id: serializationManager.deserialize<int?>(jsonSerialization['id']),
-      path: serializationManager.deserialize<String>(jsonSerialization['path']),
+      id: jsonSerialization['id'] as int?,
+      path: jsonSerialization['path'] as String,
     );
   }
 
@@ -48,6 +45,11 @@ abstract class BattleMapDb extends _i1.SerializableEntity {
       if (id != null) 'id': id,
       'path': path,
     };
+  }
+
+  @override
+  String toString() {
+    return _i1.SerializationManager.encode(this);
   }
 }
 

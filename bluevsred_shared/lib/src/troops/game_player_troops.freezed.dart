@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GamePlayerTroops {
   Set<Troop> get troops => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GamePlayerTroops
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GamePlayerTroopsCopyWith<GamePlayerTroops> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$GamePlayerTroopsCopyWithImpl<$Res, $Val extends GamePlayerTroops>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GamePlayerTroops
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$GamePlayerTroopsImplCopyWithImpl<$Res>
       $Res Function(_$GamePlayerTroopsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GamePlayerTroops
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,7 +127,9 @@ class _$GamePlayerTroopsImpl extends _GamePlayerTroops {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_troops));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GamePlayerTroops
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GamePlayerTroopsImplCopyWith<_$GamePlayerTroopsImpl> get copyWith =>
@@ -136,8 +144,11 @@ abstract class _GamePlayerTroops extends GamePlayerTroops {
 
   @override
   Set<Troop> get troops;
+
+  /// Create a copy of GamePlayerTroops
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GamePlayerTroopsImplCopyWith<_$GamePlayerTroopsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
