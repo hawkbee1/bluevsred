@@ -21,7 +21,7 @@ final router = GoRouter(
           path: 'play',
           pageBuilder: (context, state) => buildPageTransition<void>(
             key: const ValueKey('play'),
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
             child: const LevelSelectionScreen(
               key: Key('level selection'),
             ),
@@ -34,7 +34,7 @@ final router = GoRouter(
                 final level = gameLevels[levelNumber - 1];
                 return buildPageTransition<void>(
                   key: const ValueKey('level'),
-                  color: Theme.of(context).colorScheme.background,
+                  color: Theme.of(context).colorScheme.surface,
                   child: GameScreen(level: level),
                 );
               },

@@ -27,7 +27,7 @@ class GameWinDialog extends StatelessWidget {
       child: NesContainer(
         width: 420,
         height: 300,
-        backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

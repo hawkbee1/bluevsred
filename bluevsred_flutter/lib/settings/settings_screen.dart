@@ -17,7 +17,7 @@ class SettingsScreen extends StatelessWidget {
     final settings = context.watch<SettingsController>();
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Column(
           children: [
