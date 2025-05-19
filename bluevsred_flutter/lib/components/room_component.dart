@@ -6,6 +6,7 @@ import '../game/blue_vs_red_game.dart';
 import '../models/interactive_object.dart';
 import 'character_component.dart';
 import 'interactive_object_component.dart';
+import 'interaction_overlay.dart';
 
 /// Component that manages the room and all objects within it
 class RoomComponent extends PositionComponent with TapCallbacks, HoverCallbacks {
@@ -23,6 +24,9 @@ class RoomComponent extends PositionComponent with TapCallbacks, HoverCallbacks 
   
   /// Currently selected object for interaction
   InteractiveObject? _selectedObject;
+  
+  /// Current interaction overlay
+  InteractionOverlay? _interactionOverlay;
 
   /// Creates a new room component
   RoomComponent({
@@ -57,6 +61,12 @@ class RoomComponent extends PositionComponent with TapCallbacks, HoverCallbacks 
     final tapPosition = event.localPosition;
     final worldPosition = event.localPosition;
     
+    // If there's an open interaction overlay, close it first
+    if (_interactionOverlay != null) {
+      _closeInteractionOverlay();
+      return;
+    }
+    
     // Check if an object was tapped
     InteractiveObject? tappedObject;
     for (final object in game.interactiveObjects) {
@@ -69,7 +79,7 @@ class RoomComponent extends PositionComponent with TapCallbacks, HoverCallbacks 
     if (tappedObject != null) {
       // Object was tapped, select it
       _selectedObject = tappedObject;
-      _showInteractionMenu(tappedObject);
+      _showInteractionMenu(tappedObject, worldPosition);
     } else {
       // No object tapped, move character to that position
       _characterComponent.moveTo(Offset(worldPosition.x, worldPosition.y));
@@ -127,19 +137,23 @@ class RoomComponent extends PositionComponent with TapCallbacks, HoverCallbacks 
   }
   
   /// Shows an interaction menu for the selected object
-  void _showInteractionMenu(InteractiveObject object) {
-    // In a real implementation, this would show UI elements
-    // For now, we'll just print the available actions
-    print('Available actions for ${object.name}:');
-    object.possibleActions.forEach((action, skill) {
-      print('- $action (uses $skill skill)');
-    });
+  void _showInteractionMenu(InteractiveObject object, Vector2 position) {
+    // Create an interaction overlay at the tap position
+    _interactionOverlay = InteractionOverlay(
+      game: game,
+      object: object,
+      position: position,
+      onClose: _closeInteractionOverlay,
+    );
     
-    // TODO: Show UI for selecting an action
-    // For now, just perform the first action
-    if (object.possibleActions.isNotEmpty) {
-      final action = object.possibleActions.keys.first;
-      game.performAction(object, action);
+    add(_interactionOverlay!);
+  }
+  
+  /// Closes the current interaction overlay
+  void _closeInteractionOverlay() {
+    if (_interactionOverlay != null) {
+      _interactionOverlay!.removeFromParent();
+      _interactionOverlay = null;
     }
   }
 }

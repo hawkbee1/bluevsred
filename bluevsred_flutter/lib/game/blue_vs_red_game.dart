@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
+import '../components/notification_component.dart';
 import '../components/room_component.dart';
 import '../models/character.dart';
 import '../models/interactive_object.dart';
@@ -16,6 +17,15 @@ class BlueVsRedGame extends FlameGame with HasTappables {
   
   /// Flag to track if the game has been initialized
   bool _isInitialized = false;
+  
+  /// Notification component for displaying messages
+  late NotificationComponent _notificationComponent;
+  
+  /// Action history for tracking recent actions
+  final List<String> actionHistory = [];
+  
+  /// Maximum number of actions to keep in history
+  final int maxHistorySize = 10;
 
   /// Creates a new game instance
   BlueVsRedGame();
@@ -30,6 +40,13 @@ class BlueVsRedGame extends FlameGame with HasTappables {
     
     // Add the room component which manages all game objects
     add(RoomComponent(game: this));
+    
+    // Add notification component in the top-right corner
+    _notificationComponent = NotificationComponent(
+      position: Vector2(size.x - 10, 10),
+      size: Vector2(250, 150),
+    );
+    add(_notificationComponent);
   }
   
   /// Cleanup resources when the game is disposed
@@ -271,14 +288,54 @@ class BlueVsRedGame extends FlameGame with HasTappables {
     
     if (skill == null) return;
     
-    // Improve the skill
-    character = character.improveSkill(skill.id, 10.0);
+    // Get the previous skill level
+    final previousLevel = skill.level;
     
-    // TODO: Show feedback to the player about the action and skill improvement
+    // Experience points earned from action (can be adjusted based on difficulty)
+    final experiencePoints = 10.0;
+    
+    // Apply bonuses based on color
+    final bonus = character.getSkillBonus(skill.name);
+    
+    // Improve the skill
+    character = character.improveSkill(skill.id, experiencePoints);
+    
+    // Retrieve the updated skill to check if it leveled up
+    final updatedSkill = character.skills[skill.id];
+    if (updatedSkill != null && updatedSkill.level > previousLevel) {
+      // Skill leveled up, show a more prominent notification
+      _notificationComponent.showNotification(
+        '${skill.name} increased to level ${updatedSkill.level}!',
+        color: character.chosenColor,
+      );
+    } else {
+      // Regular action notification
+      _notificationComponent.showNotification(
+        'Used $actionName on ${object.name} (+${(experiencePoints * bonus).toStringAsFixed(1)} XP)',
+      );
+    }
+    
+    // Add to action history
+    _addToActionHistory('Used $actionName on ${object.name}');
   }
   
   /// Sets the player's chosen color
   void setCharacterColor(Color color) {
     character = character.copyWith(chosenColor: color);
+  }
+  
+  /// Adds an action to the history
+  void _addToActionHistory(String action) {
+    actionHistory.add(action);
+    
+    // Limit the history size
+    if (actionHistory.length > maxHistorySize) {
+      actionHistory.removeAt(0);
+    }
+  }
+  
+  /// Shows a general notification to the player
+  void showNotification(String message, {Color? color}) {
+    _notificationComponent.showNotification(message, color: color);
   }
 }

@@ -56,25 +56,23 @@ class Character extends Equatable {
 
   /// Returns the bonus multiplier for a skill based on the chosen color
   double getSkillBonus(String skillName) {
-    final skill = skills[skillName];
-    if (skill == null) return 1.0;
-
     // Define color-specific bonuses
     // Red is good for physical/combat skills
     // Blue is good for mental/technical skills
     // Green is good for survival/nature skills
     // Each bonus is between 1.0 and 1.5
+    final lowerSkillName = skillName.toLowerCase();
 
     if (chosenColor == Colors.red) {
-      if (['strength', 'combat', 'fitness', 'crafting'].contains(skillName.toLowerCase())) {
+      if (['strength', 'combat', 'fitness', 'crafting'].contains(lowerSkillName)) {
         return 1.5;
       }
     } else if (chosenColor == Colors.blue) {
-      if (['intelligence', 'technology', 'logic', 'memory'].contains(skillName.toLowerCase())) {
+      if (['intelligence', 'technology', 'logic', 'memory'].contains(lowerSkillName)) {
         return 1.5;
       }
     } else if (chosenColor == Colors.green) {
-      if (['survival', 'cooking', 'health', 'nature'].contains(skillName.toLowerCase())) {
+      if (['survival', 'cooking', 'health', 'nature'].contains(lowerSkillName)) {
         return 1.5;
       }
     }
