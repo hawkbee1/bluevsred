@@ -5,8 +5,8 @@ Please follow these guidelines for all responses related to my Flutter/Flame gam
 3. Game Loop: Consider performance implications in the game loop
 4. Testing: Include unit tests for core game mechanics. Widget testing includes widget screenshots for each step and for different screen type (desktop, phone, tablet)
 5. Documentation: Add code comments explaining complex logic
-6. Iterations: For each new feature, cover design, implementation, check code (flutter analyze), update code until flutter analyze command return no complaint,  testing phases (flutter test), test coverage, update code until test coverae is 100% 
-7. File Structure: Follow the aclean code project organization
+6. Iterations: For each new feature, cover design, implementation, check code (flutter analyze), update code until flutter analyze command return no complaint, testing phases (flutter test), test coverage, update code until test coverage is 100% 
+7. File Structure: Follow the clean code project organization
 
 # AI Workflow for BlueVsRed Flutter Game Development
 
@@ -38,6 +38,11 @@ For every request, Claude should:
 - Note which aspects need testing
 - Suggest test cases for new functionality
 - Consider edge cases and potential failure points
+- Create unit tests for all models and services
+- Write widget tests for UI components
+- Implement integration tests for key user flows
+- Ensure each test is meaningful and verifies actual behavior
+- Aim for 100% test coverage in all production code
 
 ### Step 4: Documentation
 - Add comprehensive comments to code
@@ -69,6 +74,41 @@ Before completing each iteration, Claude should verify:
 - [ ] Any new dependencies are properly included
 - [ ] Performance considerations are addressed
 - [ ] Code is optimized for both mobile and desktop platforms
+- [ ] Tests achieve 100% code coverage
+- [ ] All tests are passing
+
+## Testing Strategy
+
+### Unit Testing
+- Test all model classes and their methods
+- Test state management providers and services
+- Mock dependencies for isolated testing
+- Verify edge cases and error handling
+
+### Widget Testing
+- Test UI components in isolation
+- Verify correct rendering for different screen sizes
+- Test interaction behaviors
+- Capture screenshots for visual regression testing
+
+### Integration Testing
+- Test complete user flows
+- Verify game mechanics work end-to-end
+- Test performance under typical usage patterns
+
+### Code Coverage Requirements
+- Run `flutter test --coverage` to generate coverage reports
+- Analyze coverage data with the following commands:
+  - `lcov --list coverage/lcov.info` to list coverage by file
+  - `lcov --summary coverage/lcov.info` to see overall coverage statistics
+  - Use `genhtml coverage/lcov.info -o coverage/html` to generate HTML reports
+  - View HTML reports with `open coverage/html/index.html` (macOS) or `xdg-open coverage/html/index.html` (Linux)
+- Look for lines marked as not covered (DA:line_number,0) in lcov.info
+- Identify uncovered code branches in the HTML report (highlighted in red)
+- Write additional tests targeting these specific uncovered lines
+- Verify improved coverage with `flutter test --coverage && lcov --summary coverage/lcov.info`
+- Continue until 100% line, function, and branch coverage is achieved
+- Add coverage verification to CI/CD pipeline
 
 ## Common Patterns to Follow
 
@@ -85,6 +125,6 @@ Please follow these guidelines for all responses related to my Flutter/Flame gam
 3. Game Loop: Consider performance implications in the game loop
 4. Testing: Include unit tests for core game mechanics. Widget testing includes widget screenshots for each step and for different screen type (desktop, phone, tablet)
 5. Documentation: Add code comments explaining complex logic
-6. Iterations: For each new feature, cover design, implementation, check code (flutter analyze), update code until flutter analyze command return no complaint,  testing phases (flutter test), test coverage, update code until test coverae is 100% 
-7. File Structure: Follow the aclean code project organization
+6. Iterations: For each new feature, cover design, implementation, check code (flutter analyze), update code until flutter analyze command return no complaint, testing phases (flutter test), test coverage, update code until test coverage is 100% 
+7. File Structure: Follow the clean code project organization
 

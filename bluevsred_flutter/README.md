@@ -20,7 +20,7 @@ A character development game built with Flutter and Flame where your color choic
 
 ## Game Overview
 
-In Blue vs Red, players create a character by choosing a color (the "choosenColor"), which grants specific bonuses to certain skills. The character interacts with various objects in a room environment, including:
+In Blue vs Red, players create a character by choosing a color (the "chosenColor"), which grants specific bonuses to certain skills. The character interacts with various objects in a room environment, including:
 
 - Bed
 - Desk
@@ -59,3 +59,53 @@ In Blue vs Red, players create a character by choosing a color (the "choosenColo
 ## Development
 
 This game is developed using Flutter and the Flame game engine, following clean code architecture principles and test-driven development. State management is handled using Riverpod.
+
+## Testing Approach
+
+Blue vs Red follows a comprehensive testing strategy to ensure quality and reliability:
+
+### Unit Testing
+All models, providers, and game mechanics are thoroughly unit tested to verify correct behavior in isolation.
+
+### Widget Testing
+UI components are tested with widget tests, including visual verification for different screen sizes.
+
+### Integration Testing
+End-to-end tests ensure that game flows work correctly from character creation to skill progression.
+
+### Code Coverage
+We maintain 100% code coverage as a requirement for all new code. Coverage is verified using the following workflow:
+
+1. Generate coverage data:
+```bash
+flutter test --coverage
+```
+
+2. Analyze coverage with lcov:
+```bash
+# List coverage by file
+lcov --list coverage/lcov.info
+
+# View summary statistics
+lcov --summary coverage/lcov.info
+```
+
+3. Generate and view HTML reports:
+```bash
+# Generate HTML report
+genhtml coverage/lcov.info -o coverage/html
+
+# Open the report (Linux)
+xdg-open coverage/html/index.html
+
+# Open the report (macOS)
+open coverage/html/index.html
+```
+
+4. Identify uncovered lines in the lcov.info file:
+```bash
+# Find lines with zero coverage (DA:line_number,0)
+grep "DA:[0-9]*,0" coverage/lcov.info
+```
+
+5. Write additional tests targeting uncovered lines until 100% coverage is achieved
