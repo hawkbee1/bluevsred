@@ -49,15 +49,8 @@ For every request, Claude should:
 ### Core Principles
 1. **Component-Based Design**: Follow Flame's component architecture for game entities.
 2. **Clean Separation**: Maintain separation between game logic, rendering, and UI.
-3. **State Management**: Use provider pattern for state management.
+3. **State Management**: Use Riverpod for state management.
 4. **Immutable Models**: Create immutable model classes with copy methods.
-
-### File Organization
-- `models/`: Data structures and business logic
-- `components/`: Flame game components
-- `game/`: Core game engine classes
-- `screens/`: Flutter UI screens
-- `utils/`: Helper functions and utilities
 
 ### Skill System Rules
 1. Using a skill increases its proficiency

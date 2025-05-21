@@ -58,4 +58,4 @@ In Blue vs Red, players create a character by choosing a color (the "choosenColo
 
 ## Development
 
-This game is developed using Flutter and the Flame game engine, following clean code architecture principles and test-driven development.
+This game is developed using Flutter and the Flame game engine, following clean code architecture principles and test-driven development. State management is handled using Riverpod.
