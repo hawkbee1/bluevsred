@@ -28,7 +28,7 @@ void main() {
     final gameWidget = tester.widget<GameWidget<BlueVsRedGame>>(find.byType(GameWidget<BlueVsRedGame>));
     final game = gameWidget.game; // game is non-nullable in GameWidget
     
-    expect(game.children.whereType<CommanderUnit>().length, 1, reason: "CommanderUnit should be added to the game");
+    expect(game!.children.whereType<CommanderUnit>().length, 1, reason: "CommanderUnit should be added to the game");
   });
 
   testWidgets('BlueVsRedGame onGameResize correctly positions CommanderUnit and camera', (WidgetTester tester) async {
