@@ -34,6 +34,18 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  
+  # Flame game engine for 2D games
+  flame: ^1.16.0
+  flame_audio: ^2.1.8
+  
+  # State management - Riverpod
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  
+  # Utilities
+  equatable: ^2.0.5
+  collection: ^1.18.0
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +57,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  
+  # Riverpod code generation
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.9
+  custom_lint: ^0.5.8
+  riverpod_lint: ^2.3.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
