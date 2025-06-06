@@ -7,6 +7,7 @@
 
 import 'dart:ui'; // Import for Size
 
+import 'package:bluevsred_flutter/game/blue_vs_red_game.dart';
 import 'package:bluevsred_flutter/main.dart'; // Imports BlueVsRedGame and MyApp
 import 'package:flame/game.dart'; // Ensure Game is imported for GameWidget<Game>
 import 'package:flutter_riverpod/flutter_riverpod.dart';

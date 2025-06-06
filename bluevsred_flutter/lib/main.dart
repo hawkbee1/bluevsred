@@ -1,43 +1,45 @@
 import 'package:flame/game.dart';
-import 'package:flutter/widgets.dart'; // Using widgets.dart for StatelessWidget
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:bluevsred_flutter/components/commander_unit.dart';
+import 'package:bluevsred_flutter/game/blue_vs_red_game.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    // Wrap the entire app with ProviderScope for Riverpod
+    const ProviderScope(child: MyApp()),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ProviderScope(
-      child: GameWidget(game: BlueVsRedGame()),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      title: 'Blue vs Red',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const GameScreen(),
     );
   }
 }
 
-class BlueVsRedGame extends FlameGame {
-  @override
-  Future<void> onLoad() async {
-    await super.onLoad();
-    // Add the CommanderUnit to the game.
-    // Its position will be set in onGameResize.
-    final commander = CommanderUnit();
-    add(commander);
-  }
+class GameScreen extends ConsumerWidget {
+  const GameScreen({super.key});
 
   @override
-  void onGameResize(Vector2 size) {
-    super.onGameResize(size);
-    // Find the commander unit if it exists
-    final commander = children.whereType<CommanderUnit>().firstOrNull;
-    if (commander != null) {
-      // Position the commander at the center of the screen
-      commander.position = size / 2;
-    }
-    // Center the camera on the middle of the game area.
-    camera.viewfinder.position = size / 2;
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      body: GameWidget(
+        game: BlueVsRedGame(),
+        // You can add overlays here if needed
+        // overlayBuilderMap: {
+        //   'pauseMenu': (context, game) => PauseMenu(game: game),
+        // },
+      ),
+    );
   }
 }
