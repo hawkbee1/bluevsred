@@ -1,4 +1,10 @@
-🧠 Game Presentation
+
+# <center>**Blue vs Red**</center>
+
+You are a commander who lead his section to kill the ennemy Headquarters together with his company and the whole army. Will you choose red or blue army?   
+
+
+# Game Presentation
 Blue vs Red is a persistent, cross-platform wargame where players take command of a military section and engage in strategic combat across a dynamic, multiplayer battlefield. Originally known as Assaut & Stratégie, the game has evolved into a modern, streamlined experience now available on web, Android, iPhone, macOS, Linux, and Windows platforms.
 
 The game simulates a large-scale war between two factions—Blue and Red—with each player controlling a squad of soldiers. Units have distinct roles (such as rifleman, sniper, heavy gunner, scout, or medic) and operate with action points used to move, fire, heal, or perform tactical maneuvers.
