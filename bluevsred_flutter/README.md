@@ -1,10 +1,9 @@
-
-# <center>**Blue vs Red**</center>
+# Blue vs Red
 
 You are a commander who lead his section to kill the ennemy Headquarters together with his company and the whole army. Will you choose red or blue army?   
 
 
-# Game Presentation
+## Game Presentation
 Blue vs Red is a persistent, cross-platform wargame where players take command of a military section and engage in strategic combat across a dynamic, multiplayer battlefield. Originally known as Assaut & Stratégie, the game has evolved into a modern, streamlined experience now available on web, Android, iPhone, macOS, Linux, and Windows platforms.
 
 The game simulates a large-scale war between two factions—Blue and Red—with each player controlling a squad of soldiers. Units have distinct roles (such as rifleman, sniper, heavy gunner, scout, or medic) and operate with action points used to move, fire, heal, or perform tactical maneuvers.
@@ -15,28 +14,15 @@ The game's depth, realism, and cooperative mechanics make it a unique experience
 
 Let me know if you'd like to proceed with the Rules and Resources section, or if you'd like to expand on other areas like factions, unit types, or victory conditions.
 
-
-
-
-
-
-
-Vous avez dit :
-Yes proceed
-
-
-ChatGPT a dit :
-Great! Here's the next section:
-
-📘 Rules and Resources
+## Rules and Resources
 Blue vs Red is built around core mechanics that emphasize strategy, coordination, and realism. Each player commands a section composed of several units—typically between 4 to 6 soldiers—each with specific roles and capabilities. The rules are simple in concept, but allow for deep tactical gameplay.
 
-🎯 Objectives
+## 🎯 Objectives
 Global Goal: Help your team (Blue or Red) dominate the battlefield by completing missions, capturing strategic zones, and inflicting maximum losses on the opposing side.
 
 Squad-Level Goal: Support allied squads, engage enemy units, survive, and complete specific assignments (e.g. escort, ambush, recon, defend).
 
-🎮 Turn and Action System
+## 🎮 Turn and Action System
 The game runs in real-time turns with each turn lasting a set number of minutes (e.g. 10 minutes per turn).
 
 Each unit has action points (AP) which replenish gradually over time.
@@ -45,7 +31,7 @@ Actions like moving, shooting, healing, or changing posture (e.g., crouch, prone
 
 Players can log in anytime to issue orders for the current or upcoming turns.
 
-🔫 Combat and Visibility
+## Combat and Visibility
 Line-of-sight (LOS) and terrain (forests, hills, buildings) are crucial. A unit can't shoot what it can't see.
 
 Weapons have realistic stats: accuracy, range, rate of fire, and ammunition.
@@ -54,31 +40,31 @@ Visibility depends on factors like light, cover, unit posture, and movement.
 
 Damage is location-based: hits to the legs, arms, or torso have different consequences (immobilization, reduced effectiveness, or death).
 
-🧍‍♂️ Unit Types and Roles
+## 🧍‍♂️Unit Types and Roles
 Typical unit types include:
 
-Rifleman – versatile, balanced AP and firepower.
+**Rifleman** – versatile, balanced AP and firepower.
 
-Sniper – long-range accuracy, low rate of fire.
+**Sniper** – long-range accuracy, low rate of fire.
 
-Machine Gunner – suppressive fire, area denial.
+**Machine** Gunner – suppressive fire, area denial.
 
-Medic – can heal or stabilize allies.
+**Medic** – can heal or stabilize allies.
 
-Scout – high mobility, reduced visibility range for enemies.
+**Scout** – high mobility, reduced visibility range for enemies.
 
-Engineer or Demolition – may handle explosives or mission-specific tools.
+**Engineer or Demolition** – may handle explosives or mission-specific tools.
 
 Players select their squad composition at the start and may be able to change it between missions.
 
-💬 Communication & Teamplay
+## 💬 Communication & Teamplay
 A large part of the game revolves around team coordination.
 
 Players communicate via an in-game chat system and forums, sometimes supported by maps with shared markings or orders.
 
 Structured command hierarchies can exist, with higher-ranked players issuing broad orders or organizing joint operations.
 
-📚 Resources
+## 📚 Resources
 A community-maintained wiki contains detailed rules, unit stats, and tactical guides.
 
 Players often share tutorials and AARs (after-action reports) on forums and social media.
@@ -95,32 +81,6 @@ Let me know if you want to continue with the next section: Community and Support
 
 Vous avez dit :
 There is no turns. Each units can have 30 Action Points max dans recover, by default, 1 AP /h
-Each team has an HQ they can move slowly. Goal is to kill enemy HQ. units are : 
-moto
-obs
-GB
-forteress
-jeep
-Leclerc
-Challenger
-LAV
-AMX
-warrior
-soldier
-commando
-veteran
-kamikaze
-marine
-engineer
-dragon
-vbci
-medic
-radio
-dynamiter
-
-
-ChatGPT a dit :
-Excellent details — thanks! I’ve now updated the Rules and Resources section to reflect the accurate mechanics and list of units. Let me know if you'd like me to elaborate on any unit type individually.
 
 📘 Rules and Resources
 Blue vs Red operates as a continuous, real-time wargame—not turn-based. Each player controls a squad composed of multiple military units, maneuvering across a persistent battlefield in pursuit of tactical and strategic objectives.
