@@ -175,7 +175,7 @@ Wrong. fire power can't be 0, it's Non Applicable. I don't see values for camouf
 | Radio | Special | 0 | N/A | N/A | N/A | 3 | 3 |
 | Campement | Special | 10 | N/A | N/A | N/A | 0 | 0 |
 | Moto | Scout | 5 | 2 | 2 | 4 | 1 | 4 |
-| Observateur | Scout | 10 | N/A | N/A | N/A | 7 | 4 |
+| Observer | Scout | 10 | N/A | N/A | N/A | 7 | 4 |
 | Sniper | Scout | 20 | 5 | 5 | 6 | 1 | 4 |
 | Mortier | Artillery | 10 | 4 | 6 | 6 | 2 | 2 |
 | Obusier | Artillery | 20 | 5 | 7 | 7 | 2 | 2 |
