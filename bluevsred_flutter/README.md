@@ -1,6 +1,6 @@
 # Blue vs Red
 
-You are a commander who lead his section to kill the ennemy Headquarters together with his company and the whole army. Will you choose red or blue army?   
+You are a commander who lead his section to kill the enemy Headquarters together with his company and the whole army. Will you choose red or blue army?   
 
 
 ## Game Presentation
